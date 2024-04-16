@@ -46,9 +46,9 @@ class DataProvider
     }
     return false;
   }
-  public static function getItemInCart($itemID, $userID)
+  public static function getItemInCart($colorID,$itemID, $userID)
   {
-    $sql = "SELECT * FROM giohang where idnguoidung = '" . $userID . "' and idSanPham = " . $itemID;
+    $sql = "SELECT * FROM giohang where idnguoidung = '" . $userID . "' and idSanPham = " . $itemID."and idMau=".$colorID;
     return self::excuteQuery($sql);
   }
   public static function getNewHoaDonId()

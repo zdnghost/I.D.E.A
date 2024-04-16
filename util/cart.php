@@ -10,18 +10,19 @@ switch ($_SERVER["REQUEST_METHOD"]) {
           echo "You are not logged in!";
           break;
         }
-        $albumID = $_POST['albumID'];
+        $colorID=$_POST['colorID'];
+        $productID = $_POST['productID'];
         if (!isset($_SESSION['userID'])) {
           echo "You are not logged in!";
           break;
         }
         $userID = $_SESSION['userID'];
-        $result = $dp->getItemInCart($albumID, $userID);
+        $result = $dp->getItemInCart($colorID,$productID, $userID);
         if (mysqli_num_rows($result) != 0) {
-          echo "Album already exists in your cart!";
+          echo "Product already exists in your cart!";
         } else {
           $sql = "INSERT INTO giohang
-          VALUES ('" . $userID . "'," . $albumID . "," . 1 . ")";
+          VALUES (" . $userID . "," . $productID . ",".$colorID."," . 1 . ")";
           $result = $dp->excuteQuery($sql);
           if ($result) {
             echo "Added to your Cart";
@@ -36,10 +37,10 @@ switch ($_SERVER["REQUEST_METHOD"]) {
     $userID = $_SESSION['userID'];
     $productID = $_GET['productID'];
     $quantity = $_GET['quantity'];
-    $color=$_GET['color'];
+    $colorID=$_GET['colorID'];
     $sql = "UPDATE giohang
           SET soLuong = " . $quantity .
-      " WHERE idnguoidung = '" . $userID . "' and idSanPham = " . $productID." and idMau=".$color;
+      " WHERE idnguoidung = '" . $userID . "' and idSanPham = " . $productID." and idMau=".$colorID;
     $result = $dp->excuteQuery($sql);
     if ($result) {
       echo "Success";
@@ -50,8 +51,8 @@ switch ($_SERVER["REQUEST_METHOD"]) {
   case 'DELETE':
     $albumID = $_GET['albumID'];
     $productID = $_GET['productID'];
-    $color=$_GET['color'];
-    $sql = "DELETE FROM giohang WHERE maKhachHang = '" . $userID . "' and maAlbum = " . $productID." and idMau=".$color;
+    $colorID=$_GET['colorID'];
+    $sql = "DELETE FROM giohang WHERE idnguoidung = '" . $userID . "' and maAlbum = " . $productID." and idMau=".$color;
     $result = $dp->excuteQuery($sql);
     if ($result) {
       echo "Success";

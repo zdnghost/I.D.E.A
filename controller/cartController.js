@@ -99,12 +99,12 @@ const addToCart = (productID,colorID) => {
     });
   };
   const summary = () => {
-    let albums = document.querySelectorAll(
+    let products = document.querySelectorAll(
       "#mycart .check-button input[type='checkbox']:checked"
     );
-    let subTotal = getSubTotalSelected(albums);
+    let subTotal = getSubTotalSelected(products);
     subTotalFormat = "$" + (Math.round(subTotal * 100) / 100).toFixed(2);
-    shipPrice = albums.length * 15;
+    shipPrice = products.length * 15;
     shipPriceFormat = "$" + (Math.round(shipPrice * 100) / 100).toFixed(2);
     total = subTotal + shipPrice;
     totalFormat = "$" + (Math.round(total * 100) / 100).toFixed(2);
@@ -120,12 +120,12 @@ const addToCart = (productID,colorID) => {
     let subTotal = 0;
     for (let product of products) {
       let quantity = parseInt(
-        album.closest(".product-placeholder").querySelector("input.quantity-info")
+        product.closest(".product-placeholder").querySelector("input.quantity-info")
           .value
       );
   
       let price = parseFloat(
-        album
+        product
           .closest(".product-placeholder")
           .querySelector(".each")
           .innerHTML.substring(1)

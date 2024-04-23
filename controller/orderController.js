@@ -12,8 +12,8 @@ const order = async () => {
   };
   
   const createOrder = async () => {
-    let albums = getAlbums();
-    console.log(albums);
+    let products = getproducts();
+    console.log(products);
     let total = getTotal();
     let address = document.querySelector("#mycart #checkout-address").value;
     await $.ajax({
@@ -22,7 +22,7 @@ const order = async () => {
       data: {
         address: address,
         total: total,
-        albums: albums,
+        products: products,
         action: "createOrder",
       },
       success: function (res) {
@@ -46,14 +46,14 @@ const order = async () => {
     return JSON.stringify(listProduct);
   };
   const checkMyCart = () => {
-    let albums = document.querySelectorAll(
+    let products = document.querySelectorAll(
       "#mycart .check-button input[type='checkbox']:checked"
     );
     let address = document.querySelector("#mycart #checkout-address");
-    if (albums.length == 0) {
+    if (products.length == 0) {
       customNotice(
         "fa-sharp fa-light fa-circle-exclamation",
-        "Please, select the album!",
+        "Please, select the product!",
         3
       );
       return false;
@@ -71,12 +71,12 @@ const order = async () => {
   };
   
   const deleteFromOrder = async () => {
-    let albums = document.querySelectorAll(
+    let products = document.querySelectorAll(
       "#mycart .check-button input[type='checkbox']:checked"
     );
-    for (let album of albums) {
-      await deleteByAlbumID(parseInt(album.value));
-      album.closest(".product-placeholder").remove();
+    for (let product of products) {
+      await deleteByproductID(parseInt(product.value));
+      product.closest(".product-placeholder").remove();
     }
   };
   const cancelOrder = (orderID) => {
@@ -100,9 +100,9 @@ const order = async () => {
     });
   };
   
-  const getAlbumsInOrder = (orderID) => {
+  const getproductsInOrder = (orderID) => {
     return $.ajax({
-      url: "util/order.php?orderID=" + orderID + "&action=getAlbumsInOrder",
+      url: "util/order.php?orderID=" + orderID + "&action=getproductsInOrder",
       type: "GET",
     });
   };

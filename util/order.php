@@ -7,7 +7,7 @@ switch ($_SERVER["REQUEST_METHOD"]) {
     switch ($_GET['action']) {
       case 'getOrderInfo':
         $orderID = $_GET['orderID'];
-        $sql = "SELECT * FROM hoadon WHERE maHoaDon = " . $orderID;
+        $sql = "SELECT * FROM hoadon WHERE idhoadon = " . $orderID;
         $result = $dp->excuteQuery($sql)->fetch_assoc();
         if ($result) {
           echo json_encode($result);
@@ -15,16 +15,16 @@ switch ($_SERVER["REQUEST_METHOD"]) {
           echo "Error";
         }
         break;
-      case 'getAlbumsInOrder':
+      case 'getProductInOrder':
         $orderID = $_GET['orderID'];
-        $sql = "SELECT * FROM chitiethoadon WHERE hoaDon = " . $orderID;
+        $sql = "SELECT * FROM chitiethoadon WHERE idhoadon = " . $orderID;
         $result = $dp->excuteQuery($sql);
-        $albums = array();
+        $products = array();
         if ($result) {
           while ($row = $result->fetch_assoc()) {
-            $albums[] = $row;
+            $products[] = $row;
           }
-          echo json_encode($albums);
+          echo json_encode($products);
         } else {
           echo "Error";
         }
@@ -38,16 +38,16 @@ switch ($_SERVER["REQUEST_METHOD"]) {
         $total = $_POST['total'];
         $address = $_POST['address'];
         $userID = $_SESSION['userID'];
-        $albums = json_decode($_POST['albums']);
+        $products = json_decode($_POST['products']);
+        $sale=$_POST['sale'];
         $hoaDonID = $dp->getNewHoaDonId();
         $sql1 = "INSERT INTO hoadon
-        VALUES (" . $hoaDonID . "," . $total . ",'" . (new Datetime())->format('Y-m-d') . "',
-        'Pending','" . $userID . "',null,'" . $address . "')";
+        VALUES (" . $hoaDonID .",".$idnguoidung.",".$total.",".(new Datetime())->format('Y-m-d')."1,NULL,'" .$address."',".$sale.")";
         $result1 = $dp->excuteQuery($sql1);
         $error = false;
-        foreach ($albums as $album) {
+        foreach ($products as $product) {
           $sql = "INSERT INTO chitiethoadon
-                  VALUES (" . $album->{"albumID"} . "," . $hoaDonID . "," . $album->{"quantity"} . ")";
+                  VALUES (" .$hoaDonID . ",". $products->{"productID"} . "," . $products->{"colorID"} . ",". $products->{"productPrice"} . "," . $products->{"Total"} . ","   . $product->{"quantity"} . ")";
           $result = $dp->excuteQuery($sql);
           if (!$result) {
             $error = true;
@@ -65,7 +65,7 @@ switch ($_SERVER["REQUEST_METHOD"]) {
     switch ($_GET['action']) {
       case 'cancelOrder':
         $orderID = $_GET['orderID'];
-        $sql = "UPDATE hoadon SET trangThai = 'Cancel' WHERE maHoaDon = " . $orderID;
+        $sql = "UPDATE hoadon SET trangThai =0  WHERE idhoadon = " . $orderID;
         $result = $dp->excuteQuery($sql);
         if ($result) {
           echo "Success";
@@ -75,24 +75,22 @@ switch ($_SERVER["REQUEST_METHOD"]) {
         break;
       case 'updateOrder':
         $orderID = $_GET['orderID'];
-        $status = $_GET['status'];
+        $status = $_GET['status']; 
         $f = true;
-        if ($status == "Shipping") {
-          $sql = "SELECT cthd.album, cthd.soLuong
-          FROM chitiethoadon cthd join hoadon hd on cthd.hoaDon = hd.maHoaDon
-          WHERE hd.maHoaDon = $orderID";
+        if ($status == 2) {
+          $sql = "";
           $result = $dp->excuteQuery($sql);
-          $albums = array();
+          $products = array();
           if ($result->num_rows > 0) {
             while ($row = $result->fetch_assoc()) {
-              array_push($albums, $row);
+              array_push($products, $row);
             }
           }
-          foreach ($albums as $album) {
-            $sql = "SELECT soLuong FROM album where maAlbum=" . $album['album'];
+          foreach ($products as $product) {
+            $sql = "SELECT soLuong FROM sanpham where idsanpham=" . $product['product']." and idmau=".$product['color'];
             $result = $dp->excuteQuery($sql);
             $sl = $result->fetch_assoc()['soLuong'];
-            if ($sl < $album['soLuong']) {
+            if ($sl < $product['soLuong']) {
               $f = false;
               break;
             }
@@ -104,22 +102,22 @@ switch ($_SERVER["REQUEST_METHOD"]) {
         }
 
 
-        $sql = "UPDATE hoadon SET trangThai = '" . $status . "' WHERE maHoaDon = " . $orderID;
+        $sql = "UPDATE hoadon SET trangThai = " . $status . " WHERE idhoadon = " . $orderID;
         $result1 = $dp->excuteQuery($sql);
         $error = false;
         if ($status == "Shipping") {
-          $sql = "SELECT cthd.album, cthd.soLuong
-                  FROM chitiethoadon cthd join hoadon hd on cthd.hoaDon = hd.maHoaDon
-                  WHERE hd.maHoaDon = $orderID";
+          $sql = "SELECT cthd.idsanpham,cthd.idmau, cthd.soLuong
+                  FROM chitiethoadon cthd join hoadon hd on cthd.idhoadon = hd.idhoadon
+                  WHERE hd.idhoadon = $orderID";
           $result = $dp->excuteQuery($sql);
-          $albums = array();
+          $products = array();
           if ($result->num_rows > 0) {
             while ($row = $result->fetch_assoc()) {
-              array_push($albums, $row);
+              array_push($products, $row);
             }
           }
-          foreach ($albums as $album) {
-            $sql = "UPDATE album SET soLuong = soLuong - " . $album['soLuong'] . " WHERE maAlbum = " . $album['album'];
+          foreach ($products as $product) {
+            $sql = "UPDATE product SET soLuong = soLuong - " . $product['soLuong'] . " WHERE idsanpham = " . $product['product']." and idmau =".$product['color'];
             $result = $dp->excuteQuery($sql);
             if (!$result) {
               $error = true;

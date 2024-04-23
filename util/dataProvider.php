@@ -60,4 +60,21 @@ class DataProvider
     }
     return 1;
   }
+  public static function getNewPhieuNhapId()
+  {
+    $sql = "SELECT MAX(idphieunhap) FROM phieunhap";
+    $result = self::excuteQuery($sql);
+    if (mysqli_num_rows($result) != 0) {
+      return self::excuteQuery($sql)->fetch_assoc()['MAX(idphieunhap)'] + 1;
+    }
+    return 1;
+  }
+  public static function getNewUserId(){
+    $sql="SELECT MAX(idnguoidung) from taikhoan";
+    $result=self::excuteQuery($sql);
+    if(mysqli_num_rows($result)!=0){
+      return self::excuteQuery($sql)->fetch_assoc()['MAX(idnguoidung)'] + 1;
+    }
+    return 1;
+  }
 }

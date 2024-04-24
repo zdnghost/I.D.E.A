@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Apr 18, 2024 at 04:47 AM
+-- Generation Time: Apr 24, 2024 at 06:49 AM
 -- Server version: 8.0.30
 -- PHP Version: 8.1.10
 
@@ -39,6 +39,19 @@ CREATE TABLE `chitiethoadon` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `chitietphieunhap`
+--
+
+CREATE TABLE `chitietphieunhap` (
+  `idphieunhap` int NOT NULL,
+  `idsanpham` int NOT NULL,
+  `idmau` int NOT NULL,
+  `soluong` int NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `giohang`
 --
 
@@ -60,10 +73,10 @@ CREATE TABLE `hoadon` (
   `idnguoidung` int NOT NULL,
   `tongtien` bigint NOT NULL,
   `thoigiandat` date NOT NULL,
-  `trangthai` varchar(20) NOT NULL,
-  `idvaitro` int NOT NULL,
+  `trangthai` int NOT NULL,
+  `idphutrach` int DEFAULT NULL,
   `diachigiaohang` varchar(100) NOT NULL,
-  `khuyenmai` int NOT NULL
+  `khuyenmai` int DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
@@ -114,6 +127,18 @@ CREATE TABLE `nguoidung` (
   `diachi` varchar(100) NOT NULL,
   `email` varchar(100) NOT NULL,
   `trangthai` int NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `phieunhap`
+--
+
+CREATE TABLE `phieunhap` (
+  `idphieunhap` int NOT NULL,
+  `idnguoinhap` int NOT NULL,
+  `ngaynhap` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
@@ -207,6 +232,14 @@ ALTER TABLE `chitiethoadon`
   ADD KEY `consthdsanpham` (`idsanpham`,`idmau`);
 
 --
+-- Indexes for table `chitietphieunhap`
+--
+ALTER TABLE `chitietphieunhap`
+  ADD PRIMARY KEY (`idphieunhap`,`idsanpham`,`idmau`),
+  ADD KEY `idsanpham` (`idsanpham`),
+  ADD KEY `idmau` (`idmau`);
+
+--
 -- Indexes for table `giohang`
 --
 ALTER TABLE `giohang`
@@ -218,7 +251,9 @@ ALTER TABLE `giohang`
 --
 ALTER TABLE `hoadon`
   ADD PRIMARY KEY (`idhoadon`),
-  ADD KEY `constkhuyenmai` (`khuyenmai`);
+  ADD KEY `constkhuyenmai` (`khuyenmai`),
+  ADD KEY `constidxacnhan` (`idphutrach`) USING BTREE,
+  ADD KEY `constidmua` (`idnguoidung`) USING BTREE;
 
 --
 -- Indexes for table `khuyenmai`
@@ -243,6 +278,13 @@ ALTER TABLE `mau`
 --
 ALTER TABLE `nguoidung`
   ADD PRIMARY KEY (`idnguoidung`);
+
+--
+-- Indexes for table `phieunhap`
+--
+ALTER TABLE `phieunhap`
+  ADD PRIMARY KEY (`idphieunhap`),
+  ADD KEY `constnguoinhap` (`idnguoinhap`);
 
 --
 -- Indexes for table `phong`
@@ -297,6 +339,14 @@ ALTER TABLE `chitiethoadon`
   ADD CONSTRAINT `consthoadon` FOREIGN KEY (`idhoadon`) REFERENCES `hoadon` (`idhoadon`) ON DELETE RESTRICT ON UPDATE RESTRICT;
 
 --
+-- Constraints for table `chitietphieunhap`
+--
+ALTER TABLE `chitietphieunhap`
+  ADD CONSTRAINT `chitietphieunhap_ibfk_1` FOREIGN KEY (`idphieunhap`) REFERENCES `phieunhap` (`idphieunhap`),
+  ADD CONSTRAINT `chitietphieunhap_ibfk_2` FOREIGN KEY (`idsanpham`) REFERENCES `sanpham` (`idsanpham`),
+  ADD CONSTRAINT `chitietphieunhap_ibfk_3` FOREIGN KEY (`idmau`) REFERENCES `sanpham` (`idmau`);
+
+--
 -- Constraints for table `giohang`
 --
 ALTER TABLE `giohang`
@@ -307,13 +357,21 @@ ALTER TABLE `giohang`
 -- Constraints for table `hoadon`
 --
 ALTER TABLE `hoadon`
-  ADD CONSTRAINT `constkhuyenmai` FOREIGN KEY (`khuyenmai`) REFERENCES `khuyenmai` (`idkhuyenmai`) ON DELETE RESTRICT ON UPDATE RESTRICT;
+  ADD CONSTRAINT `constkhuyenmai` FOREIGN KEY (`khuyenmai`) REFERENCES `khuyenmai` (`idkhuyenmai`) ON DELETE RESTRICT ON UPDATE RESTRICT,
+  ADD CONSTRAINT `hoadon_ibfk_1` FOREIGN KEY (`idnguoidung`) REFERENCES `taikhoan` (`idnguoidung`),
+  ADD CONSTRAINT `hoadon_ibfk_2` FOREIGN KEY (`idphutrach`) REFERENCES `taikhoan` (`idnguoidung`);
 
 --
 -- Constraints for table `nguoidung`
 --
 ALTER TABLE `nguoidung`
   ADD CONSTRAINT `nguoidung_ibfk_1` FOREIGN KEY (`idnguoidung`) REFERENCES `taikhoan` (`idnguoidung`) ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+--
+-- Constraints for table `phieunhap`
+--
+ALTER TABLE `phieunhap`
+  ADD CONSTRAINT `phieunhap_ibfk_1` FOREIGN KEY (`idnguoinhap`) REFERENCES `taikhoan` (`idnguoidung`);
 
 --
 -- Constraints for table `quyen`

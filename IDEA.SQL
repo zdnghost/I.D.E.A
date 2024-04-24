@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Apr 24, 2024 at 06:49 AM
+-- Generation Time: Apr 24, 2024 at 09:54 AM
 -- Server version: 8.0.30
 -- PHP Version: 8.1.10
 
@@ -71,25 +71,10 @@ CREATE TABLE `giohang` (
 CREATE TABLE `hoadon` (
   `idhoadon` int NOT NULL,
   `idnguoidung` int NOT NULL,
-  `tongtien` bigint NOT NULL,
   `thoigiandat` date NOT NULL,
   `trangthai` int NOT NULL,
   `idphutrach` int DEFAULT NULL,
-  `diachigiaohang` varchar(100) NOT NULL,
-  `khuyenmai` int DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `khuyenmai`
---
-
-CREATE TABLE `khuyenmai` (
-  `idkhuyenmai` int NOT NULL,
-  `batdau` date NOT NULL,
-  `ketthuc` date NOT NULL,
-  `phantram` float NOT NULL
+  `diachigiaohang` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
@@ -251,15 +236,8 @@ ALTER TABLE `giohang`
 --
 ALTER TABLE `hoadon`
   ADD PRIMARY KEY (`idhoadon`),
-  ADD KEY `constkhuyenmai` (`khuyenmai`),
   ADD KEY `constidxacnhan` (`idphutrach`) USING BTREE,
   ADD KEY `constidmua` (`idnguoidung`) USING BTREE;
-
---
--- Indexes for table `khuyenmai`
---
-ALTER TABLE `khuyenmai`
-  ADD PRIMARY KEY (`idkhuyenmai`);
 
 --
 -- Indexes for table `loai`
@@ -357,7 +335,6 @@ ALTER TABLE `giohang`
 -- Constraints for table `hoadon`
 --
 ALTER TABLE `hoadon`
-  ADD CONSTRAINT `constkhuyenmai` FOREIGN KEY (`khuyenmai`) REFERENCES `khuyenmai` (`idkhuyenmai`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   ADD CONSTRAINT `hoadon_ibfk_1` FOREIGN KEY (`idnguoidung`) REFERENCES `taikhoan` (`idnguoidung`),
   ADD CONSTRAINT `hoadon_ibfk_2` FOREIGN KEY (`idphutrach`) REFERENCES `taikhoan` (`idnguoidung`);
 

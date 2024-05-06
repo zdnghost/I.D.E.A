@@ -1,0 +1,101 @@
+/* HEADER SECTION STARTS */
+
+    /* Chỉnh màu nền, màu chữ các link */
+    .nav-link {
+        color: var(--bs-body-color);
+    }
+
+    #header-section .nav-link:focus, #header-section .nav-link:hover {
+        color: var(--bs-body-color);
+        background-color: var(--bs-gray-200);
+    }
+
+/* HEADER SECTION ENDS */
+
+
+/* HEROES SECTION STARTS */
+
+    /* Chỉnh màu link login */
+    #heroes-section .login-link {
+        color: var(--bs-body-color);
+    }
+
+/* HEROES SECTION ENDS */
+
+
+/* POPULAR PRODUCTS SECTION STARTS */
+
+    /* Định dạng link tên sản phẩm */
+    .product-card .product-name {
+        color: var(--bs-body-color);
+        text-decoration: none;
+    }
+
+    /* Thêm gạch chân khi hover vào tên sản phẩm */
+    .product-card .product-name:hover {
+        text-decoration: underline;
+    }
+
+    /* Thêm đổ bóng khi hover vào thẻ sản phẩm */
+    .product-card:hover {
+        box-shadow: 8px 8px var(--bs-gray-200);
+    }
+
+    /* Định dạng icon trái tim khi hover */
+    .product-card i:hover, .product-card i:focus {
+        cursor: pointer;
+    }
+
+/* POPULAR PRODUCTS SECTION ENDS */
+
+
+/* ROOMS SECTION STARTS */
+    /* Thêm gạch chân khi hover vào tên phòng */
+    .room-card h2:hover {
+        text-decoration: underline;
+    }
+/* ROOMS SECTION ENDS */
+
+
+/* FOOTER SECTION STARTS */
+    /* Định dạng đường link khi hover */
+    #footer-section .nav-link:focus, #footer-section .nav-link:hover {
+        color: var(--bs-body-color);
+        text-decoration: underline;
+    }
+/* FOOTER SECTION ENDS */
+
+
+/* Chọn màu sản phẩm */
+.colors label{
+    cursor: pointer;
+}
+
+.colors input[type="radio"]:checked + .swatch{border-radius: 20px;}
+
+.swatch{
+  display:inline-block;
+  vertical-align: middle;
+  height: 30px;
+  width:30px;
+  margin: 0 5px 0 0 ;
+  border: 1px solid #d4d4d4;
+}
+
+
+/* Ẩn mũi tên mặc định của number input  */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+#checkout-section .nav-link:focus, #checkout-section .nav-link:hover {
+    color: var(--bs-body-color);
+    text-decoration: underline;
+}
+
+#cart-section h6:focus, #cart-section h6:hover {
+    color: var(--bs-body-color);
+    text-decoration: underline;
+}

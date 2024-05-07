@@ -1,50 +1,46 @@
-
+<?php
+   session_start();
+   require("../../../util/dataProvider.php");
+    $dp=new DataProvider();
+?>
 <div class="container p-5">
 
-<h4>Edit Tài Khoản</h4>
+<h4>Edit Phiếu Nhập</h4>
 
 <form id="update-Items" onsubmit="updateItems()" enctype='multipart/form-data'>
 <div class="form-group">
-              <label>Mã người dùng:</label>
+              <label>Mã Phiếu Nhập:</label>
               <select id="category" >
                 <option disabled selected>Chọn</option>
                 <?php
-                include_once "../config/dbconnect.php";
-                  $sql="SELECT * from nguoidung";
-                  $result = $conn-> query($sql);
+          
+                  $sql="SELECT * from phieunhap";
+                  $result = $dp-> excuteQuery($sql);
 
                   if ($result-> num_rows > 0){
                     while($row = $result-> fetch_assoc()){
-                      echo"<option value='".$row['idnguoidung']."'>".$row['idnguoidung'] ."</option>";
+                      echo"<option value='".$row['maPhieuNhap']."'>".$row['maPhieuNhap'] ."</option>";
                     }
                   }
                 ?>
               </select>
             </div>
-    <div class="form-group">
-      <label for="desc">Username:</label>
+            <div class="form-group">
+      <label for="desc">Ngày nhập:</label>
       <input type="text" class="form-control"  >
     </div>
     <div class="form-group">
-      <label for="desc">Password:</label>
-      <input type="text" class="form-control"  >
-    </div>
-    <div class="form-group">
-      <label for="desc">Ngày tạo:</label>
-      <input type="text" class="form-control"  >
-    </div>
-    <div class="form-group">
-              <label>Vai trò:</label>
+              <label>Người Nhập:</label>
               <select id="category" >
                 <option disabled selected>Chọn</option>
                 <?php
-
-                  $sql="SELECT * from vaitro";
-                  $result = $conn-> query($sql);
+          
+                  $sql="SELECT * from nguoidung";
+                  $result = $dp-> excuteQuery($sql);
 
                   if ($result-> num_rows > 0){
                     while($row = $result-> fetch_assoc()){
-                      echo"<option value='".$row['maVaiTro']."'>".$row['maVaiTro'] ."</option>";
+                      echo"<option value='".$row['idnguoidung']."'>".$row['idnguoidung'] ."</option>";
                     }
                   }
                 ?>

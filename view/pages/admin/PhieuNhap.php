@@ -1,29 +1,31 @@
-
+<?php
+   session_start();
+   require("../../../util/dataProvider.php");
+    $dp=new DataProvider();
+?>
 <div >
-  <h2>Chi Tiết Phiếu Nhập </h2>
+  <h2>Phiếu Nhập </h2>
   <table class="table ">
     <thead>
       <tr>
         <th class="text-center">Mã Phiếu Nhập</th>
-        <th class="text-center">Mã Sản Phẩm</th>
-        <th class="text-center">Mã Mẫu</th>
-        <th class="text-center">Số lượng</th>
+        <th class="text-center">Mã người nhập</th>
+        <th class="text-center">Ngày nhập</th>
         <th class="text-center" colspan="2">Action</th>
       </tr>
     </thead>
     <?php
-      include_once "../config/dbconnect.php";
-      $sql="SELECT * from chitietphieunhap";
-      $result=$conn-> query($sql);
+
+      $sql="SELECT * from phieunhap";
+      $result=$dp-> excuteQuery($sql);
       if ($result-> num_rows > 0){
         while ($row=$result-> fetch_assoc()) {
     ?>
     <tr>
-    <td><?=$row["idphieunhap"]?></td>    
-      <td><?=$row["idsanpham"]?></td>    
-      <td><?=$row["idmau"]?></td>    
-      <td><?=$row["soluong"]?></td>    
-      <td><button class="btn btn-primary" style="height:40px" onclick="editChiTietPhieuNhap('<?=$row['idphieunhap']?>')">Edit</button></td>
+      <td><?=$row["idphieunhap"]?></td>
+      <td><?=$row["idnguoinhap"]?></td>      
+      <td><?=$row["ngaynhap"]?></td>    
+      <td><button class="btn btn-primary" style="height:40px" onclick="editPhieuNhap('<?=$row['idphieunhap']?>')">Edit</button></td>
       <td><button class="btn btn-danger" style="height:40px" >Delete</button></td>
       </tr>
       <?php
@@ -34,7 +36,7 @@
 
   <!-- Trigger the modal with a button -->
   <button type="button" class="btn btn-secondary " style="height:40px" data-toggle="modal" data-target="#myModal">
-    Add Item
+    Add Product
   </button>
 
   <!-- Modal -->
@@ -44,64 +46,48 @@
       <!-- Modal content-->
       <div class="modal-content">
         <div class="modal-header">
-          <h4 class="modal-title">New Chi Tiết Phiếu Nhập</h4>
+          <h4 class="modal-title">New Phiếu Nhập</h4>
           <button type="button" class="close" data-dismiss="modal">&times;</button>
         </div>
         <div class="modal-body">
           <form  enctype='multipart/form-data' onsubmit="addItems()" method="POST">
           <div class="form-group">
-              <label>Mã phiếu nhập:</label>
+              <label>Mã Phiếu Nhập:</label>
               <select id="category" >
                 <option disabled selected>Chọn</option>
                 <?php
-                include_once "../config/dbconnect.php";
+          
                   $sql="SELECT * from phieunhap";
-                  $result = $conn-> query($sql);
+                  $result = $dp-> excuteQuery($sql);
 
                   if ($result-> num_rows > 0){
                     while($row = $result-> fetch_assoc()){
-                      echo"<option value='".$row['idphieunhap']."'>".$row['idphieunhap'] ."</option>";
+                      echo"<option value='".$row['maPhieuNhap']."'>".$row['maPhieuNhap'] ."</option>";
                     }
                   }
                 ?>
               </select>
             </div>
             <div class="form-group">
-              <label>Mã sản phẩm:</label>
+      <label for="desc">Ngày nhập:</label>
+      <input type="text" class="form-control"  >
+    </div>
+    <div class="form-group">
+              <label>Người Nhập:</label>
               <select id="category" >
                 <option disabled selected>Chọn</option>
                 <?php
-                include_once "../config/dbconnect.php";
-                  $sql="SELECT * from sanpham";
-                  $result = $conn-> query($sql);
+          
+                  $sql="SELECT * from nguoidung";
+                  $result = $dp-> excuteQuery($sql);
 
                   if ($result-> num_rows > 0){
                     while($row = $result-> fetch_assoc()){
-                      echo"<option value='".$row['idsanpham']."'>".$row['idsanpham'] ."</option>";
+                      echo"<option value='".$row['idnguoidung']."'>".$row['idnguoidung'] ."</option>";
                     }
                   }
                 ?>
               </select>
-            </div>
-            <div class="form-group">
-              <label>Mã mẫu:</label>
-              <select id="category" >
-                <option disabled selected>Chọn</option>
-                <?php
-                include_once "../config/dbconnect.php";
-                  $sql="SELECT * from mau";
-                  $result = $conn-> query($sql);
-
-                  if ($result-> num_rows > 0){
-                    while($row = $result-> fetch_assoc()){
-                      echo"<option value='".$row['idmau']."'>".$row['idmau'] ."</option>";
-                    }
-                  }
-                ?>
-              </select>
-            <div class="form-group">
-              <label for="price">Số lượng:</label>
-              <input type="number" class="form-control" id="p_price" required>
             </div>
             <div class="form-group">
               <button type="submit" class="btn btn-secondary" id="upload" style="height:40px">Add Item</button>

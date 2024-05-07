@@ -1,4 +1,8 @@
-
+<?php
+   session_start();
+   require("../../../util/dataProvider.php");
+    $dp=new DataProvider();
+?>
 <div class="container p-5">
 
 <h4>Edit Loại</h4>

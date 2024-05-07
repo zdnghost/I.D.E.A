@@ -1,19 +1,19 @@
-
+<?php
+   session_start();
+   require("../../../util/dataProvider.php");
+    $dp=new DataProvider();
+?>
 <div class="container p-5">
 
-<h4>Edit Vai Trò</h4>
+<h4>Edit Phòng</h4>
 
 <form id="update-Items" onsubmit="updateItems()" enctype='multipart/form-data'>
 <div class="form-group">
-      <label for="desc">Mã Vai Trò:</label>
+      <label for="desc">Mã phòng:</label>
       <input type="text" class="form-control"  >
     </div>
     <div class="form-group">
-      <label for="desc">Tên vai trò:</label>
-      <input type="text" class="form-control"  >
-    </div>
-    <div class="form-group">
-      <label for="desc">Mô tả:</label>
+      <label for="desc">Tên phòng:</label>
       <input type="text" class="form-control"  >
     </div>
     <div class="form-group">

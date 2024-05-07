@@ -7,7 +7,7 @@
 <body>
 <div id="warrper">
     <header id="header">
-      <?php include 'view/page/user/header.php' ?>
+    
     </header>
 </body>
 </html>

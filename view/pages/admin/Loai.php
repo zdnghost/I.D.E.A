@@ -1,27 +1,29 @@
-
+<?php
+   session_start();
+   require("../../../util/dataProvider.php");
+    $dp=new DataProvider();
+?>
 <div >
-  <h2>Quyền </h2>
+  <h2>Loại </h2>
   <table class="table ">
     <thead>
       <tr>
-        <th class="text-center">Mã vai trò</th>
-        <th class="text-center">Mã quyền</th>
-        <th class="text-center">Mô tả</th>
+        <th class="text-center">Mã loại</th>
+        <th class="text-center">Tên loại</th>
         <th class="text-center" colspan="2">Action</th>
       </tr>
     </thead>
     <?php
-      include_once "../config/dbconnect.php";
-      $sql="SELECT * from quyen";
-      $result=$conn-> query($sql);
+
+      $sql="SELECT * from loai";
+      $result=$dp-> excuteQuery($sql);
       if ($result-> num_rows > 0){
         while ($row=$result-> fetch_assoc()) {
     ?>
     <tr>
-      <td><?=$row["idvaitro"]?></td>
-      <td><?=$row["idquyen"]?></td>      
-      <td><?=$row["mota"]?></td>    
-      <td><button class="btn btn-primary" style="height:40px" onclick="editQuyen('<?=$row['idvaitro']?>')">Edit</button></td>
+      <td><?=$row["idloai"]?></td>
+      <td><?=$row["tenloai"]?></td>      
+      <td><button class="btn btn-primary" style="height:40px" onclick="editAlbum('<?=$row['idloai']?>')">Edit</button></td>
       <td><button class="btn btn-danger" style="height:40px" >Delete</button></td>
       </tr>
       <?php
@@ -32,7 +34,7 @@
 
   <!-- Trigger the modal with a button -->
   <button type="button" class="btn btn-secondary " style="height:40px" data-toggle="modal" data-target="#myModal">
-    Add Product
+    Add 
   </button>
 
   <!-- Modal -->
@@ -42,37 +44,19 @@
       <!-- Modal content-->
       <div class="modal-content">
         <div class="modal-header">
-          <h4 class="modal-title">New Quyền</h4>
+          <h4 class="modal-title">New Loại</h4>
           <button type="button" class="close" data-dismiss="modal">&times;</button>
         </div>
         <div class="modal-body">
           <form  enctype='multipart/form-data' onsubmit="addItems()" method="POST">
-         
             <div class="form-group">
-      <label for="desc">Mã Quyền:</label>
-      <input type="text" class="form-control"  >
-    </div>
-    <div class="form-group">
-              <label>Mã vai trò:</label>
-              <select id="category" >
-                <option disabled selected>Chọn</option>
-                <?php
-                include_once "../config/dbconnect.php";
-                  $sql="SELECT * from vaitro";
-                  $result = $conn-> query($sql);
-
-                  if ($result-> num_rows > 0){
-                    while($row = $result-> fetch_assoc()){
-                      echo"<option value='".$row['idvaitro']."'>".$row['idvaitro'] ."</option>";
-                    }
-                  }
-                ?>
-              </select>
+              <label for="name">Mã loại:</label>
+              <input type="text" class="form-control" id="p_name" required>
             </div>
             <div class="form-group">
-      <label for="desc">Mô tả:</label>
-      <input type="text" class="form-control"  >
-    </div>
+              <label for="price">Tên loại:</label>
+              <input type="number" class="form-control" id="p_price" required>
+            </div>
             <div class="form-group">
               <button type="submit" class="btn btn-secondary" id="upload" style="height:40px">Add Item</button>
             </div>
@@ -89,3 +73,4 @@
 
   
 </div>
+   

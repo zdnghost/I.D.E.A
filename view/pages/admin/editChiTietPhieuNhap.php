@@ -1,4 +1,8 @@
-
+<?php
+   session_start();
+   require("../../../util/dataProvider.php");
+    $dp=new DataProvider();
+?>
 <div class="container p-5">
 
 <h4>Edit Chi Tiết Phiếu Nhập</h4>
@@ -9,9 +13,9 @@
               <select id="category" >
                 <option disabled selected>Chọn</option>
                 <?php
-                include_once "../config/dbconnect.php";
+          
                   $sql="SELECT * from phieunhap";
-                  $result = $conn-> query($sql);
+                  $result = $dp-> excuteQuery($sql);
 
                   if ($result-> num_rows > 0){
                     while($row = $result-> fetch_assoc()){
@@ -26,9 +30,9 @@
               <select id="category" >
                 <option disabled selected>Chọn</option>
                 <?php
-                include_once "../config/dbconnect.php";
+          
                   $sql="SELECT * from sanpham";
-                  $result = $conn-> query($sql);
+                  $result = $dp-> excuteQuery($sql);
 
                   if ($result-> num_rows > 0){
                     while($row = $result-> fetch_assoc()){
@@ -43,9 +47,9 @@
               <select id="category" >
                 <option disabled selected>Chọn</option>
                 <?php
-                include_once "../config/dbconnect.php";
+          
                   $sql="SELECT * from mau";
-                  $result = $conn-> query($sql);
+                  $result = $dp-> excuteQuery($sql);
 
                   if ($result-> num_rows > 0){
                     while($row = $result-> fetch_assoc()){

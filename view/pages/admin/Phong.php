@@ -1,25 +1,29 @@
-
+<?php
+   session_start();
+   require("../../../util/dataProvider.php");
+    $dp=new DataProvider();
+?>
 <div >
-  <h2>Mẫu </h2>
+  <h2>Phòng </h2>
   <table class="table ">
     <thead>
       <tr>
-        <th class="text-center">Mã mẫu</th>
-        <th class="text-center">Tên mẫu</th>
+        <th class="text-center">Mã Phòng</th>
+        <th class="text-center">Tên phòng</th>
         <th class="text-center" colspan="2">Action</th>
       </tr>
     </thead>
     <?php
-      include_once "../config/dbconnect.php";
-      $sql="SELECT * from mau";
-      $result=$conn-> query($sql);
+
+      $sql="SELECT * from phong";
+      $result=$dp-> excuteQuery($sql);
       if ($result-> num_rows > 0){
         while ($row=$result-> fetch_assoc()) {
     ?>
     <tr>
-      <td><?=$row["idmau"]?></td>
-      <td><?=$row["tenMau"]?></td>      
-      <td><button class="btn btn-primary" style="height:40px" onclick="editSlideShow('<?=$row['idmau']?>')">Edit</button></td>
+      <td><?=$row["idphong"]?></td>
+      <td><?=$row["tenphong"]?></td>   
+      <td><button class="btn btn-primary" style="height:40px" onclick="editKhuyenMai('<?=$row['idphong']?>')">Edit</button></td>
       <td><button class="btn btn-danger" style="height:40px" >Delete</button></td>
       </tr>
       <?php
@@ -40,18 +44,18 @@
       <!-- Modal content-->
       <div class="modal-content">
         <div class="modal-header">
-          <h4 class="modal-title">New Mẫu</h4>
+          <h4 class="modal-title">New Phòng</h4>
           <button type="button" class="close" data-dismiss="modal">&times;</button>
         </div>
         <div class="modal-body">
           <form  enctype='multipart/form-data' onsubmit="addItems()" method="POST">
-         
-            <div class="form-group">
-      <label for="desc">Mã mẫu:</label>
+          <div class="form-group">
+      <label for="desc">Mã Phòng:</label>
       <input type="text" class="form-control"  >
+      
     </div>
     <div class="form-group">
-      <label for="desc">Tên mẫu:</label>
+      <label for="desc">Tên phòng:</label>
       <input type="text" class="form-control"  >
     </div>
             <div class="form-group">
@@ -70,3 +74,4 @@
 
   
 </div>
+   

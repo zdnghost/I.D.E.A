@@ -9,7 +9,7 @@
        <link rel="stylesheet" href="./view/styles/admin.css"></link>
   </head>
 </head>
-<body >
+<body onload="ShowThongKe()">
     
         <?php
             include "./view/pages/admin/adminHeader.php";
@@ -21,7 +21,8 @@
             include "./view/pages/admin/sidebar.php";
              ?>
 
-    <div id="main-content" class="container allContent-section py-4">
+    <div id="main-content" class="container allContent-section py-4" >
+
     </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.1.1.min.js" ></script>

@@ -4,7 +4,9 @@
     $dp=new DataProvider();
 ?>
 <div >
-  <h2>Mẫu </h2>
+<td><button class="btn btn-danger" style="height:40px" onclick="ShowSanPham()">Back</button></td>
+
+  <h2>Màu </h2>
   <table class="table ">
     <thead>
       <tr>
@@ -23,7 +25,7 @@
     <tr>
       <td><?=$row["idmau"]?></td>
       <td><?=$row["tenMau"]?></td>      
-      <td><button class="btn btn-primary" style="height:40px" onclick="editSlideShow('<?=$row['idmau']?>')">Edit</button></td>
+      <td><button class="btn btn-primary" style="height:40px" onclick="editMau('<?=$row['idmau']?>')">Edit</button></td>
       <td><button class="btn btn-danger" style="height:40px" >Delete</button></td>
       </tr>
       <?php

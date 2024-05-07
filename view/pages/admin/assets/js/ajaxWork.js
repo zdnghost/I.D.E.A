@@ -90,9 +90,9 @@ function editVaiTro_Quyen(){
         }
     });
 }
-function editKhuyenMai(){
+function editPhong(){
     $.ajax({
-        url:"./view/pages/admin/editKhuyenMai.php",
+        url:"./view/pages/admin/editPhong.php",
         method:"post",
         data:{record:1},
         success:function(data){
@@ -190,9 +190,9 @@ function editTaiKhoan(id){
         }
     });
 }
-function editSlideShow(id){
+function editMau(id){
     $.ajax({
-        url:"./view/pages/admin/editSlideShow.php",
+        url:"./view/pages/admin/editMau.php",
         method:"post",
         data:id,
         success:function(data){
@@ -421,16 +421,6 @@ function itemEditForm(id){
         }
     });
 }
-function editAlbum_BaiHat(id){
-    $.ajax({
-        url:"./view/pages/admin/editAlbum_BaiHat.php",
-        method:"post",
-        data:id,
-        success:function(data){
-            $('.allContent-section').html(data);
-        }
-    });
-}
 function editHoaDon(id){
     $.ajax({
         url:"./view/pages/admin/editHoaDon.php",
@@ -451,9 +441,9 @@ function editChiTietPhieuNhap(id){
         }
     });
 }
-function editAlbum(id){
+function editLoai(id){
     $.ajax({
-        url:"./view/pages/admin/editAlbum.php",
+        url:"./view/pages/admin/editLoai.php",
         method:"post",
         data:{record:id},
         success:function(data){

@@ -5,6 +5,9 @@
 ?>
 <div >
   <h2>Sản Phẩm </h2>
+  <td><button class="btn btn-primary" style="height:40px" onclick="ShowMau()" >Màu</button></td>
+  <td><button class="btn btn-primary" style="height:40px" onclick="ShowPhong()">Phòng</button></td>
+  <td><button class="btn btn-primary" style="height:40px" onclick="ShowLoai()">Loại</button></td>
   <table class="table ">
     <thead>
       <tr>
@@ -67,6 +70,7 @@
             <div class="form-group">
               <label for="name">Mã sản phẩm:</label>
               <input type="text" class="form-control" id="p_name" required>
+              <button class="btn btn-danger" style="height:40px" onclick="">Id Mới</button>
             </div>
             <div class="form-group">
               <label>Mã mẫu:</label>
@@ -133,15 +137,7 @@
             </div>
             <div class="form-group">
               <label for="name">Hình:</label>
-              <input type="text" class="form-control" id="p_name" required>
-            </div>
-            <div class="form-group">
-              <label for="name">Số lượng:</label>
-              <input type="text" class="form-control" id="p_name" required>
-            </div>
-            <div class="form-group">
-              <label for="name">Trạng thái:</label>
-              <input type="text" class="form-control" id="p_name" required>
+              <input type="file" class="fileToUpload form-control"></input>
             </div>
             <div class="form-group">
               <button type="submit" class="btn btn-secondary" id="upload" style="height:40px">Add Item</button>
@@ -159,4 +155,15 @@
 
   
 </div>
-   
+<?php
+function getNewID(){
+  global $dp;
+  $sql = "SELECT MAX(idsanpham) FROM sanpham";
+  $result=$dp->excuteQuery($sql);
+  if(mysqli_num_rows($result) != 0){
+    return $result['idSanPham']+1;
+  }
+  return 1;
+}
+
+?>

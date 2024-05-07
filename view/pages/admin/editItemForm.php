@@ -3,14 +3,14 @@
    require("../../../util/dataProvider.php");
     $dp=new DataProvider();
 ?>
-<div class="container p-5">
-
-<h4>Edit Sản Phẩm</h4>
+<div >
+<td><button class="btn btn-danger" style="height:40px" onclick="ShowSanPham()">Back</button></td>
+<h2>Edit Sản Phẩm</h4>
 
 <form id="update-Items" onsubmit="updateItems()" enctype='multipart/form-data'>
 <div class="form-group">
               <label for="name">Mã sản phẩm:</label>
-              <input type="text" class="form-control" id="p_name" required>
+              <input type="text" class="form-control" id="p_name"  disabled>
             </div>
             <div class="form-group">
               <label>Mã mẫu:</label>
@@ -77,11 +77,7 @@
             </div>
             <div class="form-group">
               <label for="name">Hình:</label>
-              <input type="text" class="form-control" id="p_name" required>
-            </div>
-            <div class="form-group">
-              <label for="name">Số lượng:</label>
-              <input type="text" class="form-control" id="p_name" required>
+              <input type="file" class="fileToUpload form-control"></input>
             </div>
             <div class="form-group">
               <label for="name">Trạng thái:</label>

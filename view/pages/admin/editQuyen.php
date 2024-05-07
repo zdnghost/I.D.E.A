@@ -3,9 +3,9 @@
    require("../../../util/dataProvider.php");
     $dp=new DataProvider();
 ?>
-<div class="container p-5">
+<div >
 
-<h4>Edit Quyền</h4>
+<h2>Edit Quyền</h4>
 
 <form id="update-Items" onsubmit="updateItems()" enctype='multipart/form-data'>
    

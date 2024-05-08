@@ -107,13 +107,12 @@
               <label for="price">Số lượng:</label>
               <input type="number" class="form-control" id="p_price" required>
             </div>
-            <div class="form-group">
-              <button type="submit" class="btn btn-secondary" id="upload" style="height:40px">Add Item</button>
-            </div>
+            
           </form>
 
         </div>
         <div class="modal-footer">
+              <button type="submit" class="btn btn-secondary" id="upload" style="height:40px">Add Item</button>
           <button type="button" class="btn btn-default" data-dismiss="modal" style="height:40px">Close</button>
         </div>
       </div>

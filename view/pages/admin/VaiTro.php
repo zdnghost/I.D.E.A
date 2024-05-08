@@ -64,11 +64,10 @@
       <label for="desc">Mô tả:</label>
       <input type="text" class="form-control"  >
     </div>
-            <div class="form-group">
-              <button type="submit" class="btn btn-secondary" id="upload" style="height:40px">Add Item</button>
-            </div>
+            
           </form>
-        <div class="modal-footer">
+       <div class="modal-footer">
+              <button type="submit" class="btn btn-secondary" id="upload" style="height:40px">Add Item</button>
           <button type="button" class="btn btn-default" data-dismiss="modal" style="height:40px">Close</button>
         </div>
       </div>

@@ -12,33 +12,29 @@
     <thead>
       <tr>
         <th class="text-center">Mã sản phẩm</th>
-        <th class="text-center">Mã mẫu</th>
         <th class="text-center">Mã phòng</th>
         <th class="text-center">Mã loại</th>
         <th class="text-center">Tên sản phẩm</th>
         <th class="text-center">Giá</th>
         <th class="text-center">Mô tả</th>
-        <th class="text-center">Hình</th>
         <th class="text-center">Số lượng</th>
         <th class="text-center">Trạng thái</th>
         <th class="text-center" colspan="2">Action</th>
       </tr>
     </thead>
     <?php
-      $sql="SELECT * from sanpham";
+      $sql="SELECT * from sanpham join loai on sanpham.idloai=loai.idloai join phong on sanpham.idphong=phong.idphong ";
       $result=$dp-> excuteQuery($sql);
       if ($result-> num_rows > 0){
         while ($row=$result-> fetch_assoc()) {
     ?>
     <tr>
-      <td><?=$row["idsanpham"]?></td>
-      <td><?=$row["idmau"]?></td>      
-      <td><?=$row["idphong"]?></td> 
-      <td><?=$row["idloai"]?></td>
+      <td><?=$row["idsanpham"]?></td>    
+      <td><?=$row["tenphong"]?></td> 
+      <td><?=$row["tenloai"]?></td>
       <td><?=$row["tensanpham"]?></td>      
       <td><?=$row["gia"]?></td> 
       <td><?=$row["mota"]?></td>
-      <td><?=$row["hinh"]?></td>      
       <td><?=$row["soLuong"]?></td>    
       <td><?=$row["trangthai"]?></td>   
       <td><button class="btn btn-primary" style="height:40px" onclick="itemEditForm('<?=$row['idsanpham']?>')">Edit</button></td>
@@ -56,7 +52,7 @@
   </button>
 
   <!-- Modal -->
-  <div class="modal fade" id="myModal" role="dialog">
+  <div class="modal fade" id="new-account" role="dialog">
     <div class="modal-dialog">
     
       <!-- Modal content-->
@@ -69,13 +65,12 @@
           <form  enctype='multipart/form-data' onsubmit="addItems()" method="POST">
             <div class="form-group">
               <label for="name">Mã sản phẩm:</label>
-              <input type="text" class="form-control" id="p_name" required>
-              <button class="btn btn-danger" style="height:40px" onclick="">Id Mới</button>
+              <input type="text" class="form-control" id="p_name ProductID" value="" required>
             </div>
             <div class="form-group">
               <label>Mã mẫu:</label>
               <select id="category" >
-                <option disabled selected>Chọn</option>
+                <option id="" disabled selected>Chọn</option>
                 <?php
           
                   $sql="SELECT * from mau";
@@ -83,7 +78,7 @@
 
                   if ($result-> num_rows > 0){
                     while($row = $result-> fetch_assoc()){
-                      echo"<option value='".$row['idmau']."'>".$row['idmau'] ."</option>";
+                      echo"<option value='".$row['idmau']."'>".$row['tenMau'] ."</option>";
                     }
                   }
                 ?>
@@ -100,7 +95,7 @@
 
                   if ($result-> num_rows > 0){
                     while($row = $result-> fetch_assoc()){
-                      echo"<option value='".$row['idphong']."'>".$row['idphong'] ."</option>";
+                      echo"<option value='".$row['idphong']."'>".$row['tenphong'] ."</option>";
                     }
                   }
                 ?>
@@ -117,7 +112,7 @@
 
                   if ($result-> num_rows > 0){
                     while($row = $result-> fetch_assoc()){
-                      echo"<option value='".$row['idloai']."'>".$row['idloai'] ."</option>";
+                      echo"<option value='".$row['idloai']."'>".$row['tenloai'] ."</option>";
                     }
                   }
                 ?>
@@ -144,7 +139,7 @@
 
         </div>
         <div class="modal-footer">
-              <button type="submit" class="btn btn-secondary" id="upload" style="height:40px">Add Item</button>           
+              <button type="submit" class="btn btn-secondary" id="upload" style="height:40px" onclick="">Add Item</button>           
           <button type="button" class="btn btn-default" data-dismiss="modal" style="height:40px">Close</button>
         </div>
       </div>
@@ -155,14 +150,6 @@
   
 </div>
 <?php
-function getNewID(){
-  global $dp;
-  $sql = "SELECT MAX(idsanpham) FROM sanpham";
-  $result=$dp->excuteQuery($sql);
-  if(mysqli_num_rows($result) != 0){
-    return $result['idSanPham']+1;
-  }
-  return 1;
-}
+
 
 ?>

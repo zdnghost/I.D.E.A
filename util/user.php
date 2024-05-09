@@ -61,7 +61,7 @@ switch ($_SERVER["REQUEST_METHOD"]) {
         $password = $_POST['pass'];
         $md5Pass = md5($password);
         $sql1 = "INSERT INTO taikhoan
-        VALUES (".$newid.",'". $username .",'".$md5Pass."','" . (new Datetime())->format('Y-m-d')."',1,1);";
+        VALUES (".$newid.",'". $username ."','".$md5Pass."','" . (new Datetime())->format('Y-m-d')."',1)";
         $result1 = $dp->excuteQuery($sql1);
         $sql2 = "INSERT INTO nguoidung
         VALUES (".$newid.",'" . $name . "','" . $phone . "', '" . $address . "','" . $email ."')";
@@ -83,10 +83,10 @@ switch ($_SERVER["REQUEST_METHOD"]) {
         $address = $_POST['address'];
         $newid=$dp->getNewUserId();
         $sql1 = "INSERT INTO taikhoan
-        VALUES (".$newid.",'". $username .",'".$md5Pass."','" . (new Datetime())->format('Y-m-d')."',".$role.",1);";
+        VALUES (".$newid.",'". $username ."','".$md5Pass."','" . (new Datetime())->format('Y-m-d')."',".$role.")";
         $result1 = $dp->excuteQuery($sql1);
         $sql2 = "INSERT INTO nguoidung
-        VALUES (".$newid.",'" . $name . "','" . $phone . "', '" . $address . "','" . $email ."')";
+        VALUES (".$newid.",'" . $name . "','" . $phone . "', '" . $address . "','" . $email ."',1)";
         $result2 = $dp->excuteQuery($sql2);
         if ($result1 && $result2) {
           echo "Success";

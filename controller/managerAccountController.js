@@ -51,3 +51,138 @@ const setAccountInfo = () => {
       },
     });
   };
+  const createNewAccount = async () => {
+    if (!(await checkInputCreateNewAccount())) return;
+    let username = document.querySelector("#new-account .username").value;
+    let name = document.querySelector("#new-account .name").value;
+    let email = document.querySelector("#new-account .email").value;
+    let phone = document.querySelector("#new-account .phoneNumber").value;
+    let role = parseInt(document.querySelector("#new-account .role").value);
+    let password = document.querySelector("#new-account .password").value;
+    let address = document.querySelector("#new-account .address").value;
+    $.ajax({
+      url: "util/user.php",
+      type: "POST",
+      data: {
+        username: username,
+        name: name,
+        email: email,
+        phone: phone,
+        role: role,
+        password: password,
+        address: address,
+        action: "createNewAccount",
+      },
+      success: function (res) {
+        if (res == "Success") {
+          customNotice(
+            "fa-sharp fa-light fa-circle-check",
+            "Account successfully created",
+            1
+          );
+        } else {
+          customNotice("fa-sharp fa-light fa-circle-exclamation", res, 3);
+          console.log(res);
+        }
+      },
+    });
+  };
+  const checkInputCreateNewAccount = async () => {
+    let usernameInput = document.querySelector("#new-account .username");
+    let nameInput = document.querySelector("#new-account .name");
+    let emailInput = document.querySelector("#new-account .email");
+    let phoneInput = document.querySelector("#new-account .phoneNumber");
+    let passwordInput = document.querySelector("#new-account .password");
+    let role = document.querySelector("#new-account .role");
+    if (usernameInput.value == "") {
+      customNotice(
+        "fa-sharp fa-light fa-circle-exclamation",
+        "Please, enter your user name!",
+        3
+      );
+      usernameInput.focus();
+      return false;
+    }
+    if (await isUsernameExist(usernameInput.value)) {
+      customNotice(
+        "fa-sharp fa-light fa-circle-exclamation",
+        "Username already exists!",
+        3
+      );
+      usernameInput.focus();
+      return false;
+    }
+    if (nameInput.value == "") {
+      customNotice(
+        "fa-sharp fa-light fa-circle-exclamation",
+        "Please, enter your fullname!",
+        3
+      );
+      nameInput.focus();
+      return false;
+    }
+    if (emailInput.value != "" && !isEmailValid(emailInput.value)) {
+      customNotice(
+        "fa-sharp fa-light fa-circle-exclamation",
+        "Invalid email address!",
+        3
+      );
+      emailInput.focus();
+      return false;
+    }
+    if (!isVietnamesePhoneNumberValid(phoneInput.value)) {
+      customNotice(
+        "fa-sharp fa-light fa-circle-exclamation",
+        "Invalid phone number!",
+        3
+      );
+      phoneInput.focus();
+      return false;
+    }
+    if (nameInput.value == "") {
+      customNotice(
+        "fa-sharp fa-light fa-circle-exclamation",
+        "Please, enter your name!",
+        3
+      );
+      nameInput.focus();
+      return false;
+    }
+    if (phoneInput.value == "") {
+      customNotice(
+        "fa-sharp fa-light fa-circle-exclamation",
+        "Pleae, enter your phone number!",
+        3
+      );
+      phoneInput.focus();
+      return false;
+    }
+    if (passwordInput.value == "") {
+      customNotice(
+        "fa-sharp fa-light fa-circle-exclamation",
+        "Please, enter your password!",
+        3
+      );
+      passwordInput.focus();
+      return false;
+    }
+    if (!isPasswordValid(passwordInput.value)) {
+      customNotice(
+        "fa-sharp fa-light fa-circle-exclamation",
+        "Password that contain at least eight characters, including at least one number and includes both lowercase and uppercase letters and special characters, for example #, ?, !.",
+        3
+      );
+      passwordInput.focus();
+      return false;
+    }
+     if (role=='NaN') {
+      customNotice(
+        "fa-sharp fa-light fa-circle-exclamation",
+        "Please,select Role",
+        3
+      );
+      passwordInput.focus();
+      return false;
+    }
+    return true;
+  };

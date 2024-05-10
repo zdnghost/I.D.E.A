@@ -16,14 +16,11 @@
         <th class="text-center">Mã loại</th>
         <th class="text-center">Tên sản phẩm</th>
         <th class="text-center">Giá</th>
-        <th class="text-center">Mô tả</th>
-        <th class="text-center">Số lượng</th>
-        <th class="text-center">Trạng thái</th>
         <th class="text-center" colspan="2">Action</th>
       </tr>
     </thead>
     <?php
-      $sql="SELECT * from sanpham join loai on sanpham.idloai=loai.idloai join phong on sanpham.idphong=phong.idphong ";
+      $sql="SELECT DISTINCT idsanpham,tenphong,tenloai,tensanpham,gia from sanpham join loai on sanpham.idloai=loai.idloai join phong on sanpham.idphong=phong.idphong ";
       $result=$dp-> excuteQuery($sql);
       if ($result-> num_rows > 0){
         while ($row=$result-> fetch_assoc()) {
@@ -33,12 +30,9 @@
       <td><?=$row["tenphong"]?></td> 
       <td><?=$row["tenloai"]?></td>
       <td><?=$row["tensanpham"]?></td>      
-      <td><?=$row["gia"]?></td> 
-      <td><?=$row["mota"]?></td>
-      <td><?=$row["soLuong"]?></td>    
-      <td><?=$row["trangthai"]?></td>   
+      <td><?=$row["gia"]?></td>   
+      <td><button class="btn btn-primary" style="height:40px" onclick="itemEditForm('<?=$row['idsanpham']?>')">Detail</button></td>
       <td><button class="btn btn-primary" style="height:40px" onclick="itemEditForm('<?=$row['idsanpham']?>')">Edit</button></td>
-      <td><button class="btn btn-danger" style="height:40px" >Delete</button></td>
       </tr>
       <?php
           }
@@ -47,12 +41,12 @@
   </table>
 
   <!-- Trigger the modal with a button -->
-  <button type="button" class="btn btn-secondary " style="height:40px" data-toggle="modal" data-target="#myModal">
+  <button type="button" class="btn btn-secondary " style="height:40px" data-toggle="modal" data-target="#new-product">
     Add Product
   </button>
 
   <!-- Modal -->
-  <div class="modal fade" id="new-account" role="dialog">
+  <div class="modal fade" id="new-product" role="dialog">
     <div class="modal-dialog">
     
       <!-- Modal content-->
@@ -64,15 +58,10 @@
         <div class="modal-body">
           <form  enctype='multipart/form-data' onsubmit="addItems()" method="POST">
             <div class="form-group">
-              <label for="name">Mã sản phẩm:</label>
-              <input type="text" class="form-control" id="p_name ProductID" value="" required>
-            </div>
-            <div class="form-group">
-              <label>Mã mẫu:</label>
+              <label>Mã màu:</label>
               <select id="category" >
                 <option id="" disabled selected>Chọn</option>
                 <?php
-          
                   $sql="SELECT * from mau";
                   $result = $dp-> excuteQuery($sql);
 

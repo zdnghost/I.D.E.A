@@ -6,6 +6,11 @@
 ?>
 <div >
   <h2>Tài Khoản </h2>
+    <!-- Trigger the modal with a button -->
+    <button type="button" class="btn btn-secondary " style="height:40px" data-toggle="modal" data-target="#new-account">
+    New Account
+  </button>
+  
   <table class="table ">
     <thead>
       <tr>
@@ -14,12 +19,11 @@
         <th class="text-center">Vai trò</th>
         <th class="text-center">Họ tên</th>
         <th class="text-center">Email</th>
-        <th class="text-center">Trạng thái</th>
-        <th class="text-center" colspan="2">Action</th>
+        <th class="text-center" colspan="1">Action</th>
       </tr>
     </thead>
     <?php
-      $sql="SELECT * from taikhoan tk join nguoidung ng on tk.idnguoidung=ng.idnguoidung ";
+      $sql="SELECT * from taikhoan tk join nguoidung ng on tk.idnguoidung=ng.idnguoidung where trangthai=1 ";
       $result=$dp-> excuteQuery($sql);
       if ($result-> num_rows > 0){
         while ($row=$result-> fetch_assoc()) {
@@ -30,9 +34,7 @@
       <td><?=$row["vaitro"]?></td>
       <td><?=$row["hoten"]?></td>
       <td><?=$row["email"]?></td>
-      <td><?=$row["trangthai"]?></td>
       <td><button class="btn btn-primary" style="height:40px" onclick="editTaiKhoan('<?=$row['username']?>')">Edit</button></td>
-      <td><button class="btn btn-danger" style="height:40px" >Delete</button></td>
       </tr>
       <?php
           }
@@ -40,10 +42,7 @@
       ?>
   </table>
 
-  <!-- Trigger the modal with a button -->
-  <button type="button" class="btn btn-secondary " style="height:40px" data-toggle="modal" data-target="#new-account">
-    New Account
-  </button>
+
 
   <!-- Modal -->
   <div class="modal fade" id="new-account" role="dialog">
@@ -119,4 +118,5 @@ function getNewAccID(){
 }
 return $newID;
 }
+
 ?>

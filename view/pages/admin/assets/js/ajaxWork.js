@@ -3,7 +3,7 @@
 function ShowSanPham(){  
     $.ajax({
         url:"./view/pages/admin/SanPham.php",
-        method:"post",
+        method:"POST",
         data:{record:1},
         success:function(data){
             $('.allContent-section').html(data);
@@ -13,7 +13,7 @@ function ShowSanPham(){
 function ShowThongKe(){
     $.ajax({
         url:"./view/pages/admin/ThongKe.php",
-        method:"post",
+        method:"POST",
         data:{record:1},
         success:function(data){
             $('.allContent-section').html(data);
@@ -23,7 +23,7 @@ function ShowThongKe(){
 function ShowLoai(){
     $.ajax({
         url:"./view/pages/admin/Loai.php",
-        method:"post",
+        method:"POST",
         data:{record:1},
         success:function(data){
             $('.allContent-section').html(data);
@@ -33,7 +33,7 @@ function ShowLoai(){
 function ShowQuyen(){
     $.ajax({
         url:"./view/pages/admin/Quyen.php",
-        method:"post",
+        method:"POST",
         data:{record:1},
         success:function(data){
             $('.allContent-section').html(data);
@@ -43,7 +43,7 @@ function ShowQuyen(){
 function ShowMau(){
     $.ajax({
         url:"./view/pages/admin/Mau.php",
-        method:"post",
+        method:"POST",
         data:{record:1},
         success:function(data){
             $('.allContent-section').html(data);
@@ -53,7 +53,7 @@ function ShowMau(){
 function ShowTaiKhoan(){
     $.ajax({
         url:"./view/pages/admin/TaiKhoan.php",
-        method:"post",
+        method:"POST",
         data:{record:1},
         success:function(data){
             $('.allContent-section').html(data);
@@ -63,7 +63,7 @@ function ShowTaiKhoan(){
 function ShowVaiTro(){
     $.ajax({
         url:"./view/pages/admin/VaiTro.php",
-        method:"post",
+        method:"POST",
         data:{record:1},
         success:function(data){
             $('.allContent-section').html(data);
@@ -73,7 +73,7 @@ function ShowVaiTro(){
 function ShowVaiTro_Quyen(){
     $.ajax({
         url:"./view/pages/admin/VaiTro_Quyen.php",
-        method:"post",
+        method:"POST",
         data:{record:1},
         success:function(data){
             $('.allContent-section').html(data);
@@ -83,7 +83,7 @@ function ShowVaiTro_Quyen(){
 function editVaiTro_Quyen(){
     $.ajax({
         url:"./view/pages/admin/editVaiTro_Quyen.php",
-        method:"post",
+        method:"POST",
         data:{record:1},
         success:function(data){
             $('.allContent-section').html(data);
@@ -93,7 +93,7 @@ function editVaiTro_Quyen(){
 function editPhong(){
     $.ajax({
         url:"./view/pages/admin/editPhong.php",
-        method:"post",
+        method:"POST",
         data:{record:1},
         success:function(data){
             $('.allContent-section').html(data);
@@ -103,7 +103,7 @@ function editPhong(){
 function ShowYeuThich(){
     $.ajax({
         url:"./view/pages/admin/YeuThich.php",
-        method:"post",
+        method:"POST",
         data:{record:1},
         success:function(data){
             $('.allContent-section').html(data);
@@ -113,7 +113,7 @@ function ShowYeuThich(){
 function ShowPhong(){
     $.ajax({
         url:"./view/pages/admin/Phong.php",
-        method:"post",
+        method:"POST",
         data:{record:1},
         success:function(data){
             $('.allContent-section').html(data);
@@ -123,7 +123,7 @@ function ShowPhong(){
 function ShowNguoiDung(){
     $.ajax({
         url:"./view/pages/admin/NguoiDung.php",
-        method:"post",
+        method:"POST",
         data:{record:1},
         success:function(data){
             $('.allContent-section').html(data);
@@ -133,7 +133,7 @@ function ShowNguoiDung(){
 function ShowLoaiNguoiDung(){
     $.ajax({
         url:"./view/pages/admin/LoaiNguoiDung.php",
-        method:"post",
+        method:"POST",
         data:{record:1},
         success:function(data){
             $('.allContent-section').html(data);
@@ -143,8 +143,8 @@ function ShowLoaiNguoiDung(){
 function editNguoiDung(id){
     $.ajax({
         url:"./view/pages/admin/editNguoiDung.php",
-        method:"post",
-        data:id,
+        method:"POST",
+       data:{id: id},
         success:function(data){
             $('.allContent-section').html(data);
         }
@@ -153,8 +153,8 @@ function editNguoiDung(id){
 function editLoaiNguoiDung(id){
     $.ajax({
         url:"./view/pages/admin/editLoaiNguoiDung.php",
-        method:"post",
-        data:id,
+        method:"POST",
+       data:{id: id},
         success:function(data){
             $('.allContent-section').html(data);
         }
@@ -163,8 +163,8 @@ function editLoaiNguoiDung(id){
 function editYeuThich(id){
     $.ajax({
         url:"./view/pages/admin/editYeuThich.php",
-        method:"post",
-        data:id,
+        method:"POST",
+       data:{id: id},
         success:function(data){
             $('.allContent-section').html(data);
         }
@@ -173,8 +173,8 @@ function editYeuThich(id){
 function editVaiTro(id){
     $.ajax({
         url:"./view/pages/admin/editVaiTro.php",
-        method:"post",
-        data:id,
+        method:"POST",
+        data: {id: id},
         success:function(data){
             $('.allContent-section').html(data);
         }
@@ -183,8 +183,8 @@ function editVaiTro(id){
 function editTaiKhoan(id){
     $.ajax({
         url:"./view/pages/admin/editTaiKhoan.php",
-        method:"post",
-        data:id,
+        method:"POST",
+        data:{id: id},
         success:function(data){
             $('.allContent-section').html(data);
         }
@@ -193,8 +193,8 @@ function editTaiKhoan(id){
 function editMau(id){
     $.ajax({
         url:"./view/pages/admin/editMau.php",
-        method:"post",
-        data:id,
+        method:"POST",
+       data:{id: id},
         success:function(data){
             $('.allContent-section').html(data);
         }
@@ -203,8 +203,8 @@ function editMau(id){
 function editQuyen(id){
     $.ajax({
         url:"./view/pages/admin/editQuyen.php",
-        method:"post",
-        data:id,
+        method:"POST",
+       data:{id: id},
         success:function(data){
             $('.allContent-section').html(data);
         }
@@ -213,7 +213,7 @@ function editQuyen(id){
 function ShowPhieuNhap(){
     $.ajax({
         url:"./view/pages/admin/PhieuNhap.php",
-        method:"post",
+        method:"POST",
         data:{record:1},
         success:function(data){
             $('.allContent-section').html(data);
@@ -223,8 +223,8 @@ function ShowPhieuNhap(){
 function editPhieuNhap(id){
     $.ajax({
         url:"./view/pages/admin/editPhieuNhap.php",
-        method:"post",
-        data:id,
+        method:"POST",
+       data:{id: id},
         success:function(data){
             $('.allContent-section').html(data);
         }
@@ -233,8 +233,8 @@ function editPhieuNhap(id){
 function editGioHang(id){
     $.ajax({
         url:"./view/pages/admin/editGioHang.php",
-        method:"post",
-        data:id,
+        method:"POST",
+       data:{id: id},
         success:function(data){
             $('.allContent-section').html(data);
         }
@@ -243,7 +243,7 @@ function editGioHang(id){
 function ShowGioHang(){
     $.ajax({
         url:"./view/pages/admin/GioHang.php",
-        method:"post",
+        method:"POST",
         data:{record:1},
         success:function(data){
             $('.allContent-section').html(data);
@@ -253,7 +253,7 @@ function ShowGioHang(){
 function ShowChiTietPhieuNhap(){
     $.ajax({
         url:"./view/pages/admin/ChiTietPhieuNhap.php",
-        method:"post",
+        method:"POST",
         data:{record:1},
         success:function(data){
             $('.allContent-section').html(data);
@@ -263,7 +263,7 @@ function ShowChiTietPhieuNhap(){
 function ShowChiTietHoaDon(){
     $.ajax({
         url:"./view/pages/admin/ChiTietHoaDon.php",
-        method:"post",
+        method:"POST",
         data:{record:1},
         success:function(data){
             $('.allContent-section').html(data);
@@ -273,7 +273,7 @@ function ShowChiTietHoaDon(){
 function ShowAlbum_BaiHat(){
     $.ajax({
         url:"./view/pages/admin/BaiHatAblum.php",
-        method:"post",
+        method:"POST",
         data:{record:1},
         success:function(data){
             $('.allContent-section').html(data);
@@ -283,7 +283,7 @@ function ShowAlbum_BaiHat(){
 function ShowChucNang(){  
     $.ajax({
         url:"./view/pages/admin/ChucNang.php",
-        method:"post",
+        method:"POST",
         data:{record:1},
         success:function(data){
             $('.allContent-section').html(data);
@@ -293,7 +293,7 @@ function ShowChucNang(){
 function ShowHoaDon(){  
     $.ajax({
         url:"./view/pages/admin/HoaDon.php",
-        method:"post",
+        method:"POST",
         data:{record:1},
         success:function(data){
             $('.allContent-section').html(data);
@@ -303,7 +303,7 @@ function ShowHoaDon(){
 function showCategory(){  
     $.ajax({
         url:"./view/pages/admin/viewCategories.php",
-        method:"post",
+        method:"POST",
         data:{record:1},
         success:function(data){
             $('.allContent-section').html(data);
@@ -313,7 +313,7 @@ function showCategory(){
 function showSizes(){  
     $.ajax({
         url:"./view/pages/admin/viewSizes.php",
-        method:"post",
+        method:"POST",
         data:{record:1},
         success:function(data){
             $('.allContent-section').html(data);
@@ -323,7 +323,7 @@ function showSizes(){
 function showProductSizes(){  
     $.ajax({
         url:"./view/pages/admin/viewProductSizes.php",
-        method:"post",
+        method:"POST",
         data:{record:1},
         success:function(data){
             $('.allContent-section').html(data);
@@ -334,7 +334,7 @@ function showProductSizes(){
 function showCustomers(){
     $.ajax({
         url:"./view/pages/admin/viewCustomers.php",
-        method:"post",
+        method:"POST",
         data:{record:1},
         success:function(data){
             $('.allContent-section').html(data);
@@ -345,7 +345,7 @@ function showCustomers(){
 function showOrders(){
     $.ajax({
         url:"./view/pages/admin/viewAllOrders.php",
-        method:"post",
+        method:"POST",
         data:{record:1},
         success:function(data){
             $('.allContent-section').html(data);
@@ -356,7 +356,7 @@ function showOrders(){
 function ChangeOrderStatus(id){
     $.ajax({
        url:"./view/pages/admincontroller/updateOrderStatus.php",
-       method:"post",
+       method:"POST",
        data:{record:id},
        success:function(data){
            alert('Order Status updated successfully');
@@ -369,7 +369,7 @@ function ChangeOrderStatus(id){
 function ChangePay(id){
     $.ajax({
        url:"./view/pages/admincontroller/updatePayStatus.php",
-       method:"post",
+       method:"POST",
        data:{record:id},
        success:function(data){
            alert('Payment Status updated successfully');
@@ -398,7 +398,7 @@ function addItems(){
     fd.append('upload', upload);
     $.ajax({
         url:"./view/pages/admincontroller/addItemController.php",
-        method:"post",
+        method:"POST",
         data:fd,
         processData: false,
         contentType: false,
@@ -414,7 +414,7 @@ function addItems(){
 function itemEditForm(id){
     $.ajax({
         url:"./view/pages/admin/editItemForm.php",
-        method:"post",
+        method:"POST",
         data:{record:id},
         success:function(data){
             $('.allContent-section').html(data);
@@ -424,8 +424,8 @@ function itemEditForm(id){
 function editHoaDon(id){
     $.ajax({
         url:"./view/pages/admin/editHoaDon.php",
-        method:"post",
-        data:id,
+        method:"POST",
+       data:{id: id},
         success:function(data){
             $('.allContent-section').html(data);
         }
@@ -434,8 +434,8 @@ function editHoaDon(id){
 function editChiTietPhieuNhap(id){
     $.ajax({
         url:"./view/pages/admin/editChiTietPhieuNhap.php",
-        method:"post",
-        data:id,
+        method:"POST",
+       data:{id: id},
         success:function(data){
             $('.allContent-section').html(data);
         }
@@ -444,7 +444,7 @@ function editChiTietPhieuNhap(id){
 function editLoai(id){
     $.ajax({
         url:"./view/pages/admin/editLoai.php",
-        method:"post",
+        method:"POST",
         data:{record:id},
         success:function(data){
             $('.allContent-section').html(data);
@@ -454,7 +454,7 @@ function editLoai(id){
 function editChucNang(id){
     $.ajax({
         url:"./view/pages/admin/editChucNang.php",
-        method:"post",
+        method:"POST",
         data:{record:id},
         success:function(data){
             $('.allContent-section').html(data);
@@ -464,7 +464,7 @@ function editChucNang(id){
 function editChiTietHoaDon(id){
     $.ajax({
         url:"./view/pages/admin/editChiTietHoaDon.php",
-        method:"post",
+        method:"POST",
         data:{record:id},
         success:function(data){
             $('.allContent-section').html(data);
@@ -491,7 +491,7 @@ function updateItems(){
    
     $.ajax({
       url:'./view/pages/admincontroller/updateItemController.php',
-      method:'post',
+      method:'POST',
       data:fd,
       processData: false,
       contentType: false,
@@ -507,7 +507,7 @@ function updateItems(){
 function itemDelete(id){
     $.ajax({
         url:"./view/pages/admincontroller/deleteItemController.php",
-        method:"post",
+        method:"POST",
         data:{record:id},
         success:function(data){
             alert('Items Successfully deleted');
@@ -522,7 +522,7 @@ function itemDelete(id){
 function cartDelete(id){
     $.ajax({
         url:"./view/pages/admincontroller/deleteCartController.php",
-        method:"post",
+        method:"POST",
         data:{record:id},
         success:function(data){
             alert('Cart Item Successfully deleted');
@@ -535,7 +535,7 @@ function cartDelete(id){
 function eachDetailsForm(id){
     $.ajax({
         url:"./view/pages/adminview/viewEachDetails.php",
-        method:"post",
+        method:"POST",
         data:{record:id},
         success:function(data){
             $('.allContent-section').html(data);
@@ -549,7 +549,7 @@ function eachDetailsForm(id){
 function categoryDelete(id){
     $.ajax({
         url:"./view/pages/admincontroller/catDeleteController.php",
-        method:"post",
+        method:"POST",
         data:{record:id},
         success:function(data){
             alert('Category Successfully deleted');
@@ -563,7 +563,7 @@ function categoryDelete(id){
 function sizeDelete(id){
     $.ajax({
         url:"./view/pages/admincontroller/deleteSizeController.php",
-        method:"post",
+        method:"POST",
         data:{record:id},
         success:function(data){
             alert('Size Successfully deleted');
@@ -578,7 +578,7 @@ function sizeDelete(id){
 function variationDelete(id){
     $.ajax({
         url:"./view/pages/admincontroller/deleteVariationController.php",
-        method:"post",
+        method:"POST",
         data:{record:id},
         success:function(data){
             alert('Successfully deleted');
@@ -592,7 +592,7 @@ function variationDelete(id){
 function variationEditForm(id){
     $.ajax({
         url:"./view/pages/admin/editVariationForm.php",
-        method:"post",
+        method:"POST",
         data:{record:id},
         success:function(data){
             $('.allContent-section').html(data);
@@ -615,7 +615,7 @@ function updateVariations(){
    
     $.ajax({
       url:'./view/pages/admincontroller/updateVariationController.php',
-      method:'post',
+      method:'POST',
       data:fd,
       processData: false,
       contentType: false,
@@ -629,7 +629,7 @@ function updateVariations(){
 function search(id){
     $.ajax({
         url:"./view/pages/admincontroller/searchController.php",
-        method:"post",
+        method:"POST",
         data:{record:id},
         success:function(data){
             $('.eachCategoryProducts').html(data);
@@ -641,7 +641,7 @@ function search(id){
 function quantityPlus(id){ 
     $.ajax({
         url:"./view/pages/admincontroller/addQuantityController.php",
-        method:"post",
+        method:"POST",
         data:{record:id},
         success:function(data){
             $('form').trigger('reset');
@@ -652,7 +652,7 @@ function quantityPlus(id){
 function quantityMinus(id){
     $.ajax({
         url:"./view/pages/admincontroller/subQuantityController.php",
-        method:"post",
+        method:"POST",
         data:{record:id},
         success:function(data){
             $('form').trigger('reset');
@@ -664,7 +664,7 @@ function quantityMinus(id){
 function checkout(){
     $.ajax({
         url:"./view/pages/adminview/viewCheckout.php",
-        method:"post",
+        method:"POST",
         data:{record:1},
         success:function(data){
             $('.allContent-section').html(data);
@@ -676,7 +676,7 @@ function checkout(){
 function removeFromWish(id){
     $.ajax({
         url:"./view/pages/admincontroller/removeFromWishlist.php",
-        method:"post",
+        method:"POST",
         data:{record:id},
         success:function(data){
             alert('Removed from wishlist');
@@ -688,7 +688,7 @@ function removeFromWish(id){
 function addToWish(id){
     $.ajax({
         url:"./view/pages/admincontroller/addToWishlist.php",
-        method:"post",
+        method:"POST",
         data:{record:id},
         success:function(data){
             alert('Added to wishlist');        

@@ -37,6 +37,16 @@ class DataProvider
     }
     return $permissions;
   }
+  public static function getAccountIDByusername($username)
+  {
+    $sql = "SELECT idnguoidung FROM taikhoan where username = '" . $username."'";
+    $result = Self::excuteQuery($sql);
+    $id = array();
+    while ($row = $result->fetch_assoc()) {
+      array_push($id, $row['idnguoidung']);
+    }
+    return $id;
+  }
   public static function isFavorite($proID, $userID)
   {
     $sql = "SELECT * FROM yeuthich where idSanPham = " . $proID . " and idNguoiDung ='" . $userID . "'";

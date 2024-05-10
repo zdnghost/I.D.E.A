@@ -115,7 +115,7 @@ switch ($_SERVER["REQUEST_METHOD"]) {
           echo "Success";
         } else {
           echo "Error";
-        }
+        } 
         break;
       case 'updateAccount':
         $username = $_GET['username'];
@@ -126,12 +126,13 @@ switch ($_SERVER["REQUEST_METHOD"]) {
         $address = $_GET['address'];
         $email = $_GET['email'];
         $role = $_GET['role'];
+        $id=$dp->getAccountIDByusername($username);
         $sql1 = "UPDATE nguoidung
                 SET hoTen='" . $fullname . "',
                     SDT='" . $phone . "',
                     diaChi='" . $address . "',
                     email='" . $email . "',
-                WHERE idnguoidung='" . $username . "'";
+                WHERE idnguoidung='" . $id . "'";
         $result1 = $dp->excuteQuery($sql1);
         $sql2 = "UPDATE taikhoan SET idvaiTro=" . $role . " WHERE username='" . $username . "'";
         $result2 = $dp->excuteQuery($sql2);

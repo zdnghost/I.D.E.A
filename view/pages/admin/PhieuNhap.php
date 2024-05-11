@@ -25,8 +25,8 @@
       <td><?=$row["idphieunhap"]?></td>
       <td><?=$row["idnguoinhap"]?></td>      
       <td><?=$row["ngaynhap"]?></td>    
-      <td><button class="btn btn-primary" style="height:40px" onclick="editPhieuNhap('<?=$row['idphieunhap']?>')">Edit</button></td>
-      <td><button class="btn btn-danger" style="height:40px" >Delete</button></td>
+      <td><button type="button" class="btn btn-primary" style="height:40px" onclick="editPhieuNhap('<?=$row['idphieunhap']?>')">Edit</button></td>
+      <td><button type="button" class="btn btn-danger" style="height:40px" >Delete</button></td>
       </tr>
       <?php
           }

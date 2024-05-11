@@ -23,7 +23,7 @@
               <select id="category" class="form-control roleAccount" <?php if ($account['vaitro'] == 1) {
                     echo 'disabled';
                 } ?> >
-                <option disabled selected value="<?=$account['vaitro']?>"><?=$account['tenvaitro']?></option>
+                
                 <?php
 
                   $sql="SELECT * from vaitro where idvaitro!=1";
@@ -31,6 +31,9 @@
 
                   if ($result-> num_rows > 0){
                     while($row = $result-> fetch_assoc()){
+                      if($account['vaitro'])
+                      echo"<option selected value=".$row['vaitro'].">".$row['tenvaitro']."</option>";
+                      else
                       echo"<option value='".$row['idvaitro']."'>".$row['tenvaitro'] ."</option>";
                     }
                   }
@@ -58,8 +61,8 @@
       <input type="password" class="passwordAccount form-control">
     </div>
     <div class="form-group">
-      <button class="btn btn-danger" style="height:40px" onclick="ShowTaiKhoan()">Back</button>
-      <button type="button" style="height:40px" class="btn btn-primary" onclick="updateAccount()">Update Item</button>
+      <button type="button" class="btn btn-danger" style="height:40px" onclick="ShowTaiKhoan()">Back</button>
+      <button type="button" style="height:40px" class="btn btn-primary" onclick="updateAccount()">Update Tài Khoản</button>
     </div>
   </form>
     </div>

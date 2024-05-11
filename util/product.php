@@ -92,32 +92,27 @@ switch ($_SERVER["REQUEST_METHOD"]) {
         break;
     case 'PUT':
         switch ($_GET['action']) {
-            case 'updateproductInfo':
-                $productID = $_POST['productID'];
-                $colorID=$_POST['colorID'];
-                $phongID=$_POST['phongID'];
-                $loaiID=$_POST['loaiID'];
-                $productName = $_POST['productName'];
-                $productPrice = $_POST['productPrice'];
-                $productImage = $_POST['productImage'];
-                $productDescribe = $_POST['productDescribe'];
-                $active = $_GET['active'];
-                $sql = "UPDATE product
+            case 'updateProductInfo':
+                $productID = $_GET['productID'];
+                $phongID=$_GET['phongID'];
+                $loaiID=$_GET['loaiID'];
+                $productName = $_GET['productName'];
+                $productPrice = $_GET['productPrice'];
+                $productDescribe = $_GET['productDescribe'];
+                $sql = "UPDATE sanpham
                         SET tenSanPham = '" . $productName . "',
                             idPhong = " . $phongID . ",
                             idLoai = " . $loaiID . ",
                             gia = " . $productPrice . ",
-                            hinh = '" . $productImage . "',
-                            moTa = '" . $productDescribe . "',
-                            TrangThai=".$active.",
-                        WHERE maproduct = " . $productID;
+                            moTa = '" . $productDescribe . "'
+                        WHERE idsanpham = " . $productID;
                 $result = $dp->excuteQuery($sql);
                 break;
             case 'deleteproduct':
                 $productID = $_GET['productID'];
-                $sql = "Update product
+                $sql = "Update sanpham
                         SET TrangThai = 0
-                        WHERE maproduct = " . $productID;
+                        WHERE idsanpham = " . $productID;
                 $result = $dp->excuteQuery($sql);
                 if ($result) {
                     echo "Success";

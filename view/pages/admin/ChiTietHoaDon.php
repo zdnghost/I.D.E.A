@@ -31,8 +31,8 @@
       <td><?=$row["soluong"]?></td>
       <td><?=$row["dongia"]?></td>
       <td><?=$row["thanhtien"]?></td>
-      <td><button class="btn btn-primary" style="height:40px" onclick="editChiTietHoaDon('<?=$row['idhoadon']?>')">Edit</button></td>
-      <td><button class="btn btn-danger" style="height:40px" >Delete</button></td>
+      <td><button type="button" class="btn btn-primary" style="height:40px" onclick="editChiTietHoaDon('<?=$row['idhoadon']?>')">Edit</button></td>
+      <td><button type="button" class="btn btn-danger" style="height:40px" >Delete</button></td>
       </tr>
       <?php
           }

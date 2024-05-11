@@ -18,44 +18,77 @@ const getNewIDProduct = () => {
   };
   const updateproductInfo = (
     productID,
-    colorID,
     productName,
     loaiID,
     phongID,
     productPrice,
-    productImage,
     productDescribe,
-    active
   ) => {
+    
     $.ajax({
       url:
-        "util/products.php?productID=" +
+        "util/product.php?productID=" +
         productID +
-        "phongID="+
+        "&phongID="+
         phongID+
-        "active="+
-        active+
         "&productName=" +
         productName +
-        "&idLoai=" +
+        "&loaiID=" +
         loaiID +
-        "&colorID=" +
-        colorID +
         "&productPrice=" +
         productPrice +
-        "&productImage=" +
-        productImage +
         "&productDescribe=" +
         productDescribe.replace(/['"]/g, "\\$&") +
-        "&action=updateproductInfo",
+        "&action=updateProductInfo",
       type: "PUT",
       success: function (res) {
         console.log(res);
       },
     });
   };
+  const updateProduct = async (prID) => {
+    if (!checkUpdateProduct()) return;
+    let productName = document.querySelector("#edit-product .productName").value;
+    let loaiID = document.querySelector("#edit-product .loaiID").value;
+    let phongID = document.querySelector("#edit-product .phongID").value;
+    let productPrice = document.querySelector("#edit-product .productPrice").value;
+    let productDescription = document.querySelector("#edit-product .productDescribe").value;
+    updateproductInfo(
+      prID,
+      productName,
+      loaiID,    
+      phongID,
+      productPrice,
+      productDescription,
+    );
+    customNotice("fa-sharp fa-light fa-circle-check", "Update successfully!", 1);
+    ShowSanPham();
+  };
+  const checkUpdateProduct = async () => {
+    let productName = document.querySelector("#edit-product .productName").value;
+    let productPrice = document.querySelector("#edit-product .productPrice").value;
+    if(productName==""){
+      customNotice(
+        " fa-sharp fa-light fa-circle-exclamation",
+        "Please, enter product name!",
+        3
+      );
+      productName.focus();
+      return false;
+    }
+    if(productPrice==""||productPrice<=0){
+      customNotice(
+        " fa-sharp fa-light fa-circle-exclamation",
+        "Please, enter product pride!",
+        3
+      );
+      productPrice.focus();
+      return false;
+    }
+    return true;
+  }
 const deleteColorID = async(productID,colorID) => {
-    let choice = confirm("Are you sure to delete this album?");
+    let choice = confirm("Are you sure to delete this product?");
     if (!choice) return;
     $.ajax({
       url: "util/product.php?productID=" + 
@@ -71,7 +104,7 @@ const deleteColorID = async(productID,colorID) => {
             "Deleted successfully",
             1
           );
-          loadPageByAjax("Album");
+          loadPageByAjax("product");
         } else
           customNotice(
             " fa-sharp fa-light fa-circle-exclamation",
@@ -94,7 +127,7 @@ const deleteProduct = (productID) => {
             "Deleted successfully",
             1
           );
-          loadPageByAjax("Album");
+          loadPageByAjax("product");
         } else
           customNotice(
             " fa-sharp fa-light fa-circle-exclamation",

@@ -4,20 +4,20 @@
     $dp=new DataProvider();
 ?>
 <div >
-<td><button class="btn btn-danger" style="height:40px" onclick="ShowLoai()">Back</button></td>
+<td><button type="button" class="btn btn-danger" style="height:40px" onclick="ShowLoai()">Back</button></td>
 <h2>Edit Loại</h4>
 
 <form id="update-Items" onsubmit="updateItems()" enctype='multipart/form-data'>
     <div class="form-group">
       <label for="name">Mã Loại:</label>
-      <input type="text" class="form-control"  >
+      <input type="text" class="form-control"disabled>
     </div>
     <div class="form-group">
       <label for="desc">Tên loại:</label>
       <input type="text" class="form-control"  >
     </div>
     <div class="form-group">
-      <button  style="height:40px" class="btn btn-primary">Update Item</button>
+      <button  style="height:40px" class="btn btn-primary">Update Loại</button>
     </div>
   </form>
     </div>

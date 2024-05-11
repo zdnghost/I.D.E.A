@@ -3,7 +3,7 @@
  <!-- nav -->
  <nav  class="navbar navbar-expand-lg navbar-light px-5" style="background-color: #333b31;">
  <div id="user-cart">
-    <button class="openbtn" onclick="openNav()"><i class="fa fa-home"></i></button>
+    <button type="button" class="openbtn" onclick="openNav()"><i class="fa fa-home"></i></button>
 </div>   
 
     <ul class="navbar-nav mr-auto mt-2 mt-lg-0"></ul>

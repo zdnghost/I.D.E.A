@@ -34,7 +34,7 @@
       <td><?=$row["vaitro"]?></td>
       <td><?=$row["hoten"]?></td>
       <td><?=$row["email"]?></td>
-      <td><button class="btn btn-primary" style="height:40px" onclick="editTaiKhoan('<?=$row['username']?>')">Edit</button></td>
+      <td><button type="button" class="btn btn-primary" style="height:40px" onclick="editTaiKhoan('<?=$row['username']?>')">Edit</button></td>
       </tr>
       <?php
           }
@@ -70,7 +70,6 @@
               <select id="category " class="role form-control">
                 <option disabled value="NaN" selected>Chọn</option>
                 <?php
-
                   $sql="SELECT * from vaitro";
                   $result = $dp-> excuteQuery($sql);
 

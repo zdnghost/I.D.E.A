@@ -5,15 +5,15 @@
 ?>
 <div >
   <h2>Sản Phẩm </h2>
-  <td><button class="btn btn-primary" style="height:40px" onclick="ShowMau()" >Màu</button></td>
-  <td><button class="btn btn-primary" style="height:40px" onclick="ShowPhong()">Phòng</button></td>
-  <td><button class="btn btn-primary" style="height:40px" onclick="ShowLoai()">Loại</button></td>
+  <td><button type="button" class="btn btn-primary" style="height:40px" onclick="ShowMau()" >Màu</button></td>
+  <td><button type="button" class="btn btn-primary" style="height:40px" onclick="ShowPhong()">Phòng</button></td>
+  <td><button type="button" class="btn btn-primary" style="height:40px" onclick="ShowLoai()">Loại</button></td>
   <table class="table ">
     <thead>
       <tr>
-        <th class="text-center">Mã sản phẩm</th>
-        <th class="text-center">Mã phòng</th>
-        <th class="text-center">Mã loại</th>
+        <th class="text-center">ản phẩm</th>
+        <th class="text-center"> phòng</th>
+        <th class="text-center"> loại</th>
         <th class="text-center">Tên sản phẩm</th>
         <th class="text-center">Giá</th>
         <th class="text-center" colspan="2">Action</th>
@@ -31,8 +31,8 @@
       <td><?=$row["tenloai"]?></td>
       <td><?=$row["tensanpham"]?></td>      
       <td><?=$row["gia"]?></td>   
-      <td><button class="btn btn-primary" style="height:40px" onclick="itemEditForm('<?=$row['idsanpham']?>')">Detail</button></td>
-      <td><button class="btn btn-primary" style="height:40px" onclick="itemEditForm('<?=$row['idsanpham']?>')">Edit</button></td>
+      <td><button type="button" class="btn btn-primary" style="height:40px" onclick="ShowChiTietSanPham('<?=$row['idsanpham']?>')">Detail</button></td>
+      <td><button type="button" class="btn btn-primary" style="height:40px" onclick="itemEditForm('<?=$row['idsanpham']?>')">Edit</button></td>
       </tr>
       <?php
           }
@@ -42,7 +42,7 @@
 
   <!-- Trigger the modal with a button -->
   <button type="button" class="btn btn-secondary " style="height:40px" data-toggle="modal" data-target="#new-product">
-    Add Product
+    New Product
   </button>
 
   <!-- Modal -->
@@ -57,22 +57,6 @@
         </div>
         <div class="modal-body">
           <form  enctype='multipart/form-data' onsubmit="addItems()" method="POST">
-            <div class="form-group">
-              <label>Mã màu:</label>
-              <select id="category" >
-                <option id="" disabled selected>Chọn</option>
-                <?php
-                  $sql="SELECT * from mau";
-                  $result = $dp-> excuteQuery($sql);
-
-                  if ($result-> num_rows > 0){
-                    while($row = $result-> fetch_assoc()){
-                      echo"<option value='".$row['idmau']."'>".$row['tenMau'] ."</option>";
-                    }
-                  }
-                ?>
-              </select>
-            </div>
             <div class="form-group">
               <label>Mã phòng:</label>
               <select id="category" >
@@ -128,7 +112,7 @@
 
         </div>
         <div class="modal-footer">
-              <button  class="btn btn-secondary" id="upload" style="height:40px" onclick="">Add Item</button>           
+              <button  class="btn btn-secondary" id="upload" style="height:40px" onclick="">New Item</button>           
           <button type="button" class="btn btn-default" data-dismiss="modal" style="height:40px">Close</button>
         </div>
       </div>

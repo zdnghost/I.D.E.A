@@ -39,6 +39,11 @@
     <script type="text/javascript" src="./view/pages/admin/assets/js/script.js"></script>
     <!--controller-->
     <script src="controller/managerAccountController.js"></script>
+    <script src="controller/managerOrderController.js"></script>
     <script src="controller/loginController.js"></script>
+    <script src="controller/productController.js"></script>
+    <script src="controller/orderController.js"></script>
+    <script src="controller/roleController.js"></script>
+    <script src="controller/supplyController.js"></script>
     <script src="controller/userController.js"></script>
 </html>

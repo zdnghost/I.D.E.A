@@ -25,8 +25,8 @@
       <td><?=$row["idvaitro"]?></td>
       <td><?=$row["tenvaitro"]?></td>      
       <td><?=$row["mota"]?></td>    
-      <td><button class="btn btn-primary" style="height:40px" onclick="editVaiTro('<?=$row['idvaitro']?>')">Edit</button></td>
-      <td><button class="btn btn-danger" style="height:40px" >Delete</button></td>
+      <td><button type="button" class="btn btn-primary" style="height:40px" onclick="editVaiTro('<?=$row['idvaitro']?>')">Edit</button></td>
+      <td><button type="button" class="btn btn-danger" style="height:40px" >Delete</button></td>
       </tr>
       <?php
           }

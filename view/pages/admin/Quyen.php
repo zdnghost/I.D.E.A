@@ -58,7 +58,7 @@
     </div>
     <div class="form-group">
               <label>Mã vai trò:</label>
-              <select id="category" >
+              <select id="category" class="form-control">
                 <option disabled selected>Chọn</option>
                 <?php
           

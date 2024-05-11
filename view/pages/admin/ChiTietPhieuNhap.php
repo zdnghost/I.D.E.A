@@ -55,7 +55,7 @@
           <form  enctype='multipart/form-data' onsubmit="addItems()" method="POST">
           <div class="form-group">
               <label>Mã phiếu nhập:</label>
-              <select id="category" >
+              <select id="category" class="form-control">
                 <option disabled selected>Chọn</option>
                 <?php
                 include_once "../config/dbconnect.php";
@@ -72,7 +72,7 @@
             </div>
             <div class="form-group">
               <label>Mã sản phẩm:</label>
-              <select id="category" >
+              <select id="category" class="form-control">
                 <option disabled selected>Chọn</option>
                 <?php
                 include_once "../config/dbconnect.php";
@@ -89,7 +89,7 @@
             </div>
             <div class="form-group">
               <label>Mã mẫu:</label>
-              <select id="category" >
+              <select id="category" class="form-control">
                 <option disabled selected>Chọn</option>
                 <?php
                 include_once "../config/dbconnect.php";

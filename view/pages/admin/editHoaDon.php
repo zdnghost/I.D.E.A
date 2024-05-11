@@ -14,7 +14,7 @@
             </div>
             <div class="form-group">
               <label>Mã khách hàng:</label>
-              <select id="category" >
+              <select id="category" class="form-control">
                 <option disabled selected>Chọn</option>
                 <?php
           
@@ -39,7 +39,7 @@
             </div>
             <div class="form-group">
               <label>Mã người phụ trách:</label>
-              <select id="category" >
+              <select id="category" class="form-control">
                 <option disabled selected>Chọn</option>
                 <?php
           

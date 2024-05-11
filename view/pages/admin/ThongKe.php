@@ -12,7 +12,7 @@ $dp = new DataProvider();
                     <h4 style="color:white;">Tổng Số Sản Phẩm</h4>
                     <h5 style="color:white;">
                     <?php
-                        $sql="SELECT * from sanpham";
+                        $sql="SELECT DISTINCT idsanpham from sanpham";
                         $result=$dp->excuteQuery($sql);
                         $count=0;
                         if ($result-> num_rows > 0){

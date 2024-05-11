@@ -21,6 +21,15 @@ class DataProvider
     }
     return $result;
   }
+  public static function getNewProductId()
+  {
+    $sql = "SELECT MAX(idsanpham) FROM sanpham";
+    $result = self::excuteQuery($sql);
+    if (mysqli_num_rows($result) != 0) {
+      return self::excuteQuery($sql)->fetch_assoc()['MAX(idsanpham)'] + 1;
+    }
+    return 1;
+  }
   public static function getUserByUsername($username)
   {
     $sql = "select * from taikhoan join nguoiDung on taikhoan.idnguoidung=Nguoidung.idnguoidung

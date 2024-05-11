@@ -53,7 +53,7 @@
           <form  enctype='multipart/form-data' onsubmit="addItems()" method="POST">
           <div class="form-group">
               <label>Mã Phiếu Nhập:</label>
-              <select id="category" >
+              <select id="category" class="form-control">
                 <option disabled selected>Chọn</option>
                 <?php
           
@@ -74,7 +74,7 @@
     </div>
     <div class="form-group">
               <label>Người Nhập:</label>
-              <select id="category" >
+              <select id="category" class="form-control">
                 <option disabled selected>Chọn</option>
                 <?php
           

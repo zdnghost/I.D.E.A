@@ -2,6 +2,7 @@
    session_start();
    require("../../../util/dataProvider.php");
     $dp=new DataProvider();
+    $newId=$dp->getNewProductId()
 ?>
 <div >
   <h2>Sản Phẩm </h2>
@@ -11,10 +12,10 @@
   <table class="table ">
     <thead>
       <tr>
-        <th class="text-center">ản phẩm</th>
-        <th class="text-center"> phòng</th>
-        <th class="text-center"> loại</th>
+        <th class="text-center">Mã sản phẩm</th>
         <th class="text-center">Tên sản phẩm</th>
+        <th class="text-center"> Phòng</th>
+        <th class="text-center"> Loại</th>
         <th class="text-center">Giá</th>
         <th class="text-center" colspan="2">Action</th>
       </tr>
@@ -27,9 +28,9 @@
     ?>
     <tr>
       <td><?=$row["idsanpham"]?></td>    
+      <td><?=$row["tensanpham"]?></td>     
       <td><?=$row["tenphong"]?></td> 
       <td><?=$row["tenloai"]?></td>
-      <td><?=$row["tensanpham"]?></td>      
       <td><?=$row["gia"]?></td>   
       <td><button type="button" class="btn btn-primary" style="height:40px" onclick="ShowChiTietSanPham('<?=$row['idsanpham']?>')">Detail</button></td>
       <td><button type="button" class="btn btn-primary" style="height:40px" onclick="itemEditForm('<?=$row['idsanpham']?>')">Edit</button></td>
@@ -41,12 +42,12 @@
   </table>
 
   <!-- Trigger the modal with a button -->
-  <button type="button" class="btn btn-secondary " style="height:40px" data-toggle="modal" data-target="#new-product">
+  <button type="button" class="btn btn-secondary " style="height:40px" data-toggle="modal" data-target="#new-Product">
     New Product
   </button>
 
   <!-- Modal -->
-  <div class="modal fade" id="new-product" role="dialog">
+  <div class="modal fade" id="new-Product" role="dialog">
     <div class="modal-dialog">
     
       <!-- Modal content-->
@@ -59,8 +60,8 @@
           <form  enctype='multipart/form-data' onsubmit="addItems()" method="POST">
             <div class="form-group">
               <label>Mã phòng:</label>
-              <select id="category" >
-                <option disabled selected>Chọn</option>
+              <select id="category" class="form-control PhongID">
+                <option disabled selected value="">Chọn</option>
                 <?php
           
                   $sql="SELECT * from phong";
@@ -76,8 +77,8 @@
             </div>
             <div class="form-group">
               <label>Mã loại:</label>
-              <select id="category" >
-                <option disabled selected>Chọn</option>
+              <select id="category" class="form-control LoaiID">
+                <option disabled selected value="">Chọn</option>
                 <?php
           
                   $sql="SELECT * from loai";
@@ -93,26 +94,22 @@
             </div>
             <div class="form-group">
               <label for="name">Tên sản phẩm:</label>
-              <input type="text" class="form-control" id="p_name" required>
+              <input type="text" class="form-control ProductName" id="p_name" required>
             </div>
             <div class="form-group">
               <label for="name">Giá:</label>
-              <input type="text" class="form-control" id="p_name" required>
+              <input type="number" class="form-control ProductPrice" id="p_name" required>
             </div>
             <div class="form-group">
               <label for="name">Mô tả:</label>
-              <input type="text" class="form-control" id="p_name" required>
-            </div>
-            <div class="form-group">
-              <label for="name">Hình:</label>
-              <input type="file" class="fileToUpload form-control"></input>
+              <input type="text" class="form-control ProductDescribe" id="p_name" required>
             </div>
             
           </form>
 
         </div>
         <div class="modal-footer">
-              <button  class="btn btn-secondary" id="upload" style="height:40px" onclick="">New Item</button>           
+              <button type="button" class="btn btn-secondary" id="upload" style="height:40px" onclick="newProduct()">New Item</button>           
           <button type="button" class="btn btn-default" data-dismiss="modal" style="height:40px">Close</button>
         </div>
       </div>

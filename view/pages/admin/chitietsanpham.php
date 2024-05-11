@@ -56,7 +56,7 @@
           <form  enctype='multipart/form-data' onsubmit="addItems()" method="POST">
             <div class="form-group">
               <label> màu:</label>
-              <select id="category" >
+              <select id="category" class="form-control">
                 <option id="" disabled selected>Chọn</option>
                 <?php
                   $sql="SELECT * from mau where idmau!=0 and idmau not in (select mau.idmau from sanpham join mau on sanpham.idmau=mau.idmau where idsanpham=".$id.") ";

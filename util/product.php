@@ -75,18 +75,20 @@ switch ($_SERVER["REQUEST_METHOD"]) {
                 }
                 break;
             case 'addNewproduct':
-                $productID = $_POST['productID'];
-                $colorID=$_POST['colorID'];
+                $productID =$dp->getNewProductId();
                 $phongID=$_POST['phongID'];
                 $loaiID=$_POST['loaiID'];
                 $productName = $_POST['productName'];
                 $productPrice = $_POST['productPrice'];
-                $productImage = $_POST['productImage'];
                 $productDescribe = $_POST['productDescribe'];
                 $sql = "INSERT INTO SanPham
-                        VALUES(" . $productID . "," . $colorID . "," . $phongID . "," . $loaiID . ",'" . $producName . "'," . $productPrice .",'".$productDescribe."','".$productImage. "',0,1 )";
-                echo $sql;
+                        VALUES(" . $productID . ",0," . $phongID . "," . $loaiID . ",'" . $productName . "'," . $productPrice .",'".$productDescribe."','',0,0 )";
                 $result = $dp->excuteQuery($sql);
+                if ($result) {
+                    echo "success";
+                } else {
+                    echo "error";
+                }
                 break;
         }
         break;

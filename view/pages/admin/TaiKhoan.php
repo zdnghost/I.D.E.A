@@ -2,7 +2,6 @@
    session_start();
    require("../../../util/dataProvider.php");
     $dp=new DataProvider();
-    $newID=getNewAccID();
 ?>
 <div >
   <h2>Tài Khoản </h2>
@@ -106,16 +105,3 @@
     </div>
   </div>
 </div>
-<?php
-function getNewAccID(){
-  global $dp;
-  $sql = "SELECT MAX(idnguoidung) as newID FROM taikhoan";
-  $result=$dp->excuteQuery($sql);
-  $newID = 1;
-  if ($result->num_rows > 0) {
-    $newID = $result->fetch_assoc()['newID'] + 1;
-}
-return $newID;
-}
-
-?>

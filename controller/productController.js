@@ -46,8 +46,123 @@ const getNewIDProduct = () => {
       },
     });
   };
+  const addNewProduct = async (
+    productName,
+    phongID,
+    loaiID,
+    productPrice,
+    productDescribe
+  ) => { 
+    $.ajax({
+      url: "util/product.php",
+      type: "POST",
+      data: {
+        productName: productName,
+        phongID: phongID,
+        loaiID: loaiID,
+        productPrice: productPrice,
+        productDescribe: productDescribe.replace(/['"]/g, "\\$&"),
+        action: "addNewproduct",
+      },
+      success: function (res) {
+        if (res == "success") {
+          customNotice(
+            " fa-circle-check",
+            "Product successfully created",
+            1
+          );
+          ShowSanPham();
+          document.getElementsByClassName("modal-backdrop")[0].remove();
+        }  else {
+          customNotice(" fa-sharp fa-light fa-circle-exclamation", res, 3);
+          console.log(res);
+        }
+      },
+    });
+  };
+  const newProduct = async () => {
+    if(!(await checknewProduct())) return;
+    let productName = document.querySelector("#new-Product .ProductName").value;
+    let phongID = document.querySelector("#new-Product .PhongID").value;
+    let loaiID = document.querySelector("#new-Product .LoaiID").value;
+    let productPrice = document.querySelector("#new-Product .ProductPrice").value;
+    let productDescribe = document.querySelector(
+      "#new-Product .ProductDescribe"
+    ).value;
+    await addNewProduct(
+      productName,
+      phongID,
+      loaiID,
+      productPrice,
+      productDescribe
+    );
+  };
+  const checknewProduct= async ()=>{
+    let productName = document.querySelector("#new-Product .ProductName").value;
+    let phongID = document.querySelector("#new-Product .PhongID").value;
+    let loaiID = document.querySelector("#new-Product .LoaiID").value;
+    let productPrice = document.querySelector("#new-Product .ProductPrice").value;
+    let productDescribe = document.querySelector(
+      "#new-Product .ProductDescribe"
+    ).value;
+    if(productName==""){
+      customNotice(
+        " fa-sharp fa-light fa-circle-exclamation",
+        "Please, enter product name!",
+        3
+      );
+      productName.focus();
+      return false;
+    }
+    if(productPrice==""){
+      customNotice(
+        " fa-sharp fa-light fa-circle-exclamation",
+        "Please, enter price!",
+        3
+      );
+      productPrice.focus();
+      return false;
+    }
+    if(productPrice<=0){
+      customNotice(
+        " fa-sharp fa-light fa-circle-exclamation",
+        "Please, enter price more than 0!",
+        3
+      );
+      productPrice.focus();
+      return false;
+    }
+    if(productDescribe==""){
+      customNotice(
+        " fa-sharp fa-light fa-circle-exclamation",
+        "Please, enter product Describe!",
+        3
+      );
+      productDescribe.focus();
+      return false;
+    }
+    if(phongID==""){
+      customNotice(
+        " fa-sharp fa-light fa-circle-exclamation",
+        "Please, select phong!",
+        3
+      );
+      phongID.focus();
+      return false;
+    }
+    if(loaiID==""){
+      customNotice(
+        " fa-sharp fa-light fa-circle-exclamation",
+        "Please, select loai!",
+        3
+      );
+      loaiID.focus();
+      return false;
+    }
+    return true;
+  }
   const updateProduct = async (prID) => {
-    if (!checkUpdateProduct()) return;
+    if (!(await checkUpdateProduct())) return;
     let productName = document.querySelector("#edit-product .productName").value;
     let loaiID = document.querySelector("#edit-product .loaiID").value;
     let phongID = document.querySelector("#edit-product .phongID").value;

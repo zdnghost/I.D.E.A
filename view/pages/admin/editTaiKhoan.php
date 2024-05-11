@@ -8,11 +8,11 @@
 <div >
 
 <h2>Edit Tài Khoản</h4>
-<td><button class="btn btn-danger" style="height:40px" onclick="ShowTaiKhoan()">Back</button></td>
-<form id="update-Items" onsubmit="updateItems()" enctype='multipart/form-data'>
+
+<form id="edit-account" onsubmit="updateItems()" enctype='multipart/form-data'>
     <div class="form-group">
       <label for="desc">Username:</label>
-      <input type="text" class="form-control" value="<?=$account['username']?>" disabled >
+      <input type="text" class="form-control username" value="<?=$account['username']?>" disabled >
     </div>
     <div class="form-group">
       <label for="desc">Ngày tạo:</label>
@@ -20,13 +20,13 @@
     </div>
     <div class="form-group">
               <label>Vai trò:</label>
-              <select id="category" <?php if ($account['vaitro'] == 1) {
+              <select id="category" class="form-control roleAccount" <?php if ($account['vaitro'] == 1) {
                     echo 'disabled';
                 } ?> >
-                <option disabled selected><?=$account['tenvaitro']?></option>
+                <option disabled selected value="<?=$account['vaitro']?>"><?=$account['tenvaitro']?></option>
                 <?php
 
-                  $sql="SELECT * from vaitro";
+                  $sql="SELECT * from vaitro where idvaitro!=1";
                   $result = $dp-> excuteQuery($sql);
 
                   if ($result-> num_rows > 0){
@@ -39,22 +39,27 @@
             </div>
       <div class="form-group">
       <label for="desc">Họ tên:</label>
-      <input type="text" class="form-control" value="<?=$account['hoten']?>" disabled >
+      <input type="text" class="nameAccount form-control" value="<?=$account['hoten']?>" disabled >
     </div>       
     <div class="form-group">
       <label for="desc">SĐT:</label>
-      <input type="text" class="form-control" value="<?=$account['sdt']?>"  disabled>
+      <input type="text" class="phoneAccount form-control" value="<?=$account['sdt']?>"  disabled>
     </div>
     <div class="form-group">
       <label for="desc">Địa chỉ:</label>
-      <input type="text" class="form-control" value="<?=$account['diachi']?>" disabled>
+      <input type="text" class="addressAccount form-control" value="<?=$account['diachi']?>" disabled>
     </div>
     <div class="form-group">
       <label for="desc">Email:</label>
-      <input type="text" class="form-control" value="<?=$account['email']?>" disabled>
+      <input type="text" class="emailAccount form-control" value="<?=$account['email']?>" disabled>
     </div>
     <div class="form-group">
-      <button type="submit" style="height:40px" class="btn btn-primary">Update Item</button>
+      <label for="desc">Password:</label>
+      <input type="password" class="passwordAccount form-control">
+    </div>
+    <div class="form-group">
+      <button class="btn btn-danger" style="height:40px" onclick="ShowTaiKhoan()">Back</button>
+      <button type="button" style="height:40px" class="btn btn-primary" onclick="updateAccount()">Update Item</button>
     </div>
   </form>
     </div>

@@ -52,7 +52,7 @@ const order = async () => {
     let address = document.querySelector("#mycart #checkout-address");
     if (products.length == 0) {
       customNotice(
-        "fa-sharp fa-light fa-circle-exclamation",
+        " fa-sharp fa-light fa-circle-exclamation",
         "Please, select the product!",
         3
       );
@@ -60,7 +60,7 @@ const order = async () => {
     }
     if (address.value == "") {
       customNotice(
-        "fa-sharp fa-light fa-circle-exclamation",
+        " fa-sharp fa-light fa-circle-exclamation",
         "Please, enter your address!",
         3
       );

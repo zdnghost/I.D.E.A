@@ -6,13 +6,13 @@ const addToFavorite = (productID) => {
     success: function (res) {
       if (res == "success") {
         customNotice(
-          "fa-sharp fa-light fa-circle-check",
+          " fa-circle-check",
           "Added to your Favorite",
           1
         );
         loadProductDetailsByAjax(productID);
       } else {
-        customNotice("fa-sharp fa-light fa-circle-exclamation", res,3);
+        customNotice(" fa-sharp fa-light fa-circle-exclamation", res,3);
       }
     },
   });
@@ -25,12 +25,12 @@ const disLike = (productID) => {
     success: function (res) {
       if (res == "success") {
         customNotice(
-          "fa-sharp fa-light fa-circle-check",
+          " fa-circle-check",
           "Removed from your Favorite",1
         );
         loadProductDetailsByAjax(productID);
       } else {
-        customNotice("fa-sharp fa-light fa-circle-exclamation", res,3);
+        customNotice(" fa-sharp fa-light fa-circle-exclamation", res,3);
       }
     },
   });

@@ -41,11 +41,10 @@ class DataProvider
   {
     $sql = "SELECT idnguoidung FROM taikhoan where username = '" . $username."'";
     $result = Self::excuteQuery($sql);
-    $id = array();
-    while ($row = $result->fetch_assoc()) {
-      array_push($id, $row['idnguoidung']);
+    if (mysqli_num_rows($result) != 0) {
+      return self::excuteQuery($sql)->fetch_assoc()['idnguoidung'] + 1;
     }
-    return $id;
+    return -1;
   }
   public static function isFavorite($proID, $userID)
   {

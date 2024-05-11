@@ -131,19 +131,22 @@ switch ($_SERVER["REQUEST_METHOD"]) {
                 SET hoTen='" . $fullname . "',
                     SDT='" . $phone . "',
                     diaChi='" . $address . "',
-                    email='" . $email . "',
-                WHERE idnguoidung='" . $id . "'";
+                    email='" . $email . "'
+                WHERE idnguoidung=" . $id ;
         $result1 = $dp->excuteQuery($sql1);
-        $sql2 = "UPDATE taikhoan SET idvaiTro=" . $role . " WHERE username='" . $username . "'";
+        $sql2 = "UPDATE taikhoan SET vaitro=" . $role . " WHERE username='" . $username . "'";
         $result2 = $dp->excuteQuery($sql2);
         if(strcmp($password,"") != 0){
-          $sql3 = "UPDATE taikhoan SET matKhau='" . $md5Pass . "' WHERE username='" . $username . "'";
+          $sql3 = "UPDATE taikhoan SET password='" . $md5Pass . "' WHERE username='" . $username . "'";
           $result3 = $dp->excuteQuery($sql3);
         }
         
         if ($result1 && $result2) {
           if(strcmp($password,"") != 0 && $result3){
             echo "Success";
+          }
+          else if(strcmp($password,"") != 0 &&!$result3){
+            echo "Error";
           }
           else{
             echo "Success";
@@ -169,7 +172,7 @@ switch ($_SERVER["REQUEST_METHOD"]) {
             } else {
               $md5Pass = md5($newPassword);
               $sql = "UPDATE taikhoan
-                SET matKhau='" . $md5Pass .
+                SET password='" . $md5Pass .
                 "' WHERE username='" . $username . "'";
               $result = $dp->excuteQuery($sql);
               if ($result) {

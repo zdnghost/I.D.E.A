@@ -17,7 +17,7 @@
       <input type="text" class="form-control"  >
     </div>
     <div class="form-group">
-      <button type="submit" style="height:40px" class="btn btn-primary">Update Item</button>
+      <button  style="height:40px" class="btn btn-primary">Update Item</button>
     </div>
   </form>
     </div>

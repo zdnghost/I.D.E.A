@@ -7,7 +7,7 @@ let passwordAcc = null;
 let addressAcc = null;
 let isAccountDiff = false;
 const setAccountInfo = () => {
-    usernameAcc = document.querySelector("#edit-account .accountID").value;
+    usernameAcc = document.querySelector("#edit-account .username").value;
     nameAcc = document.querySelector("#edit-account .nameAccount").value;
     emailAcc = document.querySelector("#edit-account .emailAccount").value;
     phoneAcc = document.querySelector("#edit-account .phoneAccount").value;
@@ -18,7 +18,6 @@ const setAccountInfo = () => {
     addressAcc = document.querySelector("#edit-account .addressAccount").value;
   };
   const updateAccount = () => {
-    if (!checkInputUpdateAccount()) return;
     setAccountInfo();
     $.ajax({
       url:
@@ -42,11 +41,11 @@ const setAccountInfo = () => {
         if (res != "Success") alert(res);
         else {
           customNotice(
-            "fa-sharp fa-light fa-circle-check",
+            " fa-circle-check",
             "Update successfully!",
             1
           );
-          isAccountInfoChange();
+          ShowTaiKhoan();
         }
       },
     });
@@ -76,12 +75,14 @@ const setAccountInfo = () => {
       success: function (res) {
         if (res == "Success") {
           customNotice(
-            "fa-sharp fa-light fa-circle-check",
+            " fa-circle-check",
             "Account successfully created",
             1
           );
+          ShowTaiKhoan();
+          document.getElementsByClassName("modal-backdrop")[0].remove();
         } else {
-          customNotice("fa-sharp fa-light fa-circle-exclamation", res, 3);
+          customNotice(" fa-sharp fa-light fa-circle-exclamation", res, 3);
           console.log(res);
         }
       },
@@ -93,10 +94,10 @@ const setAccountInfo = () => {
     let emailInput = document.querySelector("#new-account .email");
     let phoneInput = document.querySelector("#new-account .phoneNumber");
     let passwordInput = document.querySelector("#new-account .password");
-    let role = document.querySelector("#new-account .role");
+    let role = parseInt(document.querySelector("#new-account .role").value);
     if (usernameInput.value == "") {
       customNotice(
-        "fa-sharp fa-light fa-circle-exclamation",
+        " fa-sharp fa-light fa-circle-exclamation",
         "Please, enter your user name!",
         3
       );
@@ -105,7 +106,7 @@ const setAccountInfo = () => {
     }
     if (await isUsernameExist(usernameInput.value)) {
       customNotice(
-        "fa-sharp fa-light fa-circle-exclamation",
+        " fa-sharp fa-light fa-circle-exclamation",
         "Username already exists!",
         3
       );
@@ -114,7 +115,7 @@ const setAccountInfo = () => {
     }
     if (nameInput.value == "") {
       customNotice(
-        "fa-sharp fa-light fa-circle-exclamation",
+        " fa-sharp fa-light fa-circle-exclamation",
         "Please, enter your fullname!",
         3
       );
@@ -123,7 +124,7 @@ const setAccountInfo = () => {
     }
     if (emailInput.value != "" && !isEmailValid(emailInput.value)) {
       customNotice(
-        "fa-sharp fa-light fa-circle-exclamation",
+        " fa-sharp fa-light fa-circle-exclamation",
         "Invalid email address!",
         3
       );
@@ -132,7 +133,7 @@ const setAccountInfo = () => {
     }
     if (!isVietnamesePhoneNumberValid(phoneInput.value)) {
       customNotice(
-        "fa-sharp fa-light fa-circle-exclamation",
+        " fa-sharp fa-light fa-circle-exclamation",
         "Invalid phone number!",
         3
       );
@@ -141,7 +142,7 @@ const setAccountInfo = () => {
     }
     if (nameInput.value == "") {
       customNotice(
-        "fa-sharp fa-light fa-circle-exclamation",
+        " fa-sharp fa-light fa-circle-exclamation",
         "Please, enter your name!",
         3
       );
@@ -150,7 +151,7 @@ const setAccountInfo = () => {
     }
     if (phoneInput.value == "") {
       customNotice(
-        "fa-sharp fa-light fa-circle-exclamation",
+        " fa-sharp fa-light fa-circle-exclamation",
         "Pleae, enter your phone number!",
         3
       );
@@ -159,7 +160,7 @@ const setAccountInfo = () => {
     }
     if (passwordInput.value == "") {
       customNotice(
-        "fa-sharp fa-light fa-circle-exclamation",
+        " fa-sharp fa-light fa-circle-exclamation",
         "Please, enter your password!",
         3
       );
@@ -168,20 +169,73 @@ const setAccountInfo = () => {
     }
     if (!isPasswordValid(passwordInput.value)) {
       customNotice(
-        "fa-sharp fa-light fa-circle-exclamation",
+        " fa-sharp fa-light fa-circle-exclamation",
         "Password that contain at least eight characters, including at least one number and includes both lowercase and uppercase letters and special characters, for example #, ?, !.",
         3
       );
       passwordInput.focus();
       return false;
     }
-     if (role=='NaN') {
+     if (Number.isNaN(role)) {
       customNotice(
-        "fa-sharp fa-light fa-circle-exclamation",
+        " fa-sharp fa-light fa-circle-exclamation",
         "Please,select Role",
         3
       );
       passwordInput.focus();
+      return false;
+    }
+    console.log(role);
+    return true;
+  };
+  const checkInputUpdateAccount = () => {
+    if (!isAccountDiff) return false;
+    let nameInput = document.querySelector("#edit-account .nameAccount");
+    let emailInput = document.querySelector("#edit-account .emailAccount");
+    let phoneInput = document.querySelector("#edit-account .phoneAccount");
+    if (nameInput.value == "") {
+      customNotice(
+        " fa-sharp fa-light fa-circle-exclamation",
+        "Please, enter your fullname!",
+        3
+      );
+      nameInput.focus();
+      return false;
+    }
+    if (emailInput.value != "" && !isEmailValid(emailInput.value)) {
+      customNotice(
+        " fa-sharp fa-light fa-circle-exclamation",
+        "Invalid email address!",
+        3
+      );
+      emailInput.focus();
+      return false;
+    }
+    if (nameInput.value == "") {
+      customNotice(
+        " fa-sharp fa-light fa-circle-exclamation",
+        "Please, enter your name!",
+        3
+      );
+      nameInput.focus();
+      return false;
+    }
+    if (phoneInput.value == "") {
+      customNotice(
+        " fa-sharp fa-light fa-circle-exclamation",
+        "Please, enter your phone number!",
+        3
+      );
+      phoneInput.focus();
+      return false;
+    }
+    if (!isVietnamesePhoneNumberValid(phoneInput.value)) {
+      customNotice(
+        " fa-sharp fa-light fa-circle-exclamation",
+        "Invalid phone number!",
+        3
+      );
+      phoneInput.focus();
       return false;
     }
     return true;

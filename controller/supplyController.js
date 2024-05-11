@@ -32,13 +32,13 @@ const addExistingproduct = () => {
   let productString = document.querySelector("#my-input").value;
   if (productString == "") {
     customNotice(
-      "fa-sharp fa-light fa-circle-exclamation",
+      " fa-sharp fa-light fa-circle-exclamation",
       "Please enter product ID or product name!",3
     );
     return;
   }
   if (!suggestionsProduct.includes(productString)) {
-    customNotice("fa-sharp fa-light fa-circle-exclamation", "product not found",3);
+    customNotice(" fa-sharp fa-light fa-circle-exclamation", "product not found",3);
     return;
   }
   let productID = productString.split("-")[0];
@@ -48,7 +48,7 @@ const addExistingproduct = () => {
   for (let i = 0; i < inputProduct.length; i++) {
     if (parseInt(inputProduct[i].innerHTML) == parseInt(productID)) {
       customNotice(
-        "fa-sharp fa-light fa-circle-exclamation",
+        " fa-sharp fa-light fa-circle-exclamation",
         "product already exists",3
       );
       return;
@@ -105,7 +105,7 @@ const checkAddSupply = () => {
   );
   if (productList.length == 0) {
     customNotice(
-      "fa-sharp fa-light fa-circle-exclamation",
+      " fa-sharp fa-light fa-circle-exclamation",
       "Please add at least 1 product!",3
     );
     return false;
@@ -119,14 +119,14 @@ const checkAddSupply = () => {
     ).value;
     if (isNaN(productCost) || isNaN(productQuantity)) {
       customNotice(
-        "fa-sharp fa-light fa-circle-exclamation",
+        " fa-sharp fa-light fa-circle-exclamation",
         "Please enter valid number!",3
       );
       return false;
     }
     if (parseInt(productQuantity) <= 0 || parseInt(productCost) <= 0) {
       customNotice(
-        "fa-sharp fa-light fa-circle-exclamation",
+        " fa-sharp fa-light fa-circle-exclamation",
         "Please enter quantity and cost greater than 0!",3
       );
       return false;
@@ -177,13 +177,13 @@ const addNewSupply = () => {
     success: function (res) {
       if (res == "Success") {
         customNotice(
-          "fa-sharp fa-light fa-circle-check",
+          " fa-circle-check",
           "Add new supply successful!",1
         );
         loadPageByAjax("Supply");
       } else {
         customNotice(
-          "fa-sharp fa-light fa-circle-exclamation",
+          " fa-sharp fa-light fa-circle-exclamation",
           "Add new supply failed!",3
         );
       }

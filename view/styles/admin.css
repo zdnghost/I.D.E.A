@@ -35,17 +35,17 @@
     line-height: 1;
     text-rendering: auto;
   }
-  .fa-circle-exclamation::before {
+  .fa-exclamation-triangle::before {
     content: "\f06a";
   }
-  .fa-circle-exclamation::after {
+  .fa-exclamation-triangle::after {
     content: "\f06a\f06a";
   }
   #notice {
     position: absolute;
     top: 7vh;
     right: calc(0px + 3vw);
-    
+    z-index: 2000;
   }
   #notice .container {
     width: 23vw;
@@ -62,7 +62,7 @@
     animation: popup;
     animation-duration: 0.8s;
     font-family: "Dosis", sans-serif;
-    z-index: 100;
+    
     /* display: none; */
   }
   #notice .slide {
@@ -178,11 +178,11 @@
       background-repeat: no-repeat;
       background-size: cover;
     } 
-    .fa-circle-exclamation::before {
+    .fa-exclamation-triangle::before {
       content: "\f06a";
     }
-    .fad.fa-circle-exclamation::after,
-.fa-duotone.fa-circle-exclamation::after {
+    .fad.fa-exclamation-triangle::after,
+.fa-duotone.fa-exclamation-triangle::after {
   content: "\f06a\f06a";
 }
 .fad.fa-circle-check::after,

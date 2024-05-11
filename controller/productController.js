@@ -67,14 +67,14 @@ const deleteColorID = async(productID,colorID) => {
       success: function (res) {
         if (res == "Success") {
           customNotice(
-            "fa-sharp fa-light fa-circle-check",
+            " fa-circle-check",
             "Deleted successfully",
             1
           );
           loadPageByAjax("Album");
         } else
           customNotice(
-            "fa-sharp fa-light fa-circle-exclamation",
+            " fa-sharp fa-light fa-circle-exclamation",
             "Deleted failed",
             3
           );
@@ -90,14 +90,14 @@ const deleteProduct = (productID) => {
       success: function (res) {
         if (res == "Success") {
           customNotice(
-            "fa-sharp fa-light fa-circle-check",
+            " fa-circle-check",
             "Deleted successfully",
             1
           );
           loadPageByAjax("Album");
         } else
           customNotice(
-            "fa-sharp fa-light fa-circle-exclamation",
+            " fa-sharp fa-light fa-circle-exclamation",
             "Deleted failed",
             3
           );
@@ -115,7 +115,7 @@ const deleteProduct = (productID) => {
       form_data.append("target_directory", "../data/");
       if (!file_data.type.startsWith("image/")) {
         customNotice(
-          "fa-sharp fa-light fa-circle-exclamation",
+          " fa-sharp fa-light fa-circle-exclamation",
           "Please upload an image!",
           3
         );
@@ -135,13 +135,13 @@ const deleteProduct = (productID) => {
             document.querySelector(".img-container img").src =
               "data/" + fileInput.files[0].name;
             customNotice(
-              "fa-sharp fa-light fa-circle-check",
+              " fa-circle-check",
               "Uploaded successfully",
               1
             );
           } else
             customNotice(
-              "fa-sharp fa-light fa-circle-exclamation",
+              " fa-sharp fa-light fa-circle-exclamation",
               "Upload failed",
               3
             );
@@ -151,7 +151,7 @@ const deleteProduct = (productID) => {
   };
   const deleteImg = () => {
     customNotice(
-      "fa-sharp fa-light fa-circle-check",
+      " fa-circle-check",
       "Deleted successfully, change to default image!",
       1
     );

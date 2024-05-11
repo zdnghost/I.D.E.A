@@ -23,7 +23,7 @@ const customNotice = async (icon, content, type) => {
   await sleep(100000);
   notice.querySelector(".slide").style.width = "0";
   alert.classList.add("fade");
-  await sleep(10000);
+  await sleep(100000);
   notice.removeChild(alert);
 };
 

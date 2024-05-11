@@ -25,7 +25,7 @@ const updateRole = async (roleID) => {
       if (res != "Success") console.log(res);
       else
         customNotice(
-          "fa-sharp fa-light fa-circle-check",
+          " fa-circle-check",
           "Update role successfully!",
           1
         );
@@ -38,7 +38,7 @@ const checkAddNewRole = () => {
   let roleNameInput = document.querySelector(".info-role input");
   if (roleNameInput.value.trim() == "") {
     customNotice(
-      "fa-sharp fa-light fa-circle-exclamation",
+      " fa-sharp fa-light fa-circle-exclamation",
       "Role name must not be empty!",
       3
     );
@@ -74,7 +74,7 @@ const addNewRole = (roleID) => {
       if (res != "Success") console.log(res);
       else
         customNotice(
-          "fa-sharp fa-light fa-circle-check",
+          " fa-circle-check",
           "Add new role successfully!",
           1
         );
@@ -93,7 +93,7 @@ const deleteRole = (roleID) => {
       if (res != "Success") console.log(res);
       else
         customNotice(
-          "fa-sharp fa-light fa-circle-check",
+          " fa-circle-check",
           "Delete role successfully!",
           1
         );

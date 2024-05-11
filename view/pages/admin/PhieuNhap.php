@@ -94,7 +94,7 @@
 
         </div>
        <div class="modal-footer">
-              <button type="submit" class="btn btn-secondary" id="upload" style="height:40px">Add Item</button>
+              <button  class="btn btn-secondary" id="upload" style="height:40px">Add Item</button>
           <button type="button" class="btn btn-default" data-dismiss="modal" style="height:40px">Close</button>
         </div>
       </div>

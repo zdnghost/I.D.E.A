@@ -40,7 +40,7 @@ const checkInputUpdateUser = () => {
   let emailInput = document.querySelector("#myaccount #txtEmail");
   if (fullnameInput.value == "") {
     customNotice(
-      "fa-sharp fa-light fa-circle-exclamation",
+      " fa-sharp fa-light fa-circle-exclamation",
       "Please, enter your fullname!",
       3
     );
@@ -49,7 +49,7 @@ const checkInputUpdateUser = () => {
   }
   if (phoneInput.value == "") {
     customNotice(
-      "fa-sharp fa-light fa-circle-exclamation",
+      " fa-sharp fa-light fa-circle-exclamation",
       "Please, enter your phone number!",
       3
     );
@@ -58,7 +58,7 @@ const checkInputUpdateUser = () => {
   }
   if (!isVietnamesePhoneNumberValid(phoneInput.value)) {
     customNotice(
-      "fa-sharp fa-light fa-circle-exclamation",
+      " fa-sharp fa-light fa-circle-exclamation",
       "Invalid phone number!",
       3
     );
@@ -67,7 +67,7 @@ const checkInputUpdateUser = () => {
   }
   // if (passwordInput.value == "") {
   //   customNotice(
-  //     "fa-sharp fa-light fa-circle-exclamation",
+  //     " fa-sharp fa-light fa-circle-exclamation",
   //     "Please, enter your password!",
   //     3
   //   );
@@ -76,7 +76,7 @@ const checkInputUpdateUser = () => {
   // }
   // if (!isPasswordValid(passwordInput.value)) {
   //   customNotice(
-  //     "fa-sharp fa-light fa-circle-exclamation",
+  //     " fa-sharp fa-light fa-circle-exclamation",
   //     "Password that contain at least eight characters, including at least one number and includes both lowercase and uppercase letters and special characters, for example #, ?, !.",
   //     3
   //   );
@@ -85,7 +85,7 @@ const checkInputUpdateUser = () => {
   // }
   if (addressInput.value == "") {
     customNotice(
-      "fa-sharp fa-light fa-circle-exclamation",
+      " fa-sharp fa-light fa-circle-exclamation",
       "Please, enter your address!",
       3
     );
@@ -94,7 +94,7 @@ const checkInputUpdateUser = () => {
   }
   if (emailInput.value == "") {
     customNotice(
-      "fa-sharp fa-light fa-circle-exclamation",
+      " fa-sharp fa-light fa-circle-exclamation",
       "Please, enter your email!",
       3
     );
@@ -103,7 +103,7 @@ const checkInputUpdateUser = () => {
   }
   if (!isEmailValid(emailInput.value)) {
     customNotice(
-      "fa-sharp fa-light fa-circle-exclamation",
+      " fa-sharp fa-light fa-circle-exclamation",
       "Invalid email!",
       3
     );
@@ -134,7 +134,7 @@ const updateUser = () => {
       if (res != "Success") alert(res);
       else {
         customNotice(
-          "fa-sharp fa-light fa-circle-check",
+          " fa-circle-check",
           "Update successfully!",
           1
         );
@@ -149,7 +149,7 @@ const checkInputUpdatePassword = () => {
   const confirmNewPassword = document.querySelector('#txtConfirmNewPassword')
   if (oldPassword.value == "") {
     customNotice(
-      "fa-sharp fa-light fa-circle-exclamation",
+      " fa-sharp fa-light fa-circle-exclamation",
       "Please, enter your old Password!",
       3
     );
@@ -158,7 +158,7 @@ const checkInputUpdatePassword = () => {
   }
   if (newPassword.value == "") {
     customNotice(
-      "fa-sharp fa-light fa-circle-exclamation",
+      " fa-sharp fa-light fa-circle-exclamation",
       "Please, enter your new Password!",
       3
     );
@@ -167,7 +167,7 @@ const checkInputUpdatePassword = () => {
   }
   if (confirmNewPassword.value == "") {
     customNotice(
-      "fa-sharp fa-light fa-circle-exclamation",
+      " fa-sharp fa-light fa-circle-exclamation",
       "Please, enter your confirm New Password!",
       3
     );
@@ -177,7 +177,7 @@ const checkInputUpdatePassword = () => {
 
   if (newPassword.value != confirmNewPassword.value) {
     customNotice(
-      "fa-sharp fa-light fa-circle-exclamation",
+      " fa-sharp fa-light fa-circle-exclamation",
       "Password confirm is not correct!",
       3
     );
@@ -204,14 +204,14 @@ const updatePassword = () => {
     success: function (res) {
       if (res != "Success") {
         customNotice(
-          "fa-sharp fa-light fa-circle-exclamation",
+          " fa-sharp fa-light fa-circle-exclamation",
           res,
           3
         );
       }
       else {
         customNotice(
-          "fa-sharp fa-light fa-circle-check",
+          " fa-circle-check",
           "Update successfully!",
           1
         );

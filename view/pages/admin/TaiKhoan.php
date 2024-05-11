@@ -45,7 +45,7 @@
 
 
   <!-- Modal -->
-  <div class="modal fade" id="new-account" role="dialog">
+  <div class="modal fade" id="new-account" role="dialog" >
     <div class="modal-dialog">
     
       <!-- Modal content-->
@@ -67,8 +67,8 @@
     </div>
     <div class="form-group">
               <label>Vai trò:</label>
-              <select id="category " class="role">
-                <option disabled selected>Chọn</option>
+              <select id="category " class="role form-control">
+                <option disabled value="NaN" selected>Chọn</option>
                 <?php
 
                   $sql="SELECT * from vaitro";
@@ -100,7 +100,7 @@
     </div>
        <div class="modal-footer">
               <button type="button" class="btn btn-secondary" id="upload" style="height:40px" onClick="createNewAccount()">Add Item</button>
-          <button type="button" class="btn btn-default" data-dismiss="modal" style="height:40px">Close</button>
+          <button type="button" class="btn btn-default closemodal" data-dismiss="modal" style="height:40px">Close</button>
         </div>
         </form>
       </div>

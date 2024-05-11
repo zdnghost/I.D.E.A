@@ -31,14 +31,14 @@ const updateOrder = () => {
     success: function (res) {
       if (res == "Not enough product quantity") {
         customNotice(
-          "fa-sharp fa-light fa-circle-exclamation",
+          " fa-sharp fa-light fa-circle-exclamation",
           "Not enough product quantity!",
           3
         );
       } else if (res != "Success") alert(res);
       else {
         customNotice(
-          "fa-sharp fa-light fa-circle-check",
+          " fa-circle-check",
           "Update successfully!",
           1
         );

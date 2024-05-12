@@ -29,7 +29,8 @@
       <td><?=$row["tenMau"]?></td>    
       <td><?=$row["soLuong"]?></td> 
       <td><?=$row["hinh"]?></td> 
-      <td><button type="button" class="btn btn-danger" style="height:40px" onclick="itemEditForm('<?=$row['idsanpham']?>')">Delete</button></td>
+      <td><button type="button" class="btn btn-primary" style="height:40px" onclick="">Detail</button></td>
+      <td><button type="button" class="btn btn-danger" style="height:40px" onclick="">Delete</button></td>
       </tr>
       <?php
           }

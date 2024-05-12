@@ -122,4 +122,18 @@ class DataProvider
     }
     return 1;
   }
+  public static function getNameID($id,$type){
+    if($type==1)
+    $sql="SELECT tenphong as ten from phong where idphong=".$id;
+    if($type==2)
+    $sql="SELECT tenloai as ten from loai where idloai=".$id;
+    if($type==3)
+    $sql="SELECT tenMau as ten from mau where idmau=".$id;
+    $result=self::excuteQuery($sql);
+    if(mysqli_num_rows($result)!=0){
+      return self::excuteQuery($sql)->fetch_assoc()['ten'];
+    }
+    return $result;
+  }
 }
+  

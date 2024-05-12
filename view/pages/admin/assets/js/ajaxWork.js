@@ -10,7 +10,6 @@ function ShowSanPham(){
         }
     });
 }
-
 function ShowThongKe(){
     $.ajax({
         url:"./view/pages/admin/ThongKe.php",
@@ -89,26 +88,6 @@ function editVaiTro_Quyen(){
         }
     });
 }
-function editPhong(){
-    $.ajax({
-        url:"./view/pages/admin/editPhong.php",
-        method:"POST",
-        data:{id:1},
-        success:function(data){
-            $('.allContent-section').html(data);
-        }
-    });
-}
-function ShowYeuThich(){
-    $.ajax({
-        url:"./view/pages/admin/YeuThich.php",
-        method:"POST",
-        data:{id:1},
-        success:function(data){
-            $('.allContent-section').html(data);
-        }
-    });
-}
 function ShowPhong(){
     $.ajax({
         url:"./view/pages/admin/Phong.php",
@@ -119,59 +98,9 @@ function ShowPhong(){
         }
     });
 }
-function ShowNguoiDung(){
-    $.ajax({
-        url:"./view/pages/admin/NguoiDung.php",
-        method:"POST",
-        data:{id:1},
-        success:function(data){
-            $('.allContent-section').html(data);
-        }
-    });
-}
-function ShowLoaiNguoiDung(){
-    $.ajax({
-        url:"./view/pages/admin/LoaiNguoiDung.php",
-        method:"POST",
-        data:{id:1},
-        success:function(data){
-            $('.allContent-section').html(data);
-        }
-    });
-}
-function editNguoiDung(id){
-    $.ajax({
-        url:"./view/pages/admin/editNguoiDung.php",
-        method:"POST",
-       data:{id: id},
-        success:function(data){
-            $('.allContent-section').html(data);
-        }
-    });
-}
 function ShowChiTietSanPham(id){
     $.ajax({
         url:"./view/pages/admin/chitietsanpham.php",
-        method:"POST",
-       data:{id: id},
-        success:function(data){
-            $('.allContent-section').html(data);
-        }
-    });
-}
-function editLoaiNguoiDung(id){
-    $.ajax({
-        url:"./view/pages/admin/editLoaiNguoiDung.php",
-        method:"POST",
-       data:{id: id},
-        success:function(data){
-            $('.allContent-section').html(data);
-        }
-    });
-}
-function editYeuThich(id){
-    $.ajax({
-        url:"./view/pages/admin/editYeuThich.php",
         method:"POST",
        data:{id: id},
         success:function(data){
@@ -204,6 +133,16 @@ function editMau(id){
         url:"./view/pages/admin/editMau.php",
         method:"POST",
        data:{id: id},
+        success:function(data){
+            $('.allContent-section').html(data);
+        }
+    });
+}
+function editPhong(id){
+    $.ajax({
+        url:"./view/pages/admin/editPhong.php",
+        method:"POST",
+        data:{id:id},
         success:function(data){
             $('.allContent-section').html(data);
         }

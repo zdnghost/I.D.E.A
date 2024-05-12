@@ -35,12 +35,12 @@
   </table>
 
   <!-- Trigger the modal with a button -->
-  <button type="button" class="btn btn-secondary " style="height:40px" data-toggle="modal" data-target="#myModal">
+  <button type="button" class="btn btn-secondary " style="height:40px" data-toggle="modal" data-target="#new-Mau">
     Add Product
   </button>
 
   <!-- Modal -->
-  <div class="modal fade" id="myModal" role="dialog">
+  <div class="modal fade" id="new-Mau" role="dialog">
     <div class="modal-dialog">
     
       <!-- Modal content-->
@@ -53,7 +53,7 @@
           <form  enctype='multipart/form-data' onsubmit="addItems()" method="POST">
     <div class="form-group">
       <label for="desc">Tên màu:</label>
-      <input type="text" class="form-control"  >
+      <input type="text" class="form-control mauName"  >
     </div>
             
           </form>

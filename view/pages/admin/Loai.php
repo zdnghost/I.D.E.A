@@ -34,12 +34,12 @@
   </table>
 
   <!-- Trigger the modal with a button -->
-  <button type="button" class="btn btn-secondary " style="height:40px" data-toggle="modal" data-target="#myModal">
+  <button type="button" class="btn btn-secondary " style="height:40px" data-toggle="modal" data-target="#new-Loai">
     Add 
   </button>
 
   <!-- Modal -->
-  <div class="modal fade" id="myModal" role="dialog">
+  <div class="modal fade" id="new-Loai" role="dialog">
     <div class="modal-dialog">
     
       <!-- Modal content-->
@@ -52,7 +52,7 @@
           <form  enctype='multipart/form-data' onsubmit="addItems()" method="POST">
             <div class="form-group">
               <label for="price">Tên loại:</label>
-              <input type="number" class="form-control" id="p_price" required>
+              <input type="text" class="form-control loaiName" id="p_price" required>
             </div>
           </form>
 

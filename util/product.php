@@ -156,10 +156,43 @@ switch ($_SERVER["REQUEST_METHOD"]) {
                 }
                 break;
             case 'updatephong':
+                $phongID=$_GET['phongID'];
+                $tenphong=$_GET['tenphong'];
+                $sql = "UPDATE phong
+                        SET tenphong = '" . $tenphong . "'
+                        WHERE idphong = " . $phongID;
+                $result = $dp->excuteQuery($sql);
+                if ($result) {
+                    echo "Success";
+                } else {
+                    echo "error";
+                }
                 break;
             case 'updateloai':
+                $loaiID=$_GET['loaiID'];
+                $tenloai=$_GET['tenloai'];
+                $sql = "UPDATE loai
+                        SET tenloai = '" . $tenloai . "'
+                        WHERE idloai = " . $loaiID;
+                $result = $dp->excuteQuery($sql);
+                if ($result) {
+                    echo "Success";
+                } else {
+                    echo "error";
+                }
                 break;
             case 'updatemau':
+                $mauID=$_GET['mauID'];
+                $tenmau=$_GET['tenmau'];
+                $sql = "UPDATE mau
+                        SET tenMau = '" . $tenmau . "'
+                        WHERE idmau = " . $mauID;
+                $result = $dp->excuteQuery($sql);
+                if ($result) {
+                    echo "Success";
+                } else {
+                    echo "error";
+                }
                 break;
         }
         break;

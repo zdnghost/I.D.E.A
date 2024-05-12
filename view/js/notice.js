@@ -20,10 +20,10 @@ const customNotice = async (icon, content, type) => {
   const notice = document.querySelector("#notice");
   notice.appendChild(alert);
   notice.querySelector(".slide").classList.add("slide");
-  await sleep(100000);
+  await sleep(3000);
   notice.querySelector(".slide").style.width = "0";
   alert.classList.add("fade");
-  await sleep(100000);
+  await sleep(800);
   notice.removeChild(alert);
 };
 

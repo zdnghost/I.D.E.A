@@ -398,7 +398,7 @@ const deleteProduct = (productID) => {
         "Please, enter color name!",
         3
       );
-      productName.focus();
+      mauName.focus();
       return false;
     }
     return true;
@@ -411,7 +411,7 @@ const deleteProduct = (productID) => {
         "Please, enter type name!",
         3
       );
-      productName.focus();
+      loaiName.focus();
       return false;
     }
     return true;
@@ -424,8 +424,116 @@ const deleteProduct = (productID) => {
         "Please, enter room name!",
         3
       );
-      productName.focus();
+      phongName.focus();
       return false;
     }
     return true;
+  }
+  const updatephong=()=>{
+    if(!checkupdatephonginput()) return;
+    let phongID = document.querySelector("#update-Phong .phongID").value;
+    let phongname = document.querySelector("#update-Phong .phongName").value;
+    $.ajax({
+      url:
+        "util/product.php?phongID=" +
+        phongID+
+        "&tenphong=" +
+        phongname +
+        "&action=updatephong",
+      type: "PUT",
+      success: function (res) {
+        if(res=='Success'){
+          customNotice("fa-sharp fa-light fa-circle-check", "Update successfully!", 1);
+        ShowPhong();
+        }
+        else{
+          console.log(res);
+        }
+      },
+    });
+  }
+  const updateloai=()=>{
+    if(!checkupdateloaiinput()) return;
+    let loaiID = document.querySelector("#update-Loai .loaiID").value;
+    let loainame = document.querySelector("#update-Loai .loaiName").value;
+    $.ajax({
+      url:
+        "util/product.php?loaiID=" +
+        loaiID+
+        "&tenloai=" +
+        loainame +
+        "&action=updateloai",
+      type: "PUT",
+      success: function (res) {
+        if(res=='Success'){
+          customNotice("fa-sharp fa-light fa-circle-check", "Update successfully!", 1);
+        ShowLoai();
+        }
+        else{
+          console.log(res);
+        }
+      },
+    });
+  }
+  const updatemau=()=>{
+    if(!checkupdatemauinput()) return;
+    let mauID = document.querySelector("#update-Mau .mauID").value;
+    let mauname = document.querySelector("#update-Mau .mauName").value;
+    $.ajax({
+      url:
+        "util/product.php?mauID=" +
+        mauID+
+        "&tenmau=" +
+        mauname +
+        "&action=updatemau",
+      type: "PUT",
+      success: function (res) {
+        if(res=='Success'){
+          customNotice("fa-sharp fa-light fa-circle-check", "Update successfully!", 1);
+        ShowMau();
+        }
+        else{
+          console.log(res);
+        }
+      },
+    });
+  }
+  const checkupdatephonginput=()=>{
+    let phongname = document.querySelector("#update-Phong .phongName").value;
+    if(phongname==""){
+      customNotice(
+        " fa-sharp fa-light fa-circle-exclamation",
+        "Please, enter room name!",
+        3
+      );
+      phongname.focus();
+      return false;
+    }
+    return true
+  }
+  const checkupdateloaiinput=()=>{
+    let loainame = document.querySelector("#update-Loai .loaiName").value;
+    if(loainame==""){
+      customNotice(
+        " fa-sharp fa-light fa-circle-exclamation",
+        "Please, enter type name!",
+        3
+      );
+      loainame.focus();
+      return false;
+    }
+    return true
+  }
+  const checkupdatemauinput=()=>{
+    let mauname = document.querySelector("#update-Mau .mauName").value;
+    if(mauname==""){
+      customNotice(
+        " fa-sharp fa-light fa-circle-exclamation",
+        "Please, enter color name!",
+        3
+      );
+      mauname.focus();
+      return false;
+    }
+    return true
   }

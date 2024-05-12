@@ -130,3 +130,15 @@ const addNewSupply = async () => {
     },
   });
 };
+const getInfoSupply=(id)=>{
+  return $.ajax({
+    url:"util/supply.php?phieunhapID=" + id + "&action=getSupplyInfo",
+    type: "GET",
+  });
+}
+const getProductinSupply=(id)=>{
+  return $.ajax({
+    url:"util/supply.php?phieunhapID=" + id + "&action=getProductInSupply",
+    type: "GET",
+  });
+}

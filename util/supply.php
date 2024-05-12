@@ -5,7 +5,7 @@ $dp = new DataProvider();
 switch ($_SERVER["REQUEST_METHOD"]) {
     case 'GET':
         switch ($_GET['action']) {
-          case 'getOrderInfo':
+          case 'getSupplyInfo':
             $phieunhapID = $_GET['phieunhapID'];
             $sql = "SELECT * FROM phieunhap WHERE idphieunhap = " . $phieunhapID;
             $result = $dp->excuteQuery($sql)->fetch_assoc();
@@ -15,7 +15,7 @@ switch ($_SERVER["REQUEST_METHOD"]) {
               echo "Error";
             }
             break;
-          case 'getProductInOrder':
+          case 'getProductInSupply':
             $phieunhapID = $_GET['phieunhapID'];
             $sql = "SELECT * FROM chitietphieunhap WHERE idphieunhap = " . $phieunhapID;
             $result = $dp->excuteQuery($sql);

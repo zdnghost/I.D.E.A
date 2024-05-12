@@ -14,7 +14,7 @@
       <tr>
         <th class="text-center">Mã Phòng</th>
         <th class="text-center">Tên phòng</th>
-        <th class="text-center" colspan="2">Action</th>
+        <th class="text-center" >Action</th>
       </tr>
     </thead>
     <?php
@@ -27,7 +27,6 @@
       <td><?=$row["idphong"]?></td>
       <td><?=$row["tenphong"]?></td>   
       <td><button type="button" class="btn btn-primary" style="height:40px" onclick="editPhong('<?=$row['idphong']?>')">Edit</button></td>
-      <td><button type="button" class="btn btn-danger" style="height:40px" >Delete</button></td>
       </tr>
       <?php
           }

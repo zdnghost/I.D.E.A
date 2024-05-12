@@ -215,8 +215,8 @@ const deleteColorID = async(productID,colorID) => {
       productID +
       "&colorID=" +
       colorID +
-       "&action=deleteColor",
-      type: "DELETE",
+       "&action=deleteproduct",
+      type: "PUT",
       success: function (res) {
         if (res == "Success") {
           customNotice(
@@ -224,11 +224,38 @@ const deleteColorID = async(productID,colorID) => {
             "Deleted successfully",
             1
           );
-          loadPageByAjax("product");
+          ShowChiTietSanPham(productID);
         } else
           customNotice(
             " fa-sharp fa-light fa-circle-exclamation",
             "Deleted failed",
+            3
+          );
+      },
+    });
+  };
+  const restoreColorID = async(productID,colorID) => {
+    let choice = confirm("Are you sure to restore this product?");
+    if (!choice) return;
+    $.ajax({
+      url: "util/product.php?productID=" + 
+      productID +
+      "&colorID=" +
+      colorID +
+       "&action=restoreproduct",
+      type: "PUT",
+      success: function (res) {
+        if (res == "Success") {
+          customNotice(
+            " fa-circle-check",
+            "Restore successfully",
+            1
+          );
+          ShowChiTietSanPham(productID);
+        } else
+          customNotice(
+            " fa-sharp fa-light fa-circle-exclamation",
+            "Restore failed",
             3
           );
       },
@@ -258,11 +285,11 @@ const deleteProduct = (productID) => {
     });
   };
   const uploadImg = () => {
-    let fileInput = document.querySelector('#newColorProduct .imgsrc');
+    let fileInput = document.querySelector('.imagecontent .imgsrc');
       let file_data = fileInput.files[0];
       let form_data = new FormData();
       form_data.append("file", file_data);
-      form_data.append("target_directory", "../data/img");
+      form_data.append("target_directory", "../data/img/");
       if (!file_data.type.startsWith("image/")) {
         customNotice(
           " fa-sharp fa-light fa-circle-exclamation",
@@ -282,8 +309,8 @@ const deleteProduct = (productID) => {
         processData: false,
         success: function (res) {
           if (res) {
-            document.querySelector("#newColorProduct img").src =
-              "data/img" + fileInput.files[0].name;
+            document.querySelector(".imagecontent  img").src =
+              "data/img/" + fileInput.files[0].name;
             customNotice(
               " fa-circle-check",
               "Uploaded successfully",
@@ -524,10 +551,10 @@ const deleteProduct = (productID) => {
     }
     return true
   }
-  const newProductColor=(id,name,phong,loai,price,describe)=>{
-    if(!checkColorProduct()) return;
+  const newProductColor=async (id,name,phong,loai,price,describe)=>{
+    if(!(await checkColorProduct())) return;
     let color=document.querySelector('#newColorProduct .color').value;
-      let albumImageRaw = document.querySelector(
+    let albumImageRaw = document.querySelector(
     "#newColorProduct .img"
   ).src;
   let Image = albumImageRaw.split("/").pop();
@@ -535,8 +562,8 @@ const deleteProduct = (productID) => {
     NewProductColor(id,name,phong,loai,price,describe,color,Image);
   }
   const checkColorProduct=()=>{
-    let color=document.querySelector('#newColorProduct .color');
-    if(color==""){
+    let color=document.querySelector('#newColorProduct .color').value;
+    if(color=="NaN"){
       customNotice(
         " fa-circle-check",
         "Pleace, select Color!",
@@ -588,3 +615,48 @@ const deleteProduct = (productID) => {
       },
     });
   };
+  const updateimage=async (productID,colorID)=>{
+    if(!(await checkupdateimginput()))return;
+    let albumImageRaw = document.querySelector(
+      "#updateimage .img"
+    ).src;
+    let Productimage = albumImageRaw.split("/").pop();
+    $.ajax({
+      url: "util/product.php?productID="+
+      productID+
+      "&colorID="+
+      colorID+
+      "&image="+
+      Productimage+
+      "&action=updateProductImage",
+      type: "PUT",
+      success: function (res) {
+        if (res == "Success") {
+          customNotice(
+            " fa-circle-check",
+            "Product successfully update",
+            1
+          );
+          ShowChiTietSanPham(productID);
+        }  else {
+          customNotice(" fa-sharp fa-light fa-circle-exclamation", res, 3);
+          console.log(res);
+        }
+      },
+    });
+  }
+  const checkupdateimginput=()=>{
+    let albumImageRaw = document.querySelector(
+      "#updateimage .img"
+    ).src;
+    let Productimage = albumImageRaw.split("/").pop();
+    if(Productimage==""){
+      customNotice(
+        " fa-circle-check",
+        "Upload image failed",
+        3
+      );
+      return false;
+    }
+    return true;
+  }

@@ -138,6 +138,16 @@ function editMau(id){
         }
     });
 }
+function editchitietsanpham(id,color){
+    $.ajax({
+        url:"./view/pages/admin/editchitietsanpham.php",
+        method:"POST",
+       data:{id: id,color:color},
+        success:function(data){
+            $('.allContent-section').html(data);
+        }
+    });
+}
 function editPhong(id){
     $.ajax({
         url:"./view/pages/admin/editPhong.php",

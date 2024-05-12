@@ -16,7 +16,7 @@
       <tr>
         <th class="text-center">Mã loại</th>
         <th class="text-center">Tên loại</th>
-        <th class="text-center" colspan="2">Action</th>
+        <th class="text-center" >Action</th>
       </tr>
     </thead>
     <?php
@@ -30,7 +30,6 @@
       <td><?=$row["idloai"]?></td>
       <td><?=$row["tenloai"]?></td>      
       <td><button type="button" class="btn btn-primary" style="height:40px" onclick="editLoai('<?=$row['idloai']?>')">Edit</button></td>
-      <td><button type="button" class="btn btn-danger" style="height:40px" >Delete</button></td>
       </tr>
       <?php
           }

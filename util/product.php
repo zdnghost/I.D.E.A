@@ -143,11 +143,28 @@ switch ($_SERVER["REQUEST_METHOD"]) {
                         WHERE idsanpham = " . $productID;
                 $result = $dp->excuteQuery($sql);
                 break;
+                case 'updateProductImage':
+                    $productID = $_GET['productID'];
+                    $image=$_GET['image'];
+                    $colorID=$_GET['colorID'];
+                    $sql = "UPDATE sanpham
+                            SET hinh = '" . $image . "'
+                            WHERE idsanpham = " . $productID." 
+                            and idmau=".$colorID;
+                    $result = $dp->excuteQuery($sql);
+                    if ($result) {
+                        echo "Success";
+                    } else {
+                        echo $result;
+                    }
+                    break;
             case 'deleteproduct':
                 $productID = $_GET['productID'];
+                $colorID=$_GET['colorID'];
                 $sql = "Update sanpham
                         SET TrangThai = 0
-                        WHERE idsanpham = " . $productID;
+                        WHERE idsanpham = " . $productID." 
+                        and idmau=".$colorID;
                 $result = $dp->excuteQuery($sql);
                 if ($result) {
                     echo "Success";
@@ -155,6 +172,20 @@ switch ($_SERVER["REQUEST_METHOD"]) {
                     echo "error";
                 }
                 break;
+            case 'restoreproduct':
+                    $productID = $_GET['productID'];
+                    $colorID=$_GET['colorID'];
+                    $sql = "Update sanpham
+                            SET TrangThai = 1
+                            WHERE idsanpham = " . $productID." 
+                            and idmau=".$colorID;
+                    $result = $dp->excuteQuery($sql);
+                    if ($result) {
+                        echo "Success";
+                    } else {
+                        echo "error";
+                    }
+                    break;
             case 'updatephong':
                 $phongID=$_GET['phongID'];
                 $tenphong=$_GET['tenphong'];

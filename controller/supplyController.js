@@ -38,37 +38,33 @@ const addExistingproduct = () => {
       return;
     }
   }
-  
   $('.list-suply').append( `<tr> 
   <td>`+newproductID+`</td>    
   <td>`+newColorID+`</td>    
   <td>`+productName+`</td>    
   <td>`+colorName+`</td>   
   <td><input type="number" class="form-control ProductPrice" id="p_name" required></td>     
-  <td><button type="button" class="btn btn-danger" style="height:40px" >Delete</button></td>
+  <td><button type="button" class="btn btn-danger" style="height:40px" onclick="deleteRowproduct(`+newproductID+','+newColorID+`)" >Delete</button></td>
   </tr>`);
   $('#addNewSupply').modal('hide');
 };
 
-const deleteRowproduct = (input) => {
-  input.closest(".placeholder").remove();
-  formatNumberOrder();
-};
-const updateTotalCost = () => {
-  let totalCost = 0;
-  let input = document.querySelectorAll(
-    ".modal-right .list .placeholder .info"
+const deleteRowproduct = (product,color) => {
+  let rows = document.querySelectorAll(
+    ".list-suply tr"
   );
-  for (let i = 0; i < input.length; i++) {
-    let cost = input[i].querySelector(".item:nth-of-type(3) input").value;
-    let quantity = input[i].querySelector(".item:nth-of-type(4) input").value;
-    if (cost == "" || quantity == "") continue;
-    if (isNaN(cost) || isNaN(quantity)) continue;
-    totalCost += parseFloat(cost) * parseInt(quantity);
+  for (let i = 1; i < rows.length; i++) {
+    let cells=rows[i].querySelectorAll('td')
+    if (parseInt(cells[0].innerText) == parseInt(product)&&parseInt(cells[1].innerText) == parseInt(color)) {
+      customNotice(
+        " fa-sharp fa-light fa-circle-exclamation",
+        "product remove sucees",1
+      );
+      rows[i].remove();
+      return;
+    }
   }
-  document.querySelector("#new-supply .total-cost").value = totalCost;
 };
-
 const checkAddSupply = () => {
   let supplyID = document.querySelector("#new-supply .supplyID").value;
   let supplyImport = document.querySelector("#new-supply .supplyImport").value;

@@ -43,7 +43,7 @@ const addExistingproduct = () => {
   <td>`+newColorID+`</td>    
   <td>`+productName+`</td>    
   <td>`+colorName+`</td>   
-  <td><input type="number" class="form-control ProductPrice" id="p_name" required></td>     
+  <td><input type="number" class="form-control ProductQuanity" id="p_name" ></td>     
   <td><button type="button" class="btn btn-danger" style="height:40px" onclick="deleteRowproduct(`+newproductID+','+newColorID+`)" >Delete</button></td>
   </tr>`);
   $('#addNewSupply').modal('hide');
@@ -66,84 +66,50 @@ const deleteRowproduct = (product,color) => {
   }
 };
 const checkAddSupply = () => {
-  let supplyID = document.querySelector("#new-supply .supplyID").value;
-  let supplyImport = document.querySelector("#new-supply .supplyImport").value;
-  let supplyTotalCost = document.querySelector("#new-supply .total-cost").value;
-  let supplyDistributor = document.querySelector(
-    "#new-supply .supplyDistributor"
-  ).value;
-
-  let productList = document.querySelectorAll(
-    "#new-supply .list .placeholder .info"
+  let rows = document.querySelectorAll(
+    ".list-suply tr"
   );
-  if (productList.length == 0) {
+  if(rows.length<2){
     customNotice(
       " fa-sharp fa-light fa-circle-exclamation",
-      "Please add at least 1 product!",3
+      "Please, add product to list ",3
     );
     return false;
   }
-  for (let i = 0; i < productList.length; i++) {
-    let productCost = productList[i].querySelector(
-      ".item:nth-of-type(3) input"
-    ).value;
-    let productQuantity = productList[i].querySelector(
-      ".item:nth-of-type(4) input"
-    ).value;
-    if (isNaN(productCost) || isNaN(productQuantity)) {
+  for (let i = 1; i < rows.length; i++) {
+    let cells=rows[i].querySelector('td .ProductQuanity ')
+    if(cells.value==""){
       customNotice(
         " fa-sharp fa-light fa-circle-exclamation",
-        "Please enter valid number!",3
+        "Please, set Product Quanity ",3
       );
-      return false;
-    }
-    if (parseInt(productQuantity) <= 0 || parseInt(productCost) <= 0) {
-      customNotice(
-        " fa-sharp fa-light fa-circle-exclamation",
-        "Please enter quantity and cost greater than 0!",3
-      );
+      cells.focus();
       return false;
     }
   }
   return true;
 };
-const addNewSupply = () => {
-  if (!checkAddSupply()) return;
-  let supplyID = document.querySelector("#new-supply .supplyID").value;
-  let supplyImport = document.querySelector("#new-supply .supplyImport").value;
-  let supplyTotalCost = document.querySelector("#new-supply .total-cost").value;
-  let supplyDistributor = document.querySelector(
-    "#new-supply .supplyDistributor"
-  ).value;
-
-  let productList = document.querySelectorAll(
-    "#new-supply .list .placeholder .info"
+const addNewSupply = async () => {
+  if (!(await checkAddSupply())) return;
+  let rows = document.querySelectorAll(
+    ".list-suply tr"
   );
-
   let productListObj = [];
-  for (let i = 0; i < productList.length; i++) {
-    let productID = productList[i].querySelector(".item:nth-of-type(2)").innerHTML;
-    let productCost = productList[i].querySelector(
-      ".item:nth-of-type(3) input"
-    ).value;
-    let productQuantity = productList[i].querySelector(
-      ".item:nth-of-type(4) input"
-    ).value;
+  for (let i = 1; i < rows.length; i++) {
+    let cells=rows[i].querySelectorAll('td');
+    let productID=cells[0].innerText;
+    let colorID=cells[1].innerText;
+    let productQuantity=rows[i].querySelector('td .ProductQuanity').value;
     productListObj.push({
       productID: productID,
+      colorID: colorID,
       quantity: productQuantity,
-      price: productCost,
     });
   }
-
   $.ajax({
     url: "util/supply.php",
     type: "POST",
     data: {
-      supplyID: supplyID,
-      supplyImport: supplyImport,
-      supplyTotalCost: supplyTotalCost,
-      supplyDistributor: supplyDistributor,
       productList: JSON.stringify(productListObj),
       action: "addNewSupply",
     },
@@ -153,12 +119,13 @@ const addNewSupply = () => {
           " fa-circle-check",
           "Add new supply successful!",1
         );
-        loadPageByAjax("Supply");
+        ShowPhieuNhap();
       } else {
         customNotice(
           " fa-sharp fa-light fa-circle-exclamation",
           "Add new supply failed!",3
         );
+        console.log(res);
       }
     },
   });

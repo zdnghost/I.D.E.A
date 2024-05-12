@@ -12,6 +12,10 @@
   <h2>Chi Tiết Sản Phẩm </h2>
   <h4 class="modal-title">Mã sản phẩm : <?=$product['idsanpham']?></h4>
   <h4 class="modal-title">Tên sản phẩm : <?=$product['tensanpham']?></h4>
+    <!-- Trigger the modal with a button -->
+    <button type="button" class="btn btn-secondary " style="height:40px" data-toggle="modal" data-target="#newColorProduct">
+    New Color Product
+  </button>
   <table class="table ">
     <thead>
       <tr>
@@ -31,7 +35,7 @@
     <tr>
       <td><?=$row["tenMau"]?></td>    
       <td><?=$row["soLuong"]?></td> 
-      <td><img src="data/img/<?=$row['hinh']?>"></td>
+      <td><img src="data/img/<?=$row['hinh']?>" class="dataimg"></td>
       <?php
         if($row['trangthai']==1)
           echo '<td>Hoạt động</td><td><button type="button" class="btn btn-danger" style="height:40px" onclick="deleteColorID('.$id.','.$row['idmau'].')">Dừng hoạt động</button></td>';
@@ -46,10 +50,7 @@
       ?>
   </table>
 
-  <!-- Trigger the modal with a button -->
-  <button type="button" class="btn btn-secondary " style="height:40px" data-toggle="modal" data-target="#newColorProduct">
-    New Color Product
-  </button>
+
 
   <!-- Modal -->
   <div class="modal fade" id="newColorProduct" role="dialog">

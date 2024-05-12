@@ -178,9 +178,9 @@ function ShowPhieuNhap(){
         }
     });
 }
-function editPhieuNhap(id){
+function ShowThongTinPhieuNhap(id){
     $.ajax({
-        url:"./view/pages/admin/editPhieuNhap.php",
+        url:"./view/pages/admin/ThongTinPhieuNhap.php",
         method:"POST",
        data:{id: id},
         success:function(data){

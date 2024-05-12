@@ -35,26 +35,29 @@ switch ($_SERVER["REQUEST_METHOD"]) {
         switch ($_POST['action']) {
             case 'addNewSupply':
                 $supplyID =$dp->getNewHoaDonId();
+                //need delete
+                $_SESSION["userID"]=1;
                 $userID=$_SESSION["userID"];
                 $products = json_decode($_POST['productList']);
                 $sql = "INSERT INTO phieunhap
                         VALUES (" . $supplyID .",".$userID .",'" . (new Datetime())->format('Y-m-d') . "')";
                 $result1 = $dp->excuteQuery($sql);
                 $error = false;
+                $errortext;
                 foreach ($products as $product) {
                     $sql = "INSERT INTO chitietphieunhap
                             VALUES (".$supplyID . ",". $product->{"productID"} . "," .$product->{"colorID"}  . "," . $product->{"quantity"} . ")";
                     $result2 = $dp->excuteQuery($sql);
-                    $sql = "UPDATE sanpham SET soLuong=soluong + " . $product->{"quantity"} . " WHERE idsanpham=" . $product->{"productID"};
+                    $sql = "UPDATE sanpham SET soLuong=soLuong + " . $product->{"quantity"} . " WHERE idsanpham=" . $product->{"productID"}." and idmau=". $product->{"colorID"};
                     $result3 = $dp->excuteQuery($sql);
                     if (!$result2 || !$result3) {
-                        $error = true;
-                    }
+                      $error = true;
+                  }
                 }
                 if ($result1 && !$error) {
                     echo "Success";
                 } else {
-                    echo "Error";
+                    echo  "Error";
                 }
                 break;
         }

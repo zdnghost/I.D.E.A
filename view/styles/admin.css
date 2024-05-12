@@ -14,7 +14,10 @@
     font-size:18px;
     margin-left:-1.2rem;
 }
-
+  .dataimg{
+    width: 100px;
+    height: 100px;
+  }
   .card{
       background-color: #50a9d3;
       padding:20px;

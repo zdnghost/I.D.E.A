@@ -34,12 +34,12 @@
   </table>
 
   <!-- Trigger the modal with a button -->
-  <button type="button" class="btn btn-secondary " style="height:40px" data-toggle="modal" data-target="#myModal">
+  <button type="button" class="btn btn-secondary " style="height:40px" data-toggle="modal" data-target="#new-Phong">
     Add Product
   </button>
 
   <!-- Modal -->
-  <div class="modal fade" id="myModal" role="dialog">
+  <div class="modal fade" id="new-Phong" role="dialog">
     <div class="modal-dialog">
     
       <!-- Modal content-->
@@ -50,21 +50,15 @@
         </div>
         <div class="modal-body">
           <form  enctype='multipart/form-data' onsubmit="addItems()" method="POST">
-          <div class="form-group">
-      <label for="desc">Mã Phòng:</label>
-      <input type="text" class="form-control"  >
-      
-    </div>
     <div class="form-group">
       <label for="desc">Tên phòng:</label>
-      <input type="text" class="form-control"  >
-    </div>
-            
+      <input type="text" class="form-control PhongName"  >
+    </div>   
           </form>
 
         </div>
        <div class="modal-footer">
-              <button  class="btn btn-secondary" id="upload" style="height:40px">Add Item</button>
+              <button type="button" class="btn btn-secondary" id="upload" style="height:40px" onclick="newphong()">Add Item</button>
           <button type="button" class="btn btn-default" data-dismiss="modal" style="height:40px">Close</button>
         </div>
       </div>

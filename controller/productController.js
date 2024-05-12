@@ -53,15 +53,20 @@ const getNewIDProduct = () => {
     productPrice,
     productDescribe
   ) => { 
+    let productID= await getNewIDProduct();
     $.ajax({
       url: "util/product.php",
       type: "POST",
       data: {
+        productID: productID,
         productName: productName,
         phongID: phongID,
         loaiID: loaiID,
         productPrice: productPrice,
         productDescribe: productDescribe.replace(/['"]/g, "\\$&"),
+        colorID:0,
+        active:0,
+        hinh:'',
         action: "addNewproduct",
       },
       success: function (res) {
@@ -306,4 +311,121 @@ const deleteProduct = (productID) => {
     document.querySelector(".img-container img").src =
       "data/" + "default.jfif";
   };
-  
+  const newphong = async () =>{
+    if(!(await checknewphonginput())) return;
+    let phongName = document.querySelector("#new-Phong .PhongName").value;
+    $.ajax({
+      url: "util/product.php",
+      type: "POST",
+      data: {
+        tenphong: phongName,
+        action: "newphong",
+      },
+      success: function (res) {
+        if (res == "success") {
+          customNotice(
+            " fa-circle-check",
+            "Product successfully created",
+            1
+          );
+          ShowPhong();
+          document.getElementsByClassName("modal-backdrop")[0].remove();
+        }  else {
+          customNotice(" fa-sharp fa-light fa-circle-exclamation", res, 3);
+          console.log(res);
+        }
+      },
+    });
+  }
+  const newloai =async () =>{
+    if(!(await checknewloaiinput())) return;
+    let loaiName = document.querySelector("#new-Loai .loaiName").value;
+    $.ajax({
+      url: "util/product.php",
+      type: "POST",
+      data: {
+        tenloai: loaiName,
+        action: "newloai",
+      },
+      success: function (res) {
+        if (res == "success") {
+          customNotice(
+            " fa-circle-check",
+            "Product successfully created",
+            1
+          );
+          ShowLoai();
+          document.getElementsByClassName("modal-backdrop")[0].remove();
+        }  else {
+          customNotice(" fa-sharp fa-light fa-circle-exclamation", res, 3);
+          console.log(res);
+        }
+      },
+    });
+  }
+
+  const newmau =async () =>{
+    if(!(await checknewmauinput())) return;
+    let mauName = document.querySelector("#new-Mau .mauName").value;
+    $.ajax({
+      url: "util/product.php",
+      type: "POST",
+      data: {
+        tenmau: mauName,
+        action: "newmau",
+      },
+      success: function (res) {
+        if (res == "success") {
+          customNotice(
+            " fa-circle-check",
+            "Product successfully created",
+            1
+          );
+          ShowMau();
+          document.getElementsByClassName("modal-backdrop")[0].remove();
+        }  else {
+          customNotice(" fa-sharp fa-light fa-circle-exclamation", res, 3);
+          console.log(res);
+        }
+      },
+    });
+  }
+  const checknewmauinput=()=>{
+    let mauName = document.querySelector("#new-Mau .mauName").value;
+    if(mauName==""){
+      customNotice(
+        " fa-sharp fa-light fa-circle-exclamation",
+        "Please, enter color name!",
+        3
+      );
+      productName.focus();
+      return false;
+    }
+    return true;
+  }
+  const checknewloaiinput=()=>{
+    let loaiName = document.querySelector("#new-Loai .loaiName").value;
+    if(loaiName==""){
+      customNotice(
+        " fa-sharp fa-light fa-circle-exclamation",
+        "Please, enter type name!",
+        3
+      );
+      productName.focus();
+      return false;
+    }
+    return true;
+  }
+  const checknewphonginput=()=>{
+    let phongName = document.querySelector("#new-Phong .PhongName").value;
+    if(phongName==""){
+      customNotice(
+        " fa-sharp fa-light fa-circle-exclamation",
+        "Please, enter room name!",
+        3
+      );
+      productName.focus();
+      return false;
+    }
+    return true;
+  }

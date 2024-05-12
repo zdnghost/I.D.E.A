@@ -3,12 +3,12 @@
    require("../../../util/dataProvider.php");
     $dp=new DataProvider();
     $id=$_POST['id'];
-    $product 
+    $product="a";
 ?>
 <div >
   <button type="button" class="btn btn-danger" style="height:40px" onclick="ShowSanPham()" >Back</button>
   <h2>Chi Tiết Sản Phẩm </h2>
-  <h4 class="modal-title">Sản phẩm : <?=$id?></h4>
+  <h4 class="modal-title">Mã sản phẩm : <?=$id?></h4>
   <table class="table ">
     <thead>
       <tr>

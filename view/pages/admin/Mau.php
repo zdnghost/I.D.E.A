@@ -51,11 +51,6 @@
         </div>
         <div class="modal-body">
           <form  enctype='multipart/form-data' onsubmit="addItems()" method="POST">
-         
-            <div class="form-group">
-      <label for="desc">Mã màu:</label>
-      <input type="text" class="form-control"  >
-    </div>
     <div class="form-group">
       <label for="desc">Tên màu:</label>
       <input type="text" class="form-control"  >
@@ -65,7 +60,7 @@
 
         </div>
        <div class="modal-footer">
-              <button  class="btn btn-secondary" id="upload" style="height:40px">Add Item</button>
+              <button typer="button" onclick="newmau()" class="btn btn-secondary" id="upload" style="height:40px">Add Item</button>
           <button type="button" class="btn btn-default" data-dismiss="modal" style="height:40px">Close</button>
         </div>
       </div>

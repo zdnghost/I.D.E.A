@@ -51,19 +51,14 @@
         <div class="modal-body">
           <form  enctype='multipart/form-data' onsubmit="addItems()" method="POST">
             <div class="form-group">
-              <label for="name">Mã loại:</label>
-              <input type="text" class="form-control" id="p_name" required>
-            </div>
-            <div class="form-group">
               <label for="price">Tên loại:</label>
               <input type="number" class="form-control" id="p_price" required>
             </div>
-            
           </form>
 
         </div>
        <div class="modal-footer">
-              <button  class="btn btn-secondary" id="upload" style="height:40px">Add Item</button>
+              <button type="button" onclick="newloai()" class="btn btn-secondary" id="upload" style="height:40px">Add Item</button>
           <button type="button" class="btn btn-default" data-dismiss="modal" style="height:40px">Close</button>
         </div>
       </div>

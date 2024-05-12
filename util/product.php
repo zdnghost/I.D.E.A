@@ -35,13 +35,7 @@ switch ($_SERVER["REQUEST_METHOD"]) {
                 break;
 
             case 'getNewIDProduct':
-                $sql = "SELECT idSanPham FROM sanpham ORDER BY idSanPham DESC LIMIT 1";
-                $result = $dp->excuteQuery($sql)->fetch_assoc();
-                if ($result != null) {
-                    echo $result['idSanPham'] + 1;
-                } else {
-                    echo "error";
-                }
+                echo $dp->getNewProductId();
                 break;
             case 'getAllproduct':
                 $sql = "SELECT * FROM sanpham";
@@ -75,14 +69,53 @@ switch ($_SERVER["REQUEST_METHOD"]) {
                 }
                 break;
             case 'addNewproduct':
-                $productID =$dp->getNewProductId();
+                $productID =$_POST['productID'];
                 $phongID=$_POST['phongID'];
                 $loaiID=$_POST['loaiID'];
                 $productName = $_POST['productName'];
                 $productPrice = $_POST['productPrice'];
                 $productDescribe = $_POST['productDescribe'];
+                $colorID=$_POST['colorID'];
+                $active=$_POST['active'];
+                $hinh=$_POST['hinh'];
                 $sql = "INSERT INTO SanPham
-                        VALUES(" . $productID . ",0," . $phongID . "," . $loaiID . ",'" . $productName . "'," . $productPrice .",'".$productDescribe."','',0,0 )";
+                        VALUES(" . $productID . ",".$colorID."," . $phongID . "," . $loaiID . ",'" . $productName . "'," . $productPrice .",'".$productDescribe."','".$hinh."',0,".$active." )";
+                $result = $dp->excuteQuery($sql);
+                if ($result) {
+                    echo "success";
+                } else {
+                    echo "error";
+                }
+                break;
+            case 'newphong':
+                $newid=$dp->getNewPhongId();
+                $ten=$_POST['tenphong'];
+                $sql="INSERT INTO phong
+                VALUES(".$newid.",'".$ten."')";
+                $result = $dp->excuteQuery($sql);
+                if ($result) {
+                    echo "success";
+                } else {
+                    echo "error";
+                }
+                break;
+            case 'newloai':
+                $newid=$dp->getNewLoaiId();  
+                $ten=$_POST['tenloai'];
+                $sql="INSERT INTO loai
+                VALUES(".$newid.",'".$ten."')";
+                $result = $dp->excuteQuery($sql);
+                if ($result) {
+                    echo "success";
+                } else {
+                    echo "error";
+                }
+                break; 
+            case 'newmau':
+                $newid=$dp->getNewMauId();
+                $ten=$_POST['tenmau'];
+                $sql="INSERT INTO mau
+                VALUES(".$newid.",'".$ten."')";
                 $result = $dp->excuteQuery($sql);
                 if ($result) {
                     echo "success";
@@ -121,6 +154,12 @@ switch ($_SERVER["REQUEST_METHOD"]) {
                 } else {
                     echo "error";
                 }
+                break;
+            case 'updatephong':
+                break;
+            case 'updateloai':
+                break;
+            case 'updatemau':
                 break;
         }
         break;

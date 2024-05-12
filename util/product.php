@@ -33,7 +33,21 @@ switch ($_SERVER["REQUEST_METHOD"]) {
                     echo "error";
                 }
                 break;
-
+            case 'getListColorProduct':
+                $productID = $_GET['productID'];
+                // Thực hiện truy vấn SQL
+                $sql = "SELECT * FROM sanpham JOIN mau ON sanpham.idmau=mau.idmau WHERE mau.idmau!=0 AND idsanpham=".$productID;
+                $result = $dp->excuteQuery($sql);
+                // Xử lý kết quả trả về và tạo danh sách tùy chọn
+                $options = '';
+                if ($result->num_rows > 0) {
+                    while ($row = $result->fetch_assoc()) {
+                        $options .= '<option value="'.$row['idmau'].'">'.$row['tenMau'].'</option>';
+                    }
+                }
+                // Trả về danh sách tùy chọn cho JavaScript
+                echo $options;
+                break;
             case 'getNewIDProduct':
                 echo $dp->getNewProductId();
                 break;

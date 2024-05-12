@@ -6,47 +6,31 @@ const updateSuggestionsProduct = async () => {
     (product) => product.maProduct + "-" + product.tenProduct
   );
 };
-const suggestproduct = () => {
-  const currentValue = event.target.value.toLowerCase();
-  if (!currentValue) {
-    document.getElementById("suggestion-list").innerHTML = "";
-    return;
-  }
-  const containingStrings = [];
-  for (let i = 0; i < suggestionsProduct.length; i++) {
-    if (suggestionsProduct[i].toLowerCase().includes(currentValue)) {
-      containingStrings.push(suggestionsProduct[i]);
-    }
-  }
-  displaySuggestionsproduct(containingStrings);
-};
-function displaySuggestionsproduct(suggestions) {
-  let suggestionList = document.getElementById("suggestion-list");
-  suggestionList.innerHTML = "";
-  suggestions.forEach(function (suggestion) {
-    suggestionList.innerHTML += `<li onclick="chooseSuggestion(this)">${suggestion}</li>`;
-  });
-}
-
 const addExistingproduct = () => {
-  let productString = document.querySelector("#my-input").value;
-  if (productString == "") {
+  let productName=$('#new-Product .productID option:selected').text();
+  let colorName=$('#new-Product .colorID option:selected').text();
+  let newproductID = document.querySelector("#new-Product .productID").value;
+  let newColorID=document.querySelector("#new-Product .colorID").value;
+  if (newproductID == "") {
     customNotice(
       " fa-sharp fa-light fa-circle-exclamation",
-      "Please enter product ID or product name!",3
+      "Please select product!",3
     );
     return;
   }
-  if (!suggestionsProduct.includes(productString)) {
-    customNotice(" fa-sharp fa-light fa-circle-exclamation", "product not found",3);
+  if (newColorID == "") {
+    customNotice(
+      " fa-sharp fa-light fa-circle-exclamation",
+      "Please select color!",3
+    );
     return;
   }
-  let productID = productString.split("-")[0];
-  let inputproduct = document.querySelectorAll(
-    "#new-supply .list .placeholder .info .item:nth-child(2)"
+  let rows = document.querySelectorAll(
+    ".list-suply tr"
   );
-  for (let i = 0; i < inputProduct.length; i++) {
-    if (parseInt(inputProduct[i].innerHTML) == parseInt(productID)) {
+  for (let i = 1; i < rows.length; i++) {
+    let cells=rows[i].querySelectorAll('td')
+    if (parseInt(cells[0].innerText) == parseInt(newproductID)&&parseInt(cells[1].innerText) == parseInt(newColorID)) {
       customNotice(
         " fa-sharp fa-light fa-circle-exclamation",
         "product already exists",3
@@ -54,23 +38,16 @@ const addExistingproduct = () => {
       return;
     }
   }
-  let productObj = rawSuggestionsProduct.find((product) => product.idProduct == productID);
-  let input = document.querySelector(".modal-right .list");
-  let newPlaceholder = document.createElement("div");
-  newPlaceholder.classList.add("placeholder");
-  input.appendChild(newPlaceholder);
-  newPlaceholder.innerHTML = `
-      <div class="info">
-          <div class="item"></div>
-          <div class="item">${productObj.maproduct}</div>
-          <div class="item"><input type="text" oninput="updateTotalCost()"></div>
-          <div class="item"><input type="text" oninput="updateTotalCost()"></div>
-          <div class="item" onclick="deleteRowproduct(this)"><i class="fa-solid fa-xmark-large fa-sm" style="color: #f2623e;"></i></div>
-      </div>
-  `;
-  formatNumberOrder();
-  closeAddproduct();
-  document.querySelector("#my-input").value = "";
+  
+  $('.list-suply').append( `<tr> 
+  <td>`+newproductID+`</td>    
+  <td>`+newColorID+`</td>    
+  <td>`+productName+`</td>    
+  <td>`+colorName+`</td>   
+  <td><input type="number" class="form-control ProductPrice" id="p_name" required></td>     
+  <td><button type="button" class="btn btn-danger" style="height:40px" >Delete</button></td>
+  </tr>`);
+  $('#addNewSupply').modal('hide');
 };
 
 const deleteRowproduct = (input) => {

@@ -208,11 +208,11 @@ function ShowGioHang(){
         }
     });
 }
-function ShowChiTietPhieuNhap(){
+function ShowChiTietPhieuNhap(id){
     $.ajax({
         url:"./view/pages/admin/ChiTietPhieuNhap.php",
         method:"POST",
-        data:{id:1},
+        data:{id:id},
         success:function(data){
             $('.allContent-section').html(data);
         }

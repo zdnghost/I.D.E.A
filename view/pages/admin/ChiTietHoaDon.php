@@ -18,7 +18,7 @@
       </tr>
     </thead>
     <?php
-      include_once "../config/dbconnect.php";
+     
       $sql="SELECT * from chitiethoadon";
       $result=$dp-> excuteQuery($sql);
       if ($result-> num_rows > 0){
@@ -62,12 +62,12 @@
               <select id="category" class="form-control">
                 <option disabled selected>Chọn</option>
                 <?php
-                include_once "../config/dbconnect.php";
+               
                   $sql="SELECT * from hoadon";
                   $result = $dp-> excuteQuery($sql);
-
                   if ($result-> num_rows > 0){
                     while($row = $result-> fetch_assoc()){
+                      
                       echo"<option value='".$row['idhoadon']."'>".$row['idhoadon'] ."</option>";
                     }
                   }
@@ -76,10 +76,10 @@
             </div>
             <div class="form-group">
               <label>Mã sản phẩm:</label>
-              <select id="category" class="form-control">
+              <select id="category" class="form-control product">
                 <option disabled selected>Chọn</option>
                 <?php
-                include_once "../config/dbconnect.php";
+               
                   $sql="SELECT * from sanpham";
                   $result = $dp-> excuteQuery($sql);
 
@@ -93,10 +93,9 @@
             </div>
             <div class="form-group">
               <label>Mã mẫu:</label>
-              <select id="category" class="form-control">
+              <select id="category" class="form-control mau">
                 <option disabled selected>Chọn</option>
                 <?php
-                include_once "../config/dbconnect.php";
                   $sql="SELECT * from mau";
                   $result = $dp-> excuteQuery($sql);
 

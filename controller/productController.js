@@ -258,14 +258,11 @@ const deleteProduct = (productID) => {
     });
   };
   const uploadImg = () => {
-    let fileInput = document.createElement("input");
-    fileInput.type = "file";
-    fileInput.click();
-    fileInput.onchange = () => {
+    let fileInput = document.querySelector('#newColorProduct .imgsrc');
       let file_data = fileInput.files[0];
       let form_data = new FormData();
       form_data.append("file", file_data);
-      form_data.append("target_directory", "../data/");
+      form_data.append("target_directory", "../data/img");
       if (!file_data.type.startsWith("image/")) {
         customNotice(
           " fa-sharp fa-light fa-circle-exclamation",
@@ -285,8 +282,8 @@ const deleteProduct = (productID) => {
         processData: false,
         success: function (res) {
           if (res) {
-            document.querySelector(".img-container img").src =
-              "data/" + fileInput.files[0].name;
+            document.querySelector("#newColorProduct img").src =
+              "data/img" + fileInput.files[0].name;
             customNotice(
               " fa-circle-check",
               "Uploaded successfully",
@@ -300,16 +297,6 @@ const deleteProduct = (productID) => {
             );
         },
       });
-    };
-  };
-  const deleteImg = () => {
-    customNotice(
-      " fa-circle-check",
-      "Deleted successfully, change to default image!",
-      1
-    );
-    document.querySelector(".img-container img").src =
-      "data/" + "default.jfif";
   };
   const newphong = async () =>{
     if(!(await checknewphonginput())) return;
@@ -537,3 +524,67 @@ const deleteProduct = (productID) => {
     }
     return true
   }
+  const newProductColor=(id,name,phong,loai,price,describe)=>{
+    if(!checkColorProduct()) return;
+    let color=document.querySelector('#newColorProduct .color').value;
+      let albumImageRaw = document.querySelector(
+    "#newColorProduct .img"
+  ).src;
+  let Image = albumImageRaw.split("/").pop();
+    console.log(color,Image);
+    NewProductColor(id,name,phong,loai,price,describe,color,Image);
+  }
+  const checkColorProduct=()=>{
+    let color=document.querySelector('#newColorProduct .color');
+    if(color==""){
+      customNotice(
+        " fa-circle-check",
+        "Pleace, select Color!",
+        3
+      );
+      color.focus();
+      return false;
+    }
+    return true;
+  }
+  const NewProductColor = async (
+    productID,
+    productName,
+    phongID,
+    loaiID,
+    productPrice,
+    productDescribe,
+    colorID,
+    Productimage
+  ) => { 
+    $.ajax({
+      url: "util/product.php",
+      type: "POST",
+      data: {
+        productID: productID,
+        productName: productName,
+        phongID: phongID,
+        loaiID: loaiID,
+        productPrice: productPrice,
+        productDescribe: productDescribe.replace(/['"]/g, "\\$&"),
+        colorID:colorID,
+        active:1,
+        hinh:Productimage,
+        action: "addNewproduct",
+      },
+      success: function (res) {
+        if (res == "success") {
+          customNotice(
+            " fa-circle-check",
+            "Product successfully created",
+            1
+          );
+          ShowChiTietSanPham(productID);
+          document.getElementsByClassName("modal-backdrop")[0].remove();
+        }  else {
+          customNotice(" fa-sharp fa-light fa-circle-exclamation", res, 3);
+          console.log(res);
+        }
+      },
+    });
+  };

@@ -4,8 +4,13 @@
     $dp=new DataProvider();
 ?>
 <div >
-<td><button type="button" class="btn btn-danger" style="height:40px" onclick="ShowSanPham()">Back</button></td>
+
   <h2>Loại </h2>
+  <button type="button" class="btn btn-danger" style="height:40px" onclick="ShowSanPham()">Back</button>
+  <!-- Trigger the modal with a button -->
+  <button type="button" class="btn btn-secondary " style="height:40px" data-toggle="modal" data-target="#new-Loai">
+    Add Type
+  </button>
   <table class="table ">
     <thead>
       <tr>
@@ -16,7 +21,7 @@
     </thead>
     <?php
 
-      $sql="SELECT * from loai";
+      $sql="SELECT * from loai  where idloai!=0";
       $result=$dp-> excuteQuery($sql);
       if ($result-> num_rows > 0){
         while ($row=$result-> fetch_assoc()) {
@@ -33,10 +38,7 @@
       ?>
   </table>
 
-  <!-- Trigger the modal with a button -->
-  <button type="button" class="btn btn-secondary " style="height:40px" data-toggle="modal" data-target="#new-Loai">
-    Add 
-  </button>
+
 
   <!-- Modal -->
   <div class="modal fade" id="new-Loai" role="dialog">

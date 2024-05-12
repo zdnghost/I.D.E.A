@@ -6,16 +6,20 @@
 ?>
 <div >
   <h2>Sản Phẩm </h2>
-  <td><button type="button" class="btn btn-primary" style="height:40px" onclick="ShowMau()" >Màu</button></td>
-  <td><button type="button" class="btn btn-primary" style="height:40px" onclick="ShowPhong()">Phòng</button></td>
-  <td><button type="button" class="btn btn-primary" style="height:40px" onclick="ShowLoai()">Loại</button></td>
+  <button type="button" class="btn btn-primary" style="height:40px" onclick="ShowMau()" >Màu</button>
+  <button type="button" class="btn btn-primary" style="height:40px" onclick="ShowPhong()">Phòng</button>
+  <button type="button" class="btn btn-primary" style="height:40px" onclick="ShowLoai()">Loại</button>
+    <!-- Trigger the modal with a button -->
+    <button type="button" class="btn btn-secondary " style="height:40px" data-toggle="modal" data-target="#new-Product">
+    New Product
+  </button>
   <table class="table ">
     <thead>
       <tr>
         <th class="text-center">Mã sản phẩm</th>
         <th class="text-center">Tên sản phẩm</th>
-        <th class="text-center"> Phòng</th>
-        <th class="text-center"> Loại</th>
+        <th class="text-center">Phòng</th>
+        <th class="text-center">Loại</th>
         <th class="text-center">Giá</th>
         <th class="text-center" colspan="2">Action</th>
       </tr>
@@ -41,10 +45,7 @@
       ?>
   </table>
 
-  <!-- Trigger the modal with a button -->
-  <button type="button" class="btn btn-secondary " style="height:40px" data-toggle="modal" data-target="#new-Product">
-    New Product
-  </button>
+
 
   <!-- Modal -->
   <div class="modal fade" id="new-Product" role="dialog">
@@ -64,7 +65,7 @@
                 <option disabled selected value="">Chọn</option>
                 <?php
           
-                  $sql="SELECT * from phong";
+                  $sql="SELECT * from phong where idphong!=0";
                   $result = $dp-> excuteQuery($sql);
 
                   if ($result-> num_rows > 0){
@@ -81,7 +82,7 @@
                 <option disabled selected value="">Chọn</option>
                 <?php
           
-                  $sql="SELECT * from loai";
+                  $sql="SELECT * from loai where idloai!=0";
                   $result = $dp-> excuteQuery($sql);
 
                   if ($result-> num_rows > 0){

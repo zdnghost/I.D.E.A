@@ -4,8 +4,11 @@
     $dp=new DataProvider();
 ?>
 <div >
-<td><button type="button" class="btn btn-danger" style="height:40px" onclick="ShowSanPham()">Back</button></td>
-  <h2>Phòng </h2>
+<h2>Phòng </h2>
+<button type="button" class="btn btn-danger" style="height:40px" onclick="ShowSanPham()">Back</button>
+<button type="button" class="btn btn-secondary " style="height:40px" data-toggle="modal" data-target="#new-Phong">
+    Add Room
+  </button> 
   <table class="table ">
     <thead>
       <tr>
@@ -15,8 +18,7 @@
       </tr>
     </thead>
     <?php
-
-      $sql="SELECT * from phong";
+      $sql="SELECT * from phong  where idphong!=0";
       $result=$dp-> excuteQuery($sql);
       if ($result-> num_rows > 0){
         while ($row=$result-> fetch_assoc()) {
@@ -34,9 +36,7 @@
   </table>
 
   <!-- Trigger the modal with a button -->
-  <button type="button" class="btn btn-secondary " style="height:40px" data-toggle="modal" data-target="#new-Phong">
-    Add Product
-  </button>
+ 
 
   <!-- Modal -->
   <div class="modal fade" id="new-Phong" role="dialog">

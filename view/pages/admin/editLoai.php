@@ -6,8 +6,7 @@
     $ten=$dp->getNameID($id,2);
 ?>
 <div >
-<td><button type="button" class="btn btn-danger" style="height:40px" onclick="ShowLoai()">Back</button></td>
-<h2>Edit Loại</h4>
+<h2>Edit Loại</h2>
 
 <form id="update-Loai" onsubmit="updateItems()" enctype='multipart/form-data'>
     <div class="form-group">
@@ -19,6 +18,7 @@
       <input type="text" class="form-control loaiName" value="<?=$ten?>" >
     </div>
     <div class="form-group">
+    <button type="button" class="btn btn-danger" style="height:40px" onclick="ShowLoai()">Back</button>
       <button type="button" style="height:40px" class="btn btn-primary" onclick="updateloai()">Update Loại</button>
     </div>
   </form>

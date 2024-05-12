@@ -6,8 +6,8 @@
     $ten=$dp->getNameID($id,3);
 ?>
 <div >
-<td><button type="button" class="btn btn-danger" style="height:40px" onclick="ShowMau()">Back</button></td>
-<h2>Edit màu</h4>
+
+<h2>Edit màu</h2>
 
 <form id="update-Mau" onsubmit="updateItems()" enctype='multipart/form-data'>
 <div class="form-group">
@@ -19,6 +19,7 @@
       <input type="text" class="form-control mauName" value="<?=$ten?>"   >
     </div>
     <div class="form-group">
+      <button type="button" class="btn btn-danger" style="height:40px" onclick="ShowMau()">Back</button>
       <button type="button" style="height:40px" class="btn btn-primary" onclick="updatemau()">Update Màu</button>
     </div>
   </form>

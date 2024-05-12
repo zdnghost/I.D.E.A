@@ -7,7 +7,7 @@
 ?>
 <div >
 
-<h2>Edit Sản Phẩm</h4>
+<h2>Edit Sản Phẩm</h2>
 
 <form id="edit-product" onsubmit="updateItems()" enctype='multipart/form-data'>
 <div class="form-group">
@@ -19,13 +19,13 @@
               <select id="category " class="form-control phongID" >
                 <?php
           
-                  $sql="SELECT * from phong";
+                  $sql="SELECT * from phong where idphong!=0";
                   $result = $dp-> excuteQuery($sql);
 
                   if ($result-> num_rows > 0){
                     while($row = $result-> fetch_assoc()){
                       if($product['idphong']==$row['idphong'])
-                      echo"<option value='".$row['idphong']."' select>".$row['tenphong'] ."</option>";
+                      echo"<option value='".$row['idphong']."' selected>".$row['tenphong'] ."</option>";
                       else
                       echo"<option value='".$row['idphong']."'>".$row['tenphong'] ."</option>";
                     }
@@ -37,14 +37,12 @@
               <label> loại:</label>
               <select id="category" class="form-control loaiID" >
                 <?php
-          
-                  $sql="SELECT * from loai";
+                  $sql="SELECT * from loai where idloai!=0";
                   $result = $dp-> excuteQuery($sql);
-
                   if ($result-> num_rows > 0){
                     while($row = $result-> fetch_assoc()){
                       if($product['idloai']==$row['idloai'])
-                      echo"<option value='".$row['idloai']."' select>".$row['tenloai'] ."</option>";
+                      echo"<option value='".$row['idloai']."' selected>".$row['tenloai'] ."</option>";
                       else
                       echo"<option value='".$row['idloai']."'>".$row['tenloai'] ."</option>";
                     }

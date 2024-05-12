@@ -4,9 +4,13 @@
     $dp=new DataProvider();
 ?>
 <div >
-<td><button type="button" class="btn btn-danger" style="height:40px" onclick="ShowSanPham()">Back</button></td>
-
-  <h2>Màu </h2>
+<h2>Màu </h2>
+<button type="button" class="btn btn-danger" style="height:40px" onclick="ShowSanPham()">Back</button>
+<!-- Trigger the modal with a button -->
+<button type="button" class="btn btn-secondary " style="height:40px" data-toggle="modal" data-target="#new-Mau">
+    Add Color
+  </button>
+ 
   <table class="table ">
     <thead>
       <tr>
@@ -34,10 +38,7 @@
       ?>
   </table>
 
-  <!-- Trigger the modal with a button -->
-  <button type="button" class="btn btn-secondary " style="height:40px" data-toggle="modal" data-target="#new-Mau">
-    Add Product
-  </button>
+  
 
   <!-- Modal -->
   <div class="modal fade" id="new-Mau" role="dialog">

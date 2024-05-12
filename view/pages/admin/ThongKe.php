@@ -31,7 +31,7 @@ $dp = new DataProvider();
                     <h5 style="color:white;">
                     <?php
                        
-                       $sql="SELECT * from phong";
+                       $sql="SELECT * from phong where idphong!=0";
                        $result=$dp-> excuteQuery($sql);
                        $count=0;
                        if ($result-> num_rows > 0){

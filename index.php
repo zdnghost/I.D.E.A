@@ -6,7 +6,7 @@
     <title>Document</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <link rel="stylesheet" href="/view/styles/style.css">
+    <link rel="stylesheet" href="./view/styles/style.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -25,10 +25,10 @@
 
             <div class="collapse navbar-collapse justify-content-between" id="navbarSupportedContent">
               <ul class="nav nav-pills gap-2 navigation-links">
-                <li class="nav-item"><a href="index.php" aria-current="page">Home</a></li>
+                <li class="nav-item"><a href="index.php" aria-current="page" class="nav-link">Home</a></li>
                 <li class="nav-item"><a href="view/pages/user/shopping.php" class="nav-link">Shopping</a></li>
-                <li class="nav-item"><a href="view/pages/user/profile.php"  >My Account</a></li>
-                <li class="nav-item"><a href="view/pages/user/cart.php"  >Cart</a></li>
+                <li class="nav-item"><a href="view/pages/user/profile.php" class="nav-link" >My Account</a></li>
+                <li class="nav-item"><a href="view/pages/user/cart.php" class="nav-link" >Cart</a></li>
                 <li class="nav-item"><a href="view/pages/user/checkout.php" class="nav-link">Checkout</a></li>
               </ul>
     

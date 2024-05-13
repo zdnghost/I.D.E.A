@@ -17,26 +17,24 @@
       </tr>
     </thead>
     <?php
-      $sql="SELECT * from hoadon join nguoidung on hoadon.idnguoidung=nguoidung.idnguoidung";
+      $sql="SELECT * from hoadon";
       $result=$dp-> excuteQuery($sql);
       if ($result-> num_rows > 0){
         while ($row=$result-> fetch_assoc()) {
     ?>
     <tr>
       <td><?=$row["idhoadon"]?></td>
-      <td><?=$row["hoten"]?></td>      
+      <td><?=getName($row["idnguoidung"])?></td>      
       <td><?=$row["thoigiandat"]?></td>    
-      <?php if($row['trangthai']==1){?>
-      <td>chờ xử lý</td>
-      <?php }?>
-      <?php if($row['trangthai']==-1){?>
-      <td>hủy</td>
-      <?php }?>
-      <?php if($row['trangthai']==2){?>
-      <td>đã xử lý</td> 
-      <?php }?>
+      <?php if($row['trangthai']==1)
+      echo '<td>chờ xử lý</td>';
+       if($row['trangthai']==-1)
+      echo '<td>hủy</td>';
+       if($row['trangthai']==2)
+        echo ' <td>đã xử lý</td> ';
+      ?>
       <td><?=$row["diachigiaohang"]?></td>     
-      <td><button type="button" class="btn btn-primary" style="height:40px" onclick="editHoaDon('<?=$row['idhoadon']?>')">Edit</button></td>
+      <td><button type="button" class="btn btn-primary" style="height:40px" onclick="editHoaDon('<?=$row['idhoadon']?>')">Detail</button></td>
       </tr>
       <?php
           }
@@ -47,4 +45,13 @@
 
   
 </div>
-   
+   <?php
+   function getName($recordID)
+   {
+       global $dp;
+       $dp = new DataProvider();
+       $sql = "SELECT * FROM nguoidung  WHERE idnguoidung = $recordID";
+       $result = $dp->excuteQuery($sql);
+       return $result->fetch_assoc()['hoten'];
+   }
+   ?>

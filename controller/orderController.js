@@ -106,4 +106,26 @@ const order = async () => {
       type: "GET",
     });
   };
+  const confirmOrder=(orderID)=>{
+    $.ajax({
+      url: "util/order.php?orderID=" +orderID+ "&status="+2+"&action=updateOrder",
+      type: "PUT",success: function (res) {
+        if (res == "Not enough product quantity") {
+          customNotice(
+            "fa-sharp fa-light fa-circle-exclamation",
+            "Not enough product quantity!",
+            3
+          );
+        } else if (res != "Success") console.log(res);
+        else {
+          customNotice(
+            "fa-sharp fa-light fa-circle-check",
+            "Update successfully!",
+            1
+          );
+          showHoaDon();
+        }
+      },
+    });
+  }
   

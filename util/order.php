@@ -75,10 +75,11 @@ switch ($_SERVER["REQUEST_METHOD"]) {
         break;
       case 'updateOrder':
         $orderID = $_GET['orderID'];
-        $status = $_GET['status']; 
+        $status = $_GET['status'];
+        $confirmUser=$_SESSION['userID'] ;
         $f = true;
         if ($status == 2) {
-          $sql = "";
+          $sql = "SELECT * from chitiethoadon where idhoadon=".$orderID;  
           $result = $dp->excuteQuery($sql);
           $products = array();
           if ($result->num_rows > 0) {
@@ -87,10 +88,10 @@ switch ($_SERVER["REQUEST_METHOD"]) {
             }
           }
           foreach ($products as $product) {
-            $sql = "SELECT soLuong FROM sanpham where idsanpham=" . $product['product']." and idmau=".$product['color'];
+            $sql = "SELECT * FROM sanpham where idsanpham=" . $product['idsanpham']." and idmau=".$product['idmau'];
             $result = $dp->excuteQuery($sql);
             $sl = $result->fetch_assoc()['soLuong'];
-            if ($sl < $product['soLuong']) {
+            if ($sl < $product['soluong']) {
               $f = false;
               break;
             }
@@ -100,27 +101,19 @@ switch ($_SERVER["REQUEST_METHOD"]) {
           echo "Not enough product quantity";
           break;
         }
-
-
-        $sql = "UPDATE hoadon SET trangThai = " . $status . " WHERE idhoadon = " . $orderID;
+        $sql = "UPDATE hoadon SET trangthai=". $status.", idphutrach=".$confirmUser. " WHERE idhoadon = " . $orderID;
         $result1 = $dp->excuteQuery($sql);
         $error = false;
-        if ($status == "Shipping") {
-          $sql = "SELECT cthd.idsanpham,cthd.idmau, cthd.soLuong
-                  FROM chitiethoadon cthd join hoadon hd on cthd.idhoadon = hd.idhoadon
-                  WHERE hd.idhoadon = $orderID";
+        if ($status == 2) {
+          $sql = "SELECT * from chitiethoadon where idhoadon=".$orderID;
           $result = $dp->excuteQuery($sql);
-          $products = array();
           if ($result->num_rows > 0) {
-            while ($row = $result->fetch_assoc()) {
-              array_push($products, $row);
-            }
-          }
-          foreach ($products as $product) {
-            $sql = "UPDATE product SET soLuong = soLuong - " . $product['soLuong'] . " WHERE idsanpham = " . $product['product']." and idmau =".$product['color'];
-            $result = $dp->excuteQuery($sql);
-            if (!$result) {
-              $error = true;
+            while ($product = $result->fetch_assoc()) {
+              $sql = "UPDATE sanpham SET soLuong = soLuong - " . $product['soluong'] . " WHERE idsanpham = " . $product['idsanpham']." and idmau =".$product['idmau'];
+              $result = $dp->excuteQuery($sql);
+              if (!$result) {
+                $error = true;
+              }
             }
           }
         }

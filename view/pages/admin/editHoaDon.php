@@ -8,18 +8,29 @@
 ?>
 <div id="new-supply">
    <h2>Thông tin phiếu nhập </h2>
-   <button type="button" class="btn btn-danger" style="height:40px" onclick="Showhoadon()">Back</button>
+   
   <div class="form-group">
     <h4 for="qty">Mã phiếu nhập :</h4>
     <input type="text" class="form-control supplyID" id="p_desc" value="<?=$info['idhoadon']?>" disabled>
   </div>
   <div class="form-group">
-    <h4 for="qty">Người nhập :</h4>
+    <h4 for="qty">Người mua :</h4>
     <input type="text" class="form-control supplyID" id="p_desc" value="<?=$info['username']?>" disabled>
   </div>
   <div class="form-group">
-    <h4 for="qty">Ngày nhập :</h4>
+    <h4 for="qty">Ngày mua :</h4>
     <input type="text" class="form-control supplyID" id="p_desc" value="<?=$info['thoigiandat']?>" disabled>
+  </div>
+  
+  <div class="form-group">
+    <h4 for="qty">Người phụ trách :</h4>
+    <?php if($info['idphutrach']==""){?>
+    <input type="text" class="form-control supplyID" id="p_desc" disabled>
+      <?php }else{
+        $name=getName($info['idphutrach']);
+        ?>
+        <input type="text" class="form-control supplyID" id="p_desc" value="<?=$name['hoten']?>" disabled>
+        <?php }?>
   </div>
   <table class="table list-suply">
     <thead>
@@ -44,6 +55,8 @@
 
       <?php endfor; ?>
   </table>
+  <button type="button" class="btn btn-danger" style="height:40px" onclick="ShowHoaDon()">Back</button>
+ <?php if(checkCanAccess(7)&&$info['trangthai']==1){?> <button type="button" class="btn btn-primary" style="height:40px" onclick="confirmOrder(<?=$id?>)">Confirm</button><?php }?>
   <?php
 function getInfoOrder($recordID)
 {
@@ -68,5 +81,19 @@ function getProductInOrder($recordID)
         }
     }
     return $detailRecord;
+}
+function getName($recordID)
+{
+    global $dp;
+    $dp = new DataProvider();
+    $sql = "SELECT * FROM nguoidung  WHERE idnguoidung = $recordID";
+    $result = $dp->excuteQuery($sql);
+    return $result->fetch_assoc();
+}
+function checkCanAccess($permission)
+{   
+    if (in_array($permission, $_SESSION['permission']))
+        return true;
+    return false;
 }
 ?>

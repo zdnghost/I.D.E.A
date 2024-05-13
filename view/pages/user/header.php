@@ -5,8 +5,8 @@
       <header class="py-3 mb-3 border-bottom">
         <nav class="navbar navbar-expand-lg navbar-light">
           <div class="container-fluid gap-5 p-0 d-flex align-items-center ">
-            <a href="index.php" class="link-body-emphasis text-decoration-none">
-              <img src="/view/assets/img/logo.png" alt="" width="100px">
+            <a href="../../../index.php" class="link-body-emphasis text-decoration-none">
+              <img src="../../assets/img/logo.png" alt="" width="100px">
             </a>
 
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -15,10 +15,10 @@
 
             <div class="collapse navbar-collapse justify-content-between" id="navbarSupportedContent">
               <ul class="nav nav-pills gap-2 navigation-links">
-                <li class="nav-item"><a href="../../../index.php" aria-current="page">Home</a></li>
+                <li class="nav-item"><a href="../../../index.php" aria-current="page" class="nav-link">Home</a></li>
                 <li class="nav-item"><a href="shopping.php" class="nav-link">Shopping</a></li>
-                <li class="nav-item"><a href="profile.php"  >My Account</a></li>
-                <li class="nav-item"><a href="cart.php"  >Cart</a></li>
+                <li class="nav-item"><a href="profile.php" class="nav-link"  >My Account</a></li>
+                <li class="nav-item"><a href="cart.php" class="nav-link" >Cart</a></li>
                 <li class="nav-item"><a href="checkout.php" class="nav-link">Checkout</a></li>
               </ul>
     

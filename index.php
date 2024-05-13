@@ -6,7 +6,7 @@
     <title>Document</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <link rel="stylesheet" href="/view/styles/style.css">
+    <link rel="stylesheet" href="./view/styles/style.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -16,7 +16,7 @@
         <nav class="navbar navbar-expand-lg navbar-light">
           <div class="container-fluid gap-5 p-0 d-flex align-items-center ">
             <a href="index.php" class="link-body-emphasis text-decoration-none">
-              <img src="assets/img/logo.png" alt="" width="100px">
+              <img src="./view/assets/img/logo.png" alt="" width="100px">
             </a>
 
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -83,3 +83,6 @@
 </body>
 <script src="https://code.jquery.com/jquery-3.1.1.min.js" ></script>
 <script type="text/javascript" src="./view/pages/user/js/ajaxuser.js"></script>
+<script src="controller/loginController.js"></script>
+<script src="controller/productController.js"></script>
+<script src="controller/userController.js"></script>

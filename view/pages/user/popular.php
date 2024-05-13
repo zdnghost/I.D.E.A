@@ -4,9 +4,9 @@
         <div class="col-4 col-md-3 col-lg-2">        
           <div class="product-card card text-black">
             <i class="bi bi-heart pt-2 px-2"></i>
-            <a href="product-detail.php" class="link-body-emphasis text-decoration-none">
+            <a href="view/pages/user/product-detail.php" class="link-body-emphasis text-decoration-none">
               <img
-              src="/view/assets/img/products/revskaer-3-seat-conversation-set-outdoor-anthracite-froesoen-duvholmen-dark-gray__1240171_pe919187_s5.png"
+              src="./view/assets/img/products/revskaer-3-seat-conversation-set-outdoor-anthracite-froesoen-duvholmen-dark-gray__1240171_pe919187_s5.png"
               class="product-img card-img-top img-fluid"
               alt=""
               />
@@ -27,7 +27,7 @@
         <div class="col-4 col-md-3 col-lg-2">        
           <div class="product-card card text-black">
             <i class="bi bi-heart pt-2 px-2"></i>
-            <a href="product-detail.php" class="link-body-emphasis text-decoration-none">
+            <a href="view/pages/user/product-detail.php" class="link-body-emphasis text-decoration-none">
               <img
               src="/view/assets/img/products/revskaer-3-seat-conversation-set-outdoor-anthracite-froesoen-duvholmen-dark-gray__1240171_pe919187_s5.png"
               class="product-img card-img-top img-fluid"

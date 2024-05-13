@@ -17,8 +17,8 @@
               <ul class="nav nav-pills gap-2 navigation-links">
                 <li class="nav-item"><a href="../../../index.php" aria-current="page">Home</a></li>
                 <li class="nav-item"><a href="shopping.php" class="nav-link">Shopping</a></li>
-                <li class="nav-item"><a href="profile.php">My Account</a></li>
-                <li class="nav-item"><a href="cart.php">Cart</a></li>
+                <li class="nav-item"><a href="profile.php"  >My Account</a></li>
+                <li class="nav-item"><a href="cart.php"  >Cart</a></li>
                 <li class="nav-item"><a href="checkout.php" class="nav-link">Checkout</a></li>
               </ul>
     

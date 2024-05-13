@@ -8,8 +8,8 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
         <link rel="stylesheet" href="./view/styles/admin.css"></link>
         <script src="https://code.jquery.com/jquery-3.1.1.min.js" ></script>
-        
-       
+        <script type="text/javascript" src="./view/pages/admin/assets/js/ajaxWork.js"></script>    
+    <script type="text/javascript" src="./view/pages/admin/assets/js/script.js"></script>
   </head>
 </head>
 <body>
@@ -24,7 +24,6 @@
             <?php
             include "./view/pages/admin/sidebar.php";
              ?>
-
     <div id="main-content" class="container allContent-section py-4" >
 
     </div>
@@ -38,9 +37,7 @@
    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" ></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"></script>
     <script src="view/js/notice.js"></script>
-    <script type="text/javascript" src="./view/pages/admin/assets/js/ajaxWork.js"></script>    
-    <script type="text/javascript" src="./view/pages/admin/assets/js/script.js"></script>
-    <!--controller-->
+  <!--controller-->
     <script src="controller/managerAccountController.js"></script>
     <script src="controller/managerOrderController.js"></script>
     <script src="controller/loginController.js"></script>

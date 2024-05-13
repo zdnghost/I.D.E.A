@@ -347,7 +347,6 @@ function ChangePay(id){
    });
 }
 
-
 //add product data
 function addItems(){
     var p_name=$('#p_name').val();

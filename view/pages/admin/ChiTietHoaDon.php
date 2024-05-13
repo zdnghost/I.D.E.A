@@ -1,137 +1,69 @@
 <?php
    session_start();
    require("../../../util/dataProvider.php");
-    $dp=new DataProvider();
+  $dp=new DataProvider();
+  $id=$_POST['id'];
+  $info = getInfoOrder($id);
+  $products = getProductInOrder($id);
 ?>
-<div >
-  <h2>Chi Tiết Hóa Đơn </h2>
-  <table class="table ">
+<div id="new-supply">
+   <h2>Thông tin phiếu nhập </h2>
+   <button type="button" class="btn btn-danger" style="height:40px" onclick="ShowPhieuNhap()">Back</button>
+  <div class="form-group">
+    <h4 for="qty">Mã phiếu nhập :</h4>
+    <input type="text" class="form-control supplyID" id="p_desc" value="<?=$info['idphieunhap']?>" disabled>
+  </div>
+  <div class="form-group">
+    <h4 for="qty">Người nhập :</h4>
+    <input type="text" class="form-control supplyID" id="p_desc" value="<?=$info['username']?>" disabled>
+  </div>
+  <div class="form-group">
+    <h4 for="qty">Ngày nhập :</h4>
+    <input type="text" class="form-control supplyID" id="p_desc" value="<?=$info['ngaynhap']?>" disabled>
+  </div>
+  <table class="table list-suply">
     <thead>
       <tr>
-        <th class="text-center">Mã hóa đơn</th>
-        <th class="text-center">Mã sản phẩm</th>
-        <th class="text-center">Mã mẫu</th>
+        <th class="text-center">No.</th>
+        <th class="text-center">Tên Sản Phẩm</th>
+        <th class="text-center">Màu</th>
         <th class="text-center">Số lượng</th>
-        <th class="text-center">Đơn giá</th>
-        <th class="text-center">Thành Tiền</th>
-        <th class="text-center" colspan="2">Action</th>
       </tr>
     </thead>
-    <?php
-     
-      $sql="SELECT * from chitiethoadon";
-      $result=$dp-> excuteQuery($sql);
-      if ($result-> num_rows > 0){
-        while ($row=$result-> fetch_assoc()) {
-    ?>
-    <tr>
-      <td><?=$row["idhoadon"]?></td>
-      <td><?=$row["idsanpham"]?></td>      
-      <td><?=$row["idmau"]?></td>
-      <td><?=$row["soluong"]?></td>
-      <td><?=$row["dongia"]?></td>
-      <td><?=$row["thanhtien"]?></td>
-      <td><button type="button" class="btn btn-primary" style="height:40px" onclick="editChiTietHoaDon('<?=$row['idhoadon']?>')">Edit</button></td>
-      <td><button type="button" class="btn btn-danger" style="height:40px" >Delete</button></td>
+    <?php for ($i = 0; $i < count($products); $i++): ?>
+      <tr>
+        <td><?=$i+1?></td>
+        <td><?=$products[$i]['tensanpham']?></td>
+        <td><?=$products[$i]['tenMau']?></td>
+        <td><?=$products[$i]['soluong']?></td>
+
       </tr>
-      <?php
-          }
-        }
-      ?>
+
+      <?php endfor; ?>
   </table>
-
-  <!-- Trigger the modal with a button -->
-  <button type="button" class="btn btn-secondary " style="height:40px" data-toggle="modal" data-target="#myModal">
-    Add 
-  </button>
-
-  <!-- Modal -->
-  <div class="modal fade" id="myModal" role="dialog">
-    <div class="modal-dialog">
-    
-      <!-- Modal content-->
-      <div class="modal-content">
-        <div class="modal-header">
-          <h4 class="modal-title">New Chi tiết hóa đơn</h4>
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-        </div>
-        <div class="modal-body">
-          <form  enctype='multipart/form-data' onsubmit="addItems()" method="POST">
-          <div class="form-group">
-              <label>Mã hóa đơn:</label>
-              <select id="category" class="form-control">
-                <option disabled selected>Chọn</option>
-                <?php
-               
-                  $sql="SELECT * from hoadon";
-                  $result = $dp-> excuteQuery($sql);
-                  if ($result-> num_rows > 0){
-                    while($row = $result-> fetch_assoc()){
-                      
-                      echo"<option value='".$row['idhoadon']."'>".$row['idhoadon'] ."</option>";
-                    }
-                  }
-                ?>
-              </select>
-            </div>
-            <div class="form-group">
-              <label>Mã sản phẩm:</label>
-              <select id="category" class="form-control product">
-                <option disabled selected>Chọn</option>
-                <?php
-               
-                  $sql="SELECT * from sanpham";
-                  $result = $dp-> excuteQuery($sql);
-
-                  if ($result-> num_rows > 0){
-                    while($row = $result-> fetch_assoc()){
-                      echo"<option value='".$row['idsanpham']."'>".$row['idsanpham'] ."</option>";
-                    }
-                  }
-                ?>
-              </select>
-            </div>
-            <div class="form-group">
-              <label>Mã mẫu:</label>
-              <select id="category" class="form-control mau">
-                <option disabled selected>Chọn</option>
-                <?php
-                  $sql="SELECT * from mau";
-                  $result = $dp-> excuteQuery($sql);
-
-                  if ($result-> num_rows > 0){
-                    while($row = $result-> fetch_assoc()){
-                      echo"<option value='".$row['idmau']."'>".$row['idmau'] ."</option>";
-                    }
-                  }
-                ?>
-              </select>
-            </div>
-            <div class="form-group">
-              <label for="price">Số lượng:</label>
-              <input type="number" class="form-control" id="p_price" required>
-            </div>
-            <div class="form-group">
-              <label for="price">Đơn giá:</label>
-              <input type="number" class="form-control" id="p_price" required>
-            </div>
-            <div class="form-group">
-              <label for="price">Thành Tiền:</label>
-              <input type="number" class="form-control" id="p_price" required>
-            </div>
-            
-          </form>
-
-        </div>
-       <div class="modal-footer">
-              <button  class="btn btn-secondary" id="upload" style="height:40px">Add Item</button>
-          <button type="button" class="btn btn-default" data-dismiss="modal" style="height:40px">Close</button>
-        </div>
-      </div>
-      
-    </div>
-  </div>
-
-  
-</div>
-   
+  <?php
+function getInfoSupply($recordID)
+{
+    global $dp;
+    $dp = new DataProvider();
+    $sql = "SELECT * FROM phieunhap join taikhoan on idnguoinhap=idnguoidung WHERE idphieunhap = $recordID";
+    $result = $dp->excuteQuery($sql);
+    return $result->fetch_assoc();
+}
+function getProductInSupply($recordID)
+{
+    global $dp;
+    $dp = new DataProvider();
+    $sql = "SELECT * FROM chitietphieunhap join sanpham on chitietphieunhap.idsanpham=sanpham.idsanpham and chitietphieunhap.idmau=sanpham.idmau 
+    join mau on chitietphieunhap.idmau=mau.idmau
+    WHERE idphieunhap = $recordID";
+    $result = $dp->excuteQuery($sql);
+    $detailRecord = array();
+    if ($result->num_rows > 0) {
+        while ($row = $result->fetch_assoc()) {
+            array_push($detailRecord, $row);
+        }
+    }
+    return $detailRecord;
+}
+?>

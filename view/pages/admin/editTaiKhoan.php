@@ -23,20 +23,23 @@
               <select id="category" class="form-control roleAccount" <?php if ($account['vaitro'] == 1) {
                     echo 'disabled';
                 } ?> >
-                
                 <?php
-
-                  $sql="SELECT * from vaitro where idvaitro!=1";
+                if ($account['vaitro'] != 1){
+                  $sql="SELECT * from vaitro where idvaitro>1";
                   $result = $dp-> excuteQuery($sql);
 
                   if ($result-> num_rows > 0){
                     while($row = $result-> fetch_assoc()){
-                      if($account['vaitro'])
-                      echo"<option selected value=".$row['vaitro'].">".$row['tenvaitro']."</option>";
+                      if($account['vaitro']==$row['idvaitro'])
+                      echo'<option selected value="'.$row['idvaitro'].'">'.$row['tenvaitro'].'</option>';
                       else
-                      echo"<option value='".$row['idvaitro']."'>".$row['tenvaitro'] ."</option>";
+                      echo'<option value="'.$row['idvaitro'].'">'.$row['tenvaitro'] .'</option>';
                     }
                   }
+                }
+                else{
+                  echo'<option selected value="1">khachhang</option>';
+                }
                 ?>
               </select>
             </div>

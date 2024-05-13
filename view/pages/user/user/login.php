@@ -1,5 +1,5 @@
-
 <head>
+<html>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
@@ -10,80 +10,38 @@
 </head>
 <body>
     <!-- Header Section Starts -->
-    <div class="container" id="header-section">
-      <header class="py-3 mb-3 border-bottom">
-        <nav class="navbar navbar-expand-lg navbar-light">
-          <div class="container-fluid gap-5 p-0 d-flex align-items-center ">
-            <a href="index.php" class="link-body-emphasis text-decoration-none">
-              <img src="/view/assets/img/logo.png" alt="" width="100px">
-            </a>
-
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <div class="collapse navbar-collapse justify-content-between" id="navbarSupportedContent">
-              <ul class="nav nav-pills gap-2 navigation-links">
-                <li class="nav-item"><a href="index.php" class="nav-link" aria-current="page">Home</a></li>
-                <li class="nav-item"><a href="shopping.php" class="nav-link">Shopping</a></li>
-                <li class="nav-item"><a href="profile.php" class="nav-link">My Account</a></li>
-                <li class="nav-item"><a href="cart.php" class="nav-link">Cart</a></li>
-                <li class="nav-item"><a href="checkout.php" class="nav-link">Checkout</a></li>
-              </ul>
-    
-              <ul class="nav nav-pills navigation-icons">
-                <li class="nav-item"><a href="cart.php" class="nav-link">
-                    <i class="bi bi-bag" style="font-size: 16px;"></i>
-                </a></li>
-                <li class="nav-item"><a href="favourite.php" class="nav-link">
-                    <i class="bi bi-heart" style="font-size: 16px;"></i>
-                </a></li>
-                <li class="nav-item"><a href="profile.php" class="nav-link">
-                    <i class="bi bi-person" style="font-size: 16px;"></i>
-                </a></li>
-              </ul>
-            </div>
-          </div>
-        </nav>
-      </header>
-    </div>
+    <?php
+        include'header.php'
+    ?>
     <!-- Header Section Ends -->  
 
 
-    <!-- Register Section Starts -->
+    <!-- Login Section Starts -->
     <div class="container py-5 text-center border-bottom" style="max-width: 500px;">
-        <main class="form-login">
-            <form>
+        <main>
+            <form class="login-form">
               <img class="mb-3" src="/view/assets/img/logo.png" alt="" width="auto" height="60px">
-              <h2 class="mb-3 fw-normal">Create your new account</h2>
+              <h2 class="mb-3 fw-normal">Please login</h2>
           
               <div class="form-floating mb-2">
                 <input type="text" class="form-control" id="username" name="username" placeholder="Username">
                 <label for="floatingInput">Username</label>
               </div>
-              <div class="form-floating mb-2">
-                <input type="email" class="form-control" id="email" name="email" placeholder="Email">
-                <label for="floatingInput">Email</label>
-              </div>
-              <div class="form-floating mb-2">
+              <div class="form-floating">
                 <input type="password" class="form-control" id="password" name="password" placeholder="Password">
                 <label for="floatingPassword">Password</label>
               </div>
-              <div class="form-floating">
-                <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" placeholder="Confirm password">
-                <label for="floatingPassword">Confirm password</label>
-              </div>
-          
-              <div class="d-flex align-items-center justify-content-center pb-4 mt-4">
-                <p class="mb-0 me-2">Already have an account?</p>
-                <a class="login-btn btn btn-outline-primary" href="login.php" role="button">Login here</a>
-              </div>
 
-              <button class="w-100 btn btn-lg btn-warning" type="submit">Register</button>
+              <div class="d-flex align-items-center justify-content-center py-4">
+                <p class="mb-0 me-2">Don't have an account?</p>
+                <a class="create-new-btn btn btn-outline-primary" onclick="location.href='location.href='register.php''" role="button">Create new</a>
+              </div>
+              <button class="w-100 btn btn-lg btn-warning" type="submit" onclick="login()">Login</button>
             </form>
           </main>
     </div>
-    <!-- Register Section Ends -->
+    
+    <!-- Login Section Ends -->
 
 
     <!-- Footer Section Starts -->
@@ -141,3 +99,4 @@
   </div>
   <!-- Footer Section Ends -->
 </body>
+</html>

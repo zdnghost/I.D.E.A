@@ -5,92 +5,65 @@
     <title>Document</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="/view/styles/style.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </head>
 <body>
     <!-- Header Section Starts -->
-    <div class="container" id="header-section">
-      <header class="py-3 mb-3 border-bottom">
-        <nav class="navbar navbar-expand-lg navbar-light">
-          <div class="container-fluid gap-5 p-0 d-flex align-items-center ">
-            <a href="index.php" class="link-body-emphasis text-decoration-none">
-              <img src="assets/img/logo.png" alt="" width="100px">
-            </a>
-
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <div class="collapse navbar-collapse justify-content-between" id="navbarSupportedContent">
-              <ul class="nav nav-pills gap-2 navigation-links">
-                <li class="nav-item"><a href="index.php" class="nav-link" aria-current="page">Home</a></li>
-                <li class="nav-item"><a href="shopping.php" class="nav-link">Shopping</a></li>
-                <li class="nav-item"><a href="profile.php" class="nav-link">My Account</a></li>
-                <li class="nav-item"><a href="cart.php" class="nav-link">Cart</a></li>
-                <li class="nav-item"><a href="checkout.php" class="nav-link">Checkout</a></li>
-              </ul>
-    
-              <ul class="nav nav-pills navigation-icons">
-                <li class="nav-item"><a href="cart.php" class="nav-link">
-                    <i class="bi bi-bag" style="font-size: 16px;"></i>
-                </a></li>
-                <li class="nav-item"><a href="favourite.php" class="nav-link">
-                    <i class="bi bi-heart" style="font-size: 16px;"></i>
-                </a></li>
-                <li class="nav-item"><a href="profile.php" class="nav-link">
-                    <i class="bi bi-person" style="font-size: 16px;"></i>
-                </a></li>
-              </ul>
-            </div>
-          </div>
-        </nav>
-      </header>
-    </div>
+    <?php
+        include'header.php'
+    ?>
     <!-- Header Section Ends -->  
 
 
-    <!-- Profile Section Starts -->
-    <div class="container">
+    <!-- Checkout Section Starts -->
+    <div class="container py-5" id="checkout-section">
         <div class="row g-5">
-          <div class="col-4 d-flex flex-column flex-shrink-0 p-3 bg-light" style="width: 280px;">
-            <ul class="nav nav-pills flex-column mb-auto">
-              <li class="nav-item">
-                <a href="#" class="nav-link link-dark">
-                  <svg class="bi me-2" width="16" height="16"><use xlink:href="#home"></use></svg>
-                  Profile
-                </a>
-              </li>
-              <li>
-                <a href="#" class="nav-link active" aria-current="page">
-                  <svg class="bi me-2" width="16" height="16"><use xlink:href="#speedometer2"></use></svg>
-                  Edit profile
-                </a>
-              </li>
-              <li>
-                <a href="#" class="nav-link link-dark">
-                  <svg class="bi me-2" width="16" height="16"><use xlink:href="#table"></use></svg>
-                  Orders
-                </a>
-              </li>
-              <li>
-                <a href="#" class="nav-link link-dark">
-                  <svg class="bi me-2" width="16" height="16"><use xlink:href="#grid"></use></svg>
-                  Favourites
-                </a>
-              </li>
-            </ul>
-            <hr>
-
-            <button type="button" class="btn btn-outline-danger">
-              <i class="bi bi-box-arrow-left" style="font-size: 16px;"></i>
-              Sign out
-            </button>
-          </div>
-            <div class="col-8 mx-auto">
-              <h4 class="mb-3">Edit Profile</h4>
+            <div class="col-md-5 col-lg-4 order-md-last">
+              <h4 class="d-flex justify-content-between align-items-center mb-3">
+                <span>Your cart</span>
+                <span class="badge bg-warning rounded-pill">3</span>
+              </h4>
+              <ul class="list-group mb-3">
+                <li class="list-group-item d-flex justify-content-between lh-sm">
+                  <div>
+                    <h6 class="my-0">Product name</h6>
+                    <small class="text-success fw-bold">$4</small>
+                    <span>x 3</strong>
+                  </div>
+                  <span class="text-success fw-bold">$12</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between lh-sm">
+                  <div>
+                    <h6 class="my-0">Product name</h6>
+                    <small class="text-success fw-bold">$4</small>
+                    <span>x 3</strong>
+                  </div>
+                  <span class="text-success fw-bold">$12</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between lh-sm">
+                  <div>
+                    <h6 class="my-0">Product name</h6>
+                    <small class="text-success fw-bold">$4</small>
+                    <span>x 3</strong>
+                  </div>
+                  <span class="text-success fw-bold">$12</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between">
+                  <strong>Total (USD)</strong>
+                  <strong>$20</strong>
+                </li>
+              </ul>
+              <ul class="nav d-flex justify-content-between">
+                <li class="nav-item"><a href="cart.php" class="nav-link px-0">Change your cart</a></li>
+                <li class="nav-item"><a href="shop.php" class="nav-link px-0">Continue to shopping</a></li>
+              </ul>
+            </div>
+            <div class="col-md-7 col-lg-8">
+              <h4 class="mb-3">Billing address</h4>
               <form class="needs-validation" novalidate="">
                 <div class="row g-3">
-                  <div class="col-md-6">
+                  <div class="col-12">
                     <label for="firstName" class="form-label">Fullname</label>
                     <input type="text" class="form-control" id="fullName" placeholder="Enter your fullname" value="" required="">
                     <div class="invalid-feedback">
@@ -98,41 +71,42 @@
                     </div>
                   </div>
       
-                  <div class="col-md-6">
+                  <div class="col-12">
                     <label for="username" class="form-label">Username</label>
                     <div class="input-group has-validation">
                       <span class="input-group-text">@</span>
-                      <input type="text" class="form-control" id="username" placeholder="Username">
+                      <input type="text" class="form-control" id="username" placeholder="Username" required="">
+                    <div class="invalid-feedback">
+                        Your username is required.
+                      </div>
                     </div>
                   </div>
       
                   <div class="col-12">
-                    <label for="phonenumber" class="form-label">Phone number </label>
-                    <input type="text" class="form-control" id="phonenumber" placeholder="0123456789">
+                    <label for="email" class="form-label">Phone number </label>
+                    <input type="text" class="form-control" id="phonenumber" placeholder="0123456789" required>
                     <div class="invalid-feedback">
                       Please enter a valid phone number for contact about shipping status.
                     </div>
                   </div>
-
-                  <div class="col-12">
-                    <label for="email" class="form-label">Email </label>
-                    <input type="email" class="form-control" id="email" placeholder="example@email.com">
-                  </div>
       
                   <div class="col-12">
                     <label for="address" class="form-label">Address</label>
-                    <input type="text" class="form-control" id="address" placeholder="1234 Main St">
+                    <input type="text" class="form-control" id="address" placeholder="1234 Main St" required="">
+                    <div class="invalid-feedback">
+                      Please enter your shipping address.
+                    </div>
                   </div>
                 </div>
-
+      
                 <hr class="my-4">
       
-                <button class="w-100 btn btn-primary btn-md" type="submit">Save changes</button>
+                <button class="w-100 btn btn-warning btn-lg" type="submit">Proceed to checkout</button>
               </form>
             </div>
           </div>
     </div>
-    <!-- Profile Section Ends -->
+    <!-- Checkout Section Ends -->
 
 
     <!-- Footer Section Starts -->

@@ -52,7 +52,7 @@
     content: "\f06a\f06a";
   }
   #notice {
-    position: absolute;
+    position: fixed;
     top: 7vh;
     right: calc(0px + 3vw);
     z-index: 2000;
@@ -63,7 +63,7 @@
     margin-bottom: 10px;
     background-color: var(--ora);
     border-radius: 0 0 15px 15px;
-    padding: 15px 50px;
+    padding: 15px 15px;
     display: flex;
     justify-content: center;
     align-items: center;

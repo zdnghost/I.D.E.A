@@ -6,10 +6,11 @@
 <div >
   <h2>Tài Khoản </h2>
     <!-- Trigger the modal with a button -->
+    <?php if(checkCanAccess(11)){?>
     <button type="button" class="btn btn-secondary " style="height:40px" data-toggle="modal" data-target="#new-account">
     New Account
   </button>
-  
+  <?php }?>
   <table class="table ">
     <thead>
       <tr>
@@ -18,11 +19,13 @@
         <th class="text-center">Vai trò</th>
         <th class="text-center">Họ tên</th>
         <th class="text-center">Email</th>
-        <th class="text-center" colspan="1">Action</th>
+        <?php if(checkCanAccess(12)){?>
+        <th class="text-center" >Action</th>
+        <?php }?>
       </tr>
     </thead>
     <?php
-      $sql="SELECT * from taikhoan tk join nguoidung ng on tk.idnguoidung=ng.idnguoidung where trangthai=1 ";
+      $sql="SELECT * from taikhoan tk join nguoidung ng on tk.idnguoidung=ng.idnguoidung join vaitro on vaitro=idvaitro where trangthai=1 ";
       $result=$dp-> excuteQuery($sql);
       if ($result-> num_rows > 0){
         while ($row=$result-> fetch_assoc()) {
@@ -30,11 +33,13 @@
     <tr>
       <td><?=$row["username"]?></td>       
       <td><?=$row["ngaytao"]?></td>
-      <td><?=$row["vaitro"]?></td>
+      <td><?=$row["tenvaitro"]?></td>
       <td><?=$row["hoten"]?></td>
       <td><?=$row["email"]?></td>
+      <?php if(checkCanAccess(12)){?>
       <td><button type="button" class="btn btn-primary" style="height:40px" onclick="editTaiKhoan('<?=$row['username']?>')">Edit</button></td>
-      </tr>
+        <?php }?>
+    </tr>
       <?php
           }
         }
@@ -69,7 +74,7 @@
               <select id="category " class="role form-control">
                 <option disabled value="NaN" selected>Chọn</option>
                 <?php
-                  $sql="SELECT * from vaitro";
+                  $sql="SELECT * from vaitro where idvaitro>1";
                   $result = $dp-> excuteQuery($sql);
 
                   if ($result-> num_rows > 0){
@@ -105,3 +110,11 @@
     </div>
   </div>
 </div>
+<?php
+function checkCanAccess($permission)
+{   
+    if (in_array($permission, $_SESSION['permission']))
+        return true;
+    return false;
+}
+?>

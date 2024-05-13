@@ -10,7 +10,7 @@
     
     <div class="user-cart">  
         <?php           
-        if(isset($_SESSION['user_id'])){
+        if(isset($_SESSION['userID'])){
           ?>
           <a href="" style="text-decoration:none;">
             <i class="fa fa-user mr-5" style="font-size:30px; color:#fff;" aria-hidden="true"></i>

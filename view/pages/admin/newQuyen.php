@@ -48,3 +48,11 @@
     </div>
   </form>
     </div>
+    <?php
+function checkCanAccess($permission)
+{   
+    if (in_array($permission, $_SESSION['permission']))
+        return true;
+    return false;
+}
+?>

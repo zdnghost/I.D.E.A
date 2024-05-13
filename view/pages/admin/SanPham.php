@@ -6,13 +6,17 @@
 ?>
 <div >
   <h2>Sản Phẩm </h2>
+  <?php if(checkCanAccess(3)||checkCanAccess(4)){?>
   <button type="button" class="btn btn-primary" style="height:40px" onclick="ShowMau()" >Màu</button>
   <button type="button" class="btn btn-primary" style="height:40px" onclick="ShowPhong()">Phòng</button>
   <button type="button" class="btn btn-primary" style="height:40px" onclick="ShowLoai()">Loại</button>
+  <?php }?>
     <!-- Trigger the modal with a button -->
+    <?php if(checkCanAccess(3)){?>
     <button type="button" class="btn btn-secondary " style="height:40px" data-toggle="modal" data-target="#new-Product">
     New Product
   </button>
+  <?php }?>
   <table class="table ">
     <thead>
       <tr>
@@ -21,7 +25,7 @@
         <th class="text-center">Phòng</th>
         <th class="text-center">Loại</th>
         <th class="text-center">Giá</th>
-        <th class="text-center" colspan="2">Action</th>
+        <th class="text-center"<?php if(checkCanAccess(4)){?> colspan="2"<?php }?>>Action</th>
       </tr>
     </thead>
     <?php
@@ -37,7 +41,9 @@
       <td><?=$row["tenloai"]?></td>
       <td><?=$row["gia"]?></td>   
       <td><button type="button" class="btn btn-primary" style="height:40px" onclick="ShowChiTietSanPham('<?=$row['idsanpham']?>')">Detail</button></td>
-      <td><button type="button" class="btn btn-primary" style="height:40px" onclick="itemEditForm('<?=$row['idsanpham']?>')">Edit</button></td>
+      <?php if(checkCanAccess(4)){?>
+        <td><button type="button" class="btn btn-primary" style="height:40px" onclick="itemEditForm('<?=$row['idsanpham']?>')">Edit</button></td>
+        <?php }?>
       </tr>
       <?php
           }
@@ -121,6 +127,10 @@
   
 </div>
 <?php
-
-
+function checkCanAccess($permission)
+{   
+    if (in_array($permission, $_SESSION['permission']))
+        return true;
+    return false;
+}
 ?>

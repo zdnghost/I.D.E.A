@@ -2,10 +2,10 @@
    session_start();
    require("../../../util/dataProvider.php");
     $dp=new DataProvider();
-    $_SESSION['permission']=[13,14,15,16];
 ?>
 <div >
-  <h2>Quyền </h2><?php if (checkCanAccess(13)): ?> 
+  <h2>Quyền </h2>
+  <?php if (checkCanAccess(14)): ?> 
   <button type="button" class="btn btn-secondary " style="height:40px" onclick="newQuyen()">
     New role
   </button><?php endif ?>

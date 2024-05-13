@@ -13,9 +13,11 @@
   <h4 class="modal-title">Mã sản phẩm : <?=$product['idsanpham']?></h4>
   <h4 class="modal-title">Tên sản phẩm : <?=$product['tensanpham']?></h4>
     <!-- Trigger the modal with a button -->
+    <?php if(checkCanAccess(3)){?>
     <button type="button" class="btn btn-secondary " style="height:40px" data-toggle="modal" data-target="#newColorProduct">
     New Color Product
   </button>
+  <?php }?>
   <table class="table ">
     <thead>
       <tr>
@@ -23,7 +25,7 @@
         <th class="text-center">Số lượng</th>
         <th class="text-center">Hình</th>
         <th class="text-center">Trạng thái</th>
-        <th class="text-center" colspan="2">Action</th>
+        <th class="text-center" <?php if(checkCanAccess(5)){?>colspan="2"<?php }?>>Action</th>
       </tr>
     </thead>
     <?php
@@ -37,12 +39,16 @@
       <td><?=$row["soLuong"]?></td> 
       <td><img src="data/img/<?=$row['hinh']?>" class="dataimg"></td>
       <?php
+        if(checkCanAccess(5)){
         if($row['trangthai']==1)
           echo '<td>Hoạt động</td><td><button type="button" class="btn btn-danger" style="height:40px" onclick="deleteColorID('.$id.','.$row['idmau'].')">Dừng hoạt động</button></td>';
         else
           echo '<td>Ngưng Hoạt động</td><td><button type="button" class="btn btn-primary" style="height:40px" onclick="restoreColorID('.$id.','.$row['idmau'].')">Hoạt động</button></td>';
+        }
       ?>
+      <?php if(checkCanAccess(4)){?>
       <td><button type="button" class="btn btn-primary" style="height:40px" onclick="editchitietsanpham(<?=$id?>,<?=$row['idmau']?>)">Edit</button></td>
+      <?php }?>
       </tr>
       <?php
           }
@@ -101,4 +107,10 @@
   
 </div>
 <?php
-    ?>
+function checkCanAccess($permission)
+{   
+    if (in_array($permission, $_SESSION['permission']))
+        return true;
+    return false;
+}
+?>

@@ -7,9 +7,11 @@
 <div >
   <h2>Phiếu Nhập </h2>
     <!-- Trigger the modal with a button -->
+    <?php if(checkCanAccess(8)){?>
     <button type="button" class="btn btn-secondary " style="height:40px" onclick="ShowChiTietPhieuNhap(<?=$id?>)">
     New Supply
   </button>
+  <?php }?>
   <table class="table ">
     <thead>
       <tr>
@@ -42,4 +44,11 @@
 
   
 </div>
-   
+<?php
+function checkCanAccess($permission)
+{   
+    if (in_array($permission, $_SESSION['permission']))
+        return true;
+    return false;
+}
+?>

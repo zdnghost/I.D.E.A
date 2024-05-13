@@ -168,6 +168,15 @@ function editQuyen(id){
         }
     });
 }
+function newQuyen(){
+    $.ajax({
+        url:"./view/pages/admin/newQuyen.php",
+        method:"POST",
+        success:function(data){
+            $('.allContent-section').html(data);
+        }
+    });
+}
 function ShowPhieuNhap(){
     $.ajax({
         url:"./view/pages/admin/PhieuNhap.php",
@@ -178,6 +187,7 @@ function ShowPhieuNhap(){
         }
     });
 }
+
 function ShowThongTinPhieuNhap(id){
     $.ajax({
         url:"./view/pages/admin/ThongTinPhieuNhap.php",

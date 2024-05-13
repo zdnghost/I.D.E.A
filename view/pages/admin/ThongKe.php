@@ -51,7 +51,6 @@ $dp = new DataProvider();
                     <h4 style="color:white;">Tổng Số Người Dùng</h4>
                     <h5 style="color:white;">
                     <?php
-                       
                        $sql="SELECT * from nguoidung";
                        $result=$dp-> excuteQuery($sql);
                        $count=0;

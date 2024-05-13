@@ -5,7 +5,14 @@
     font-family: 'Work Sans', sans-serif;
     font-size: 18px;
 }
-
+:root {
+  --ora: #9492e3;
+  --whi: #ffffff;
+  --bla: #000000;
+  --lig: #1d1d20;
+  --gr1: #a1a0a0;
+  --gr2: #e9e9e9;
+}
 .user-cart span{
     background-color:red; 
     padding-right:3px; 
@@ -174,11 +181,11 @@
       .sidebar a {font-size: 18px;}
     }
 
-    .container-all{
+    main{
       width: 100%;
       height: 85vh;
       background-image: url("../assets/imgPage/anhdep.jpg");
-      background-repeat: no-repeat;
+      background-repeat: repeat-y;
       background-size: cover;
     } 
     .fa-exclamation-triangle::before {
@@ -211,13 +218,18 @@
     text-align: center;
     vertical-align:middle;
   }
-
+  .permission-text{
+    color: #000000;
+    font-family: 'Open Sans', Sans-serif;
+    font-weight: bold;
+  }
   th {
     background-color: #9492e3;
     color: #fafafa;
     font-family: 'Open Sans', Sans-serif;
     font-weight: bold;
   }
+
 
   tr {
     width: 100%;
@@ -413,4 +425,44 @@
 .footer-hover:hover{
   color: #ECDAC9;
   text-decoration: none;
+}
+.checkbox-placeholder {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.checkbox-placeholder input[type="checkbox"] {
+  position: relative;
+  width: 50px;
+  height: 30px;
+  appearance: none;
+  background: var(--gr2);
+  border-radius: 30px;
+  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+}
+
+.checkbox-placeholder input[type="checkbox"]::before {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  width: 25px;
+  height: 25px;
+  border: 1px solid var(--gr2);
+  top: 3%;
+  left: 0;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  background-color: var(--whi);
+  transform: scale(1.1);
+  transition: 0.5s;
+  cursor: pointer;
+}
+
+.checkbox-placeholder input:checked[type="checkbox"] {
+  background-color: var(--ora);
+}
+
+.checkbox-placeholder input:checked[type="checkbox"]::before {
+  left: 25px;
 }

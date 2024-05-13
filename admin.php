@@ -12,12 +12,13 @@
   </head>
 </head>
 <body onload="ShowThongKe()">
-<div id="notice"></div>
-        <?php
+<header id="header">
+<?php
             include "./view/pages/admin/adminHeader.php";
             require("./util/dataProvider.php");
             ?>
-
+    </header>
+    <main>
     <div class=container-all>
             <?php
             include "./view/pages/admin/sidebar.php";
@@ -26,9 +27,9 @@
     <div id="main-content" class="container allContent-section py-4" >
 
     </div>
-    
-
+    <div id="notice"></div>
     </div>
+    </main>        
     </body>
     <!--views-->
     <script src="https://code.jquery.com/jquery-3.1.1.min.js" ></script>

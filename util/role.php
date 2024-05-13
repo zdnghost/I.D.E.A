@@ -13,7 +13,7 @@ switch ($_SERVER["REQUEST_METHOD"]) {
                 $sql = "INSERT INTO vaitro
                         VALUES (" . $roleID . ",'" . $roleName . "','" . $roleDescription . "')";
                 $result1 = $dp->excuteQuery($sql);
-                $sql = "INSERT INTO vaitro_quyen
+                $sql = "INSERT INTO quyen
                         VALUES ";
                 foreach ($listPermission as $permission) {
                     $sql .= "(" . $roleID . "," . $permission . "),";
@@ -32,14 +32,14 @@ switch ($_SERVER["REQUEST_METHOD"]) {
                 $roleDescription = $_POST["roleDescription"];
                 $listPermission = $_POST["listPermission"];
                 $sql = "UPDATE vaitro
-                        SET tenVaiTro ='" . $roleName . "',
+                        SET tenvaitro ='" . $roleName . "',
                             moTa = '" . $roleDescription . "'
-                        WHERE maVaiTro = " . $roleID;
+                        WHERE idvaitro = " . $roleID;
                 $result1 = $dp->excuteQuery($sql);
-                $sql = "DELETE FROM vaitro_quyen
-                        WHERE VaiTro_maVaiTro = " . $roleID;
+                $sql = "DELETE FROM quyen
+                        WHERE idvaitro = " . $roleID;
                 $result2 = $dp->excuteQuery($sql);
-                $sql = "INSERT INTO vaitro_quyen
+                $sql = "INSERT INTO quyen
                         VALUES ";
                 foreach ($listPermission as $permission) {
                     $sql .= "(" . $roleID . "," . $permission . "),";
@@ -59,14 +59,14 @@ switch ($_SERVER["REQUEST_METHOD"]) {
             case 'deleteRole':
                 $roleID = $_GET["roleID"];
                 $sql = "UPDATE taikhoan
-                SET vaiTro = 2
-                WHERE vaiTro = " . $roleID;
+                SET vaitro = 2
+                WHERE vaitro = " . $roleID;
                 $result3 = $dp->excuteQuery($sql);
-                $sql = "DELETE FROM vaitro_quyen
-                        WHERE VaiTro_maVaiTro = " . $roleID;
+                $sql = "DELETE FROM quyen
+                        WHERE idvaitro = " . $roleID;
                 $result1 = $dp->excuteQuery($sql);
                 $sql = "DELETE FROM vaitro
-                        WHERE maVaiTro = " . $roleID;
+                        WHERE idvaitro = " . $roleID;
                 $result2 = $dp->excuteQuery($sql);
                 if ($result1 && $result2 && $result3) {
                     echo "Success";

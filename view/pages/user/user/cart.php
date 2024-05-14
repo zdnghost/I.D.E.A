@@ -40,20 +40,30 @@ $address = $result2->fetch_assoc()['diachi'];
             </div>
             <div class="col-md-8 col-lg-9">
               <h4 class="mb-3">Your cart</h4>
-
-              <hr class="my-4">
+              <?php    
+      $sql="SELECT min(idmau),idsanpham,gia,tensanpham from sanpham where trangthai=1 group by idsanpham,gia,tensanpham ";
+      $result=$dp-> excuteQuery($sql);
+      if ($result-> num_rows > 0){
+        while ($row=$result-> fetch_assoc()) {
+          $sql2="SELECT hinh from sanpham where idsanpham=".$row['idsanpham']." and idmau=".$row['min(idmau)'];
+              $result2=$dp-> excuteQuery($sql2);
+              if ($result2-> num_rows > 0){
+                 $image=$result2-> fetch_assoc();
+                }
+          ?>
+                <hr class="my-4">
 
                 <div class="row mb-4 d-flex flex-wrap align-items-center">
                 <div class="col-2">
                     <a href="product-detail.php">
                       <img
-                    src="./view/assets/img/products/revskaer-3-seat-conversation-set-outdoor-anthracite-froesoen-duvholmen-dark-gray__1240171_pe919187_s5.png"
+                    src="./data/img/<?=$row['idsanpham']?>/<?=$image['hinh']?>"
                     class="img-fluid rounded-3" alt="Cotton T-shirt" style="overflow: hidden; width: 100px;">
                     </a>
                 </div>
                 <div class="col-3 text-break">
-                    <h6 class="text-muted"><a href="product-detail.php" class="text-decoration-none text-black nav-link px-0">REVSKÄR</a></h6>
-                    <h6 class="text-black mb-0">$ 199</h6>
+                    <h6 class="text-muted"><a href="product-detail.php" class="text-decoration-none text-black nav-link px-0"><?=$row['tensanpham']?></a></h6>
+                    <h6 class="text-black mb-0"><?=$row['gia']?> đ</h6>
                 </div>
                 <div class="col-3 d-flex">
                     <button data-mdb-button-init data-mdb-ripple-init class="btn btn-link px-2"
@@ -62,7 +72,8 @@ $address = $result2->fetch_assoc()['diachi'];
                     </button>
 
                     <input id="form1" min="0" name="quantity" value="1" type="number"
-                    class="form-control" min="1" style="width: 52px;"/>
+                    class="form-control" min="1" style="width: 52px;"
+                    onchange="changeQuantity(<?= ['idsanpham'] ?>,0,this)"/>
 
                     <button data-mdb-button-init data-mdb-ripple-init class="btn btn-link px-2"
                     onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
@@ -76,79 +87,10 @@ $address = $result2->fetch_assoc()['diachi'];
                     <a href="#!" class="text-muted"><i class="bi bi-x-lg"></i></a>
                 </div>
                 </div>
+        <?php }
+      }?>
 
-                <hr class="my-4">
-
-                <div class="row mb-4 d-flex flex-wrap align-items-center">
-                  <div class="col-2">
-                      <a href="product-detail.php">
-                      <a href="product-detail.php">
-                        <img
-                      src="./view/assets/img/products/revskaer-3-seat-conversation-set-outdoor-anthracite-froesoen-duvholmen-dark-gray__1240171_pe919187_s5.png"
-                      class="img-fluid rounded-3" alt="Cotton T-shirt" style="overflow: hidden; width: 100px;">
-                      </a>
-                  </div>
-                  <div class="col-3 text-break">
-                      <h6 class="text-muted"><a href="product-detail.php" class="text-decoration-none text-black nav-link px-0">REVSKÄR</a></h6>
-                      <h6 class="text-black mb-0">$ 199</h6>
-                  </div>
-                  <div class="col-3 d-flex">
-                      <button data-mdb-button-init data-mdb-ripple-init class="btn btn-link px-2"
-                      onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
-                      <i class="bi bi-dash"></i>
-                      </button>
-  
-                      <input id="form1" min="0" name="quantity" value="1" type="number"
-                      class="form-control" min="1" style="width: 52px;"/>
-  
-                      <button data-mdb-button-init data-mdb-ripple-init class="btn btn-link px-2"
-                      onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
-                      <i class="bi bi-plus"></i>
-                      </button>
-                  </div>
-                  <div class="col-3">
-                      <h6 class="mb-0">$ 199</h6>
-                  </div>
-                  <div class="col-1 text-end">
-                      <a href="#!" class="text-muted"><i class="bi bi-x-lg"></i></a>
-                  </div>
-                  </div>
-                <hr class="my-4">
-
-                <div class="row mb-4 d-flex flex-wrap align-items-center">
-                  <div class="col-2">
-                      <a href="product-detail.php">
-                        <img
-                      src="./view/assets/img/products/revskaer-3-seat-conversation-set-outdoor-anthracite-froesoen-duvholmen-dark-gray__1240171_pe919187_s5.png"
-                      class="img-fluid rounded-3" alt="Cotton T-shirt" style="overflow: hidden; width: 100px;">
-                      </a>
-                  </div>
-                  <div class="col-3 text-break">
-                      <h6 class="text-muted"><a href="product-detail.php" class="text-decoration-none text-black nav-link px-0">REVSKÄR</a></h6>
-                      <h6 class="text-black mb-0">$ 199</h6>
-                  </div>
-                  <div class="col-3 d-flex">
-                      <button data-mdb-button-init data-mdb-ripple-init class="btn btn-link px-2"
-                      onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
-                      <i class="bi bi-dash"></i>
-                      </button>
-  
-                      <input id="form1" min="0" name="quantity" value="1" type="number"
-                      class="form-control" min="1" style="width: 52px;"/>
-  
-                      <button data-mdb-button-init data-mdb-ripple-init class="btn btn-link px-2"
-                      onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
-                      <i class="bi bi-plus"></i>
-                      </button>
-                  </div>
-                  <div class="col-3">
-                      <h6 class="mb-0">$ 199</h6>
-                  </div>
-                  <div class="col-1 text-end">
-                      <a href="#!" class="text-muted"><i class="bi bi-x-lg"></i></a>
-                  </div>
-                  </div>
-            </div>
+          </div>
           </div>
     </div>
     <!-- Cart Section Ends -->

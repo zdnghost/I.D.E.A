@@ -33,9 +33,9 @@ const addToCart = (productID,colorID) => {
   };
   const checkChangeQuantity = (change, input) => {
     let currentQuantityInput = input
-      .closest(".product-placeholder")
-      .querySelector("input.quantity-info");
-    if (currentQuantityInput.value === '') {
+      .closest("#form1")
+      .querySelector(".quantity");
+    if (currentQuantityInput.value == '') {
       customNotice(
         " fa-sharp fa-light fa-circle-exclamation",
         "Quantity must not be empty!", 3

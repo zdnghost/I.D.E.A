@@ -40,7 +40,7 @@ switch ($_SERVER["REQUEST_METHOD"]) {
     $colorID=$_GET['colorID'];
     $sql = "UPDATE giohang
           SET soLuong = " . $quantity .
-      " WHERE idnguoidung = '" . $userID . "' and idSanPham = " . $productID." and idMau=".$colorID;
+      " WHERE idnguoidung = '" . $userID . "' and idsanpham = " . $productID." and idmau=".$colorID;
     $result = $dp->excuteQuery($sql);
     if ($result) {
       echo "Success";

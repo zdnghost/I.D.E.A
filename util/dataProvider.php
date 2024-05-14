@@ -57,24 +57,24 @@ class DataProvider
   }
   public static function isFavorite($proID, $userID)
   {
-    $sql = "SELECT * FROM yeuthich where idSanPham = " . $proID . " and idNguoiDung ='" . $userID . "'";
+    $sql = "SELECT * FROM yeuthich where idsanpham = " . $proID . " and idnguoidung ='" . $userID . "'";
     $result = self::excuteQuery($sql);
     if ($result->num_rows > 0) {
       return true;
     }
     return false;
   }
-  public static function getItemInCart($colorID,$itemID, $userID)
+  public static function getItemInCart($colorID,$itemID,$userID)
   {
-    $sql = "SELECT * FROM giohang where idnguoidung = '" . $userID . "' and idSanPham = " . $itemID."and idMau=".$colorID;
+    $sql = "SELECT * FROM giohang where idnguoidung = '" . $userID . "' and idsanpham = " . $itemID." and idmau=".$colorID;
     return self::excuteQuery($sql);
   }
   public static function getNewHoaDonId()
   {
-    $sql = "SELECT MAX(idHoaDon) FROM hoadon";
+    $sql = "SELECT MAX(idhoadon) FROM hoadon";
     $result = self::excuteQuery($sql);
     if (mysqli_num_rows($result) != 0) {
-      return self::excuteQuery($sql)->fetch_assoc()['MAX(idHoaDon)'] + 1;
+      return self::excuteQuery($sql)->fetch_assoc()['MAX(idhoadon)'] + 1;
     }
     return 1;
   }

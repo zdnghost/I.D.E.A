@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -38,4 +41,5 @@
     <script src="controller/orderController.js"></script>
     <script src="controller/roleController.js"></script>
     <script src="controller/userController.js"></script>
+    <script src="controller/cartController.js"></script>
 </html>

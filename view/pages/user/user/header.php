@@ -1,6 +1,3 @@
-<?php 
-  session_start();
-?>
 <nav class="navbar navbar-expand-lg navbar-light">
           <div class="container-fluid gap-5 p-0 d-flex align-items-center ">
             <a href="index.php" class="link-body-emphasis text-decoration-none">

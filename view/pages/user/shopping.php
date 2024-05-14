@@ -2,22 +2,6 @@
 require("../../../util/dataProvider.php");
 require("../../../util/pagination.php");
 $dp = new DataProvider();
-
-$name = $_POST['name'];
-$category = $_POST['category'];
-$priceStart = $_POST['priceStart'];
-$priceEnd = $_POST['priceEnd'];
-$currentPage = $_POST['currentPage'];
-$album = getAlbums($name, $category, $priceStart, $priceEnd);
-for ($j = 1; $j < 3; $j++) {
-  $max = count($album);
-  for ($i = 0; $i < $max; $i++) {
-    array_push($album, $album[$i]);
-  }
-}
-$pa = new Pagination($album, 12, $currentPage);
-
-$slides = getAllSlide();
 ?>
 <div>
     <!-- Header Section Starts -->
@@ -293,53 +277,4 @@ $slides = getAllSlide();
 
 </div>
 <?php
-function getAlbums($name, $category, $priceStart, $priceEnd)
-{
-  global $dp;
-  $sql = "SELECT * FROM sanpham where trangThai = 1 ";
-  $f = false;
-  if ($name != "" || $category != 0 || $priceStart != "" && $priceEnd != "") {
-    $sql = $sql . "and ";
-    if ($name != "") {
-      $sql = $sql . "tenAlbum LIKE '%" . $name . "%' ";
-      $f = true;
-    }
-    if ($category != 0) {
-      if ($f) {
-        $sql = $sql . "and ";
-      }
-      $sql = $sql . "theLoai = " . $category . " ";
-      $f = true;
-    }
-    if ($priceStart != "" && $priceEnd != "") {
-      if ($f) {
-        $sql = $sql . "and ";
-      }
-      $sql = $sql . "gia >= " . $priceStart . " and gia <= " . $priceEnd . " ";
-      $f = true;
-    }
-  }
-  $result = $dp->excuteQuery($sql);
-  $album = array();
-  if ($result->num_rows > 0) {
-    while ($row = $result->fetch_assoc()) {
-      array_push($album, $row);
-    }
-  }
-  return $album;
-}
-
-function getAllSlide()
-{
-  global $dp;
-  $sql = "SELECT * FROM slideshow";
-  $result = $dp->excuteQuery($sql);
-  $slides = array();
-  if ($result->num_rows > 0) {
-    while ($row = $result->fetch_assoc()) {
-      array_push($slides, $row);
-    }
-  }
-  return $slides;
-}
 ?>

@@ -1,6 +1,6 @@
 <?php
    session_start();
-   require("../../../../util/dataProvider.php");
+   require("../../../util/dataProvider.php");
     $dp=new DataProvider();
     $id=$_GET['id'];
     $sql='select * from sanpham 
@@ -52,7 +52,6 @@
           <div class="d-flex gap-1 justify-content-md-start mt-3">
             <button type="button" class="add-to-cart-btn btn btn-warning" onclick="addToCart(<?=$info['idsanpham']?>,getcurrentColor())">Add to cart</button>
             <!---->
-            <button class="favourite-btn btn btn-outline-danger px-3"><i class="bi bi-heart-fill" style="font-size: 16px;"></i></button>
           </div>
         </div>
         <div class="col-lg-5">

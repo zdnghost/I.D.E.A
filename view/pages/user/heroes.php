@@ -1,3 +1,4 @@
+
 <div class="container p-3 bg-warning" id="heroes-section">
       <div class="row flex-lg-row-reverse align-items-center g-5 justify-content-center">
         <div class="col-lg-6">
@@ -9,10 +10,12 @@
             Welcome to IDEA, your ideal destination for high-quality furniture and endless inspiration 
             for your living space. Explore our diverse collection today!
           </p>
+          <?php  if (!isset($_SESSION['userID'])) :?>
           <div class="d-flex gap-3 justify-content-md-start">
             <a class="btn btn-primary px-4" href="javascript:void(0)" role="button" onclick="ShowRegister()">Register now</a>
-            <a class="d-flex align-items-center login-link" href="javascript:void(0)" onclick="ShowLogin()">Login to your account</a>
+            <a class="btn btn-primary px-4" href="javascript:void(0)" onclick="ShowLogin()">Login to your account</a>
           </div>
+          <?php endif?>
         </div>
       </div>
     </div>

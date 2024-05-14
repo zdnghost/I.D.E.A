@@ -1,5 +1,5 @@
 <?php
-require("../../../../util/dataProvider.php");
+require("../../../util/dataProvider.php");
 $dp = new DataProvider();
 session_start();
 $userID = $_SESSION['userID'];

@@ -1,7 +1,4 @@
 <?php
-   session_start();
-   require("../../../../util/dataProvider.php");
-    $dp=new DataProvider();
 ?>
 <div class="container pt-5" id="popular-products-section">
       <h2 class="py-3 border-bottom">Popular Products</h2>
@@ -19,7 +16,6 @@
       <div class="row g-3 justify-content-start pt-3 product-cards">
         <div class="col-4 col-md-3 col-lg-2">        
           <div class="product-card card text-black">
-            <i class="bi bi-heart pt-2 px-2"></i>
             <a href="javascript:void(0)" onclick="ShowThongTin(<?=$row['idsanpham']?>)" class="link-body-emphasis text-decoration-none">
               <img
               src="./data/img/<?=$row['idsanpham']?>/<?=$image['hinh']?>"
@@ -44,7 +40,7 @@
       }?>
         
         <div class="col-12 d-flex justify-content-center align-items-center pt-3">        
-          <a class="btn btn-secondary px-4 w-50" href="shopping.php" role="button">See all</a>
+          <a class="btn btn-secondary px-4 w-50" href="javascript:void(0)" role="button" onclick="ShowShopping()">See all</a>
         </div>
       </div>
 

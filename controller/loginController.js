@@ -211,10 +211,13 @@ const isUsernameExist = (username) => {
   });
 };
 const isLogin = () => {
-  console.log("ok");
   return $.ajax({
     url: "util/user.php?action=isLogin",
     type: "GET",
+    success:function(data)
+        {
+            return data
+        } 
   });
 };
 

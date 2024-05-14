@@ -16,8 +16,9 @@ function ShowThongTin(id){
         }
     });
 }
-function ShowProfile(){  
-    if(!isLogin())
+const ShowProfile=async ()=>{  
+    if(!(await isLogin()))
+
         {
             customNotice(
                 " fa-sharp fa-light fa-circle-exclamation",
@@ -51,9 +52,12 @@ function ShowRegister(){
         }
     });
 }
-function ShowCart(){  
-    if(!isLogin())
+const ShowCart=async ()=>{  
+
+    if(!(await isLogin()))
+
         {
+            
             customNotice(
                 " fa-sharp fa-light fa-circle-exclamation",
                 " Need Login!",3
@@ -68,8 +72,9 @@ function ShowCart(){
         }
     });
 }
-function ShowFav(){ 
-    if(!isLogin())
+const ShowFav=async ()=>{ 
+    if(!(await isLogin()))
+
         {
             customNotice(
                 " fa-sharp fa-light fa-circle-exclamation",
@@ -85,8 +90,8 @@ function ShowFav(){
         }
     });
 }
-function ShowAccount(){  
-    if(!isLogin())
+const ShowAccount=async ()=>{  
+    if(!(await isLogin()))
         {
             customNotice(
                 " fa-sharp fa-light fa-circle-exclamation",
@@ -111,8 +116,9 @@ function ShowShopping(){
         }
     });
 }
-function ShowCheckOut(){
-    if(!isLogin())
+const ShowCheckOut= async ()=>{
+    if(!(await isLogin()))
+
         {
             customNotice(
                 " fa-sharp fa-light fa-circle-exclamation",

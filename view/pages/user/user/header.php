@@ -1,3 +1,8 @@
+<?php
+require("util/dataProvider.php");
+$dp = new DataProvider();
+session_start();
+?>
 <nav class="navbar navbar-expand-lg navbar-light">
           <div class="container-fluid gap-5 p-0 d-flex align-items-center ">
             <a href="index.php" class="link-body-emphasis text-decoration-none">
@@ -23,9 +28,15 @@
                 <li class="nav-item"><a href="javascript:void(0)" onclick="ShowFav()" class="nav-link">
                     <i class="bi bi-heart" style="font-size: 16px;"></i>
                 </a></li>
+                <?php  if (isset($_SESSION['userID'])) :?>
+        <li class="nav-item"><a href="javascript:void(0)" onclick="logout()" class="nav-link">
+          <i class="bi bi-box-arrow-in-right" style="font-size: 16px;"></i>
+      </a></li>
+                <?php else :?>
                 <li class="nav-item"><a href="javascript:void(0)" onclick="ShowLogin()" class="nav-link">
                     <i class="bi bi-person" style="font-size: 16px;"></i>
                 </a></li>
+                <?php endif?>
               </ul>
             </div>
           </div>

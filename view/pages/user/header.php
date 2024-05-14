@@ -21,9 +21,6 @@
                 <li class="nav-item"><a href="javascript:void(0)" onclick="ShowCart()"  class="nav-link">
                     <i class="bi bi-bag" style="font-size: 16px;"></i>
                 </a></li>
-                <li class="nav-item"><a href="javascript:void(0)" onclick="ShowFav()" class="nav-link">
-                    <i class="bi bi-heart" style="font-size: 16px;"></i>
-                </a></li>
                 <?php  if (isset($_SESSION['userID'])) :?>
         <li class="nav-item"><a href="javascript:void(0)" onclick="logout()" class="nav-link">
           <i class="bi bi-box-arrow-in-right" style="font-size: 16px;"></i>

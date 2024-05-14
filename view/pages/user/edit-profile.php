@@ -41,7 +41,6 @@
                     <input type="text" class="form-control" id="txtAddress" placeholder="1234 Main St" value="<?=$info['diachi']?>">
                   </div>
                 </div>
-
                 <hr class="my-4">
       
                 <button class="w-100 btn btn-primary btn-md" type="button" onclick="updateUser()">Save changes</button>

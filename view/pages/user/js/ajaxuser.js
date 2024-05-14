@@ -16,6 +16,24 @@ function ShowThongTin(id){
         }
     });
 }
+const ShowMyOrder=async ()=>{ 
+    if(!(await isLogin()))
+
+        {
+            customNotice(
+                " fa-sharp fa-light fa-circle-exclamation",
+                " Need Login!",3
+              );
+              return;
+        }
+    $.ajax({
+        url:"./view/pages/user/myorder.php?",
+        method:"POST",
+        success:function(data){
+            $('.allContent-section').html(data);
+        }
+    });
+}
 const ShowProfile=async ()=>{  
     if(!(await isLogin()))
 

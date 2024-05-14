@@ -285,6 +285,15 @@ const deleteProduct = (productID) => {
     });
   };
   const uploadImg = (id) => {
+
+      $.ajax({
+        method: 'POST',
+        url: "./util/newfolder.php",
+        data: {id: id ,},
+        success: function(data) {
+          console.log(data); //"The directory has been created."
+        } 
+      })
     let fileInput = document.querySelector('.imagecontent .imgsrc');
       let file_data = fileInput.files[0];
       let form_data = new FormData();
@@ -310,7 +319,7 @@ const deleteProduct = (productID) => {
         success: function (res) {
           if (res) {
             document.querySelector(".imagecontent  img").src =
-              "data/img/" + fileInput.files[0].name;
+              "data/img/" +id+ "/"+fileInput.files[0].name;
             customNotice(
               " fa-circle-check",
               "Uploaded successfully",

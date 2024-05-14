@@ -20,7 +20,7 @@
     <div class="container py-5 text-center border-bottom" style="max-width: 500px;">
         <main class="form-login">
             <form>
-              <img class="mb-3" src="/view/assets/img/logo.png" alt="" width="auto" height="60px">
+              <img class="mb-3" src="../../assets/img/logo.png" alt="" width="auto" height="60px">
               <h2 class="mb-3 fw-normal">Create your new account</h2>
           
               <div class="form-floating mb-2">

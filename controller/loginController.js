@@ -1,7 +1,7 @@
 const login = () => {
   if (!checkInputLogin()) return;
-  let username = document.querySelector("#username-field").value;
-  let password = document.querySelector("#password-field").value;
+  let username = document.querySelector("#username").value;
+  let password = document.querySelector("#password").value;
   $.ajax({
     url: "util/user.php",
     type: "POST",
@@ -9,7 +9,7 @@ const login = () => {
     success: function (res) {
       if (res == "cus") {
         window.location.href = "index.php";
-      } else if (res == "emp") window.location.href = "admin.php";
+      } else if (res == "emp") href = "../admin.php";
       else {
         customNotice(" fa-sharp fa-light fa-circle-exclamation", res,3);
       }  
@@ -18,22 +18,22 @@ const login = () => {
 };
 
 const checkInputLogin = () => {
-  let username = document.querySelector("#username-field").value;
+  let username = document.querySelector("#username").value;
   if (username == "") {
     customNotice(
       " fa-sharp fa-light fa-circle-exclamation",
       "Please, enter username!",3
     );
-    document.querySelector("#username-field").focus();
+    document.querySelector("#username").focus();
     return false;
   }
-  let password = document.querySelector("#password-field").value;
+  let password = document.querySelector("#password").value;
   if (password == "") {
     customNotice(
       " fa-sharp fa-light fa-circle-exclamation",
       "Please, enter your password!",3
     );
-    document.querySelector("#password-field").focus();
+    document.querySelector("#password").focus();
     return false;
   }
   return true;
@@ -83,37 +83,10 @@ const register = async () => {
 };
 
 const checkInputRegister = async () => {
-  let name = document.querySelector("#login .register .name");
-  let phone = document.querySelector("#login .register .phonenumber");
-  let username = document.querySelector("#login .register .username");
-  let password = document.querySelector("#login .register .password");
-  let confirmPassword = document.querySelector(
-    "#login .register .confirmPassword"
-  );
-  if (name.value == "") {
-    customNotice(
-      " fa-sharp fa-light fa-circle-exclamation",
-      "Please, enter your name!",3
-    );
-    name.focus();
-    return false;
-  }
-  if (phone.value == "") {
-    customNotice(
-      " fa-sharp fa-light fa-circle-exclamation",
-      "Please, enter your phone number!",3
-    );
-    phone.focus();
-    return false;
-  }
-  if (!isVietnamesePhoneNumberValid(phone.value)) {
-    customNotice(
-      " fa-sharp fa-light fa-circle-exclamation",
-      "Invalid phone number!",3
-    );
-    phone.focus();
-    return false;
-  }
+  let username = document.querySelector("#username");
+  let email = document.querySelector("#email ")
+  let password = document.querySelector("#password");
+  let confirmPassword = document.querySelector("#confirmPassword");
   if (username.value == "") {
     customNotice(
       " fa-sharp fa-light fa-circle-exclamation",

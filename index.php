@@ -28,7 +28,7 @@
                 <li class="nav-item"><a href="index.php" class="nav-link" aria-current="page">Home</a></li>
                 <li class="nav-item"><a href="view/pages/user/shopping.php" class="nav-link">Shopping</a></li>
                 <li class="nav-item"><a href="view/pages/user/profile.php" class="nav-link">My Account</a></li>
-                <li class="nav-item"><a href="view/pages/user/cart.php" class="nav-link">Cart</a></li>
+                <li class="nav-item"><a href="view/pages/user/cart.php"  class="nav-link">Cart</a></li>
                 <li class="nav-item"><a href="view/pages/user/checkout.php" class="nav-link">Checkout</a></li>
               </ul>
     

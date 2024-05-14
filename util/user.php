@@ -34,9 +34,9 @@ switch ($_SERVER["REQUEST_METHOD"]) {
             } else {
               $_SESSION['userID'] = $user['idnguoidung'];
               $_SESSION['userName'] = $user['username'];
-              $_SESSION['role'] = $user['idvaitro'];
-              $_SESSION['permission'] = $user['idvaiTro'];
-              if ($user['vaiTro'] == 1) {
+              $_SESSION['role'] = $user['vaitro'];
+              $_SESSION['permission'] = $dp->getPermissionByRoleID($user['vaiTro']);
+              if ($user['vaitro'] == 1) {
                 echo "cus";
               } else {
                 echo "emp";

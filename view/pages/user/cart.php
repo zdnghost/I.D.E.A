@@ -73,10 +73,10 @@ $address = $result2->fetch_assoc()['diachi'];
                     </button>
 
                     <input type="text" id="form1" min="0" name="quantity" value="1" type="number"
-                    onchange="changeQuantity(<?= $sp['masanpham'] ?>,0,this);summary()">
+                    onchange="changeQuantity(<?= $sp['masanpham'] ?>,0,this);">
                     class="form-control" min="1" style="width: 52px;"/>
                     <button data-mdb-button-init data-mdb-ripple-init class="btn btn-link px-2"
-                    onclick="changeQuantity(<?= $sp['masanpham'] ?>,1,this);summary()">
+                    onclick="changeQuantity(<?= $sp['masanpham'] ?>,1,this);">
                     <i class="bi bi-plus"></i>
                     </button>
                 </div>

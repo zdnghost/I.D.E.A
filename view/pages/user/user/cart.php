@@ -9,12 +9,10 @@ $result1 = $dp->excuteQuery($sql1);
 $sanpham = array();
 if ($result1->num_rows > 0) {
   while ($row = $result1->fetch_assoc()) {
-      array_push($album, $row);
+      array_push($sanpham, $row);
   }
 }
-$sql2 = "select * from nguoiDung where idnguoidung='" . $userID . "'";
-$result2 = $dp->excuteQuery($sql2);
-$address = $result2->fetch_assoc()['diachi'];
+
 ?> 
 <div>
     <!-- Header Section Starts -->
@@ -41,15 +39,10 @@ $address = $result2->fetch_assoc()['diachi'];
             <div class="col-md-8 col-lg-9">
               <h4 class="mb-3">Your cart</h4>
               <?php    
-      $sql="SELECT min(idmau),idsanpham,gia,tensanpham from sanpham where trangthai=1 group by idsanpham,gia,tensanpham ";
+      $sql="SELECT * from sanpham join giohang on sanpham.idsanpham=giohang.idsanpham and sanpham.idmau=giohang.idmau where idnguoidung=".$_SESSION['userID'];
       $result=$dp-> excuteQuery($sql);
       if ($result-> num_rows > 0){
         while ($row=$result-> fetch_assoc()) {
-          $sql2="SELECT hinh from sanpham where idsanpham=".$row['idsanpham']." and idmau=".$row['min(idmau)'];
-              $result2=$dp-> excuteQuery($sql2);
-              if ($result2-> num_rows > 0){
-                 $image=$result2-> fetch_assoc();
-                }
           ?>
                 <hr class="my-4">
 
@@ -57,7 +50,7 @@ $address = $result2->fetch_assoc()['diachi'];
                 <div class="col-2">
                     <a href="product-detail.php">
                       <img
-                    src="./data/img/<?=$row['idsanpham']?>/<?=$image['hinh']?>"
+                    src="./data/img/<?=$row['idsanpham']?>/<?=$row['hinh']?>"
                     class="img-fluid rounded-3" alt="Cotton T-shirt" style="overflow: hidden; width: 100px;">
                     </a>
                 </div>
@@ -71,9 +64,9 @@ $address = $result2->fetch_assoc()['diachi'];
                     <i class="bi bi-dash"></i>
                     </button>
 
-                    <input id="form1" min="0" name="quantity" value="1" type="number"
+                    <input id="form1" min="0" name="quantity" value="<?=$row['soluong']?>" type="number"
                     class="form-control" min="1" style="width: 52px;"
-                    onchange="changeQuantity(<?= ['idsanpham'] ?>,0,this)"/>
+                    onchange="changeQuantity(<?=$row['idsanpham'] ?>,<?=$row['idmau']?>,0,this)"/>
 
                     <button data-mdb-button-init data-mdb-ripple-init class="btn btn-link px-2"
                     onclick="this.parentNode.querySelector('input[type=number]').stepUp()">

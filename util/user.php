@@ -7,9 +7,9 @@ switch ($_SERVER["REQUEST_METHOD"]) {
     switch ($_GET['action']) {
       case 'isLogin':
         if (isset($_SESSION['userID'])) {
-          echo 1;
+          echo true;
         } else {
-          echo 0;
+          echo false;
         }
         break;
       case 'getRole':

@@ -106,15 +106,18 @@ switch ($_SERVER["REQUEST_METHOD"]) {
           $sql = "SELECT * from chitiethoadon where idhoadon=".$orderID;
           $result = $dp->excuteQuery($sql);
           if ($result->num_rows > 0) {
-            while ($product = $result->fetch_assoc()) {
-              $sql = "UPDATE sanpham SET soLuong = soLuong - " . $product['soluong'] . " WHERE idsanpham = " . $product['idsanpham']." and idmau =".$product['idmau'];
-              $result = $dp->excuteQuery($sql);
-              if (!$result) {
-                $error = true;
+            $products = array();
+            if ($result->num_rows > 0) {
+              while ($row = $result->fetch_assoc()) {
+                array_push($products, $row);
               }
             }
-          }
+            foreach ($products as $product) {
+              $sql = "UPDATE sanpham SET soLuong = soLuong - " . $product['soluong'] . " WHERE idsanpham = " . $product['idsanpham']." and idmau =".$product['idmau'];
+              $result = $dp->excuteQuery($sql);
+            }
         }
+      }
         if ($result1 && !$error) {
           echo "Success";
         } else {

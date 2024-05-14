@@ -32,7 +32,9 @@
 
 
 /* POPULAR PRODUCTS SECTION STARTS */
-
+.product-card {
+  margin-bottom: 30px;
+}
     /* Định dạng link tên sản phẩm */
     .product-card .product-name {
         color: var(--bs-body-color);
@@ -201,6 +203,9 @@ input::-webkit-inner-spin-button {
 #cart-section h6:focus, #cart-section h6:hover {
     color: var(--bs-body-color);
     text-decoration: underline;
+}
+.card-body{
+  height: 100px;
 }
 #myaccount {
   font-size: 25px;

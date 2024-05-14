@@ -33,11 +33,12 @@ session_start();
       $result=$dp-> excuteQuery($sql);
       if ($result-> num_rows > 0){
         while ($row=$result-> fetch_assoc()) {
-          ?><script>
+          ?>
+                <div class="row mb-4 d-flex flex-wrap align-items-center product-placeholder" onload="changeQuantity(<?=$row['idsanpham'] ?>,<?=$row['idmau']?>,0,this)">
+                <script>
             summary();
             </script>
                 <hr class="my-4">
-                <div class="row mb-4 d-flex flex-wrap align-items-center product-placeholder" onload="changeQuantity(<?=$row['idsanpham'] ?>,<?=$row['idmau']?>,0,this)">
                 <div class="col-2">
                     <a href="javascript:void(0)" onclick="ShowThongTin(<?=$row['idsanpham']?>)">
                       <img

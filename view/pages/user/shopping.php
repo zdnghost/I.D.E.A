@@ -24,8 +24,9 @@ $dp = new DataProvider();
 ?>
 <div class="container pt-5" id="popular-products-section">
       <h2 class="py-3 border-bottom">Popular Products</h2>
+      <div class=" product-cards row g-3 justify-content-start pt-3">
       <?php    
-      $sql="SELECT min(idmau),idsanpham,gia,tensanpham from sanpham where trangthai=1 group by idsanpham,gia,tensanpham limit 6";
+      $sql="SELECT min(idmau),idsanpham,gia,tensanpham from sanpham where trangthai=1 group by idsanpham,gia,tensanpham";
       $result=$dp-> excuteQuery($sql);
       if ($result-> num_rows > 0){
         while ($row=$result-> fetch_assoc()) {
@@ -35,10 +36,8 @@ $dp = new DataProvider();
                  $image=$result2-> fetch_assoc();
                 }
       ?>
-      <div class=" product-cards row g-3 justify-content-start pt-3">
         <div class="col-4 col-md-3 col-lg-2">        
           <div class="product-card card text-black">
-            <i class="bi bi-heart pt-2 px-2"></i>
             <a href="javascript:void(0)" onclick="ShowThongTin(<?=$row['idsanpham']?>)" class="link-body-emphasis text-decoration-none">
               <img
               src="./data/img/<?=$row['idsanpham']?>/<?=$image['hinh']?>"
@@ -61,6 +60,7 @@ $dp = new DataProvider();
         </div>
         <?php }
       }?>   
+      </div>
       </div>
     </div>
     <!-- Shopping Section Ends -->

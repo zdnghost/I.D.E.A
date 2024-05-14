@@ -134,7 +134,7 @@ const order = async () => {
             "Update successfully!",
             1
           );
-          showHoaDon();
+          ShowHoaDon();
         }
       },
     });

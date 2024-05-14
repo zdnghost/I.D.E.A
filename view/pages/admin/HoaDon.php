@@ -28,7 +28,7 @@
       <td><?=$row["thoigiandat"]?></td>    
       <?php if($row['trangthai']==1)
       echo '<td>chờ xử lý</td>';
-       if($row['trangthai']==-1)
+       if($row['trangthai']==0)
       echo '<td>hủy</td>';
        if($row['trangthai']==2)
         echo ' <td>đã xử lý</td> ';

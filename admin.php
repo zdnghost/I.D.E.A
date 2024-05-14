@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="icon" type="image/x-icon" href="view\assets\imgPage\logo.png">
   <title>Admin</title>
   <head>
     <meta name="./viewport" content="width=device-width, initial-scale=1">

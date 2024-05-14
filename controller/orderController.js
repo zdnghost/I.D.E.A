@@ -2,62 +2,63 @@ const order = async () => {
     if (!checkMyCart()) return;
     await createOrder();
     await deleteFromOrder();
-    document.querySelector("#orderSuccess").style.display = "flex";
+    ShowHome();
   };
   
-  const getTotal = () => {
-    let totalInput = document.querySelector(".total-final");
-    let total = parseFloat(totalInput.innerHTML.substring(1));
-    return total;
-  };
   
   const createOrder = async () => {
     let products = getproducts();
     console.log(products);
-    let total = getTotal();
     let address = document.querySelector("#mycart #checkout-address").value;
     await $.ajax({
       url: "util/order.php",
       type: "POST",
       data: {
         address: address,
-        total: total,
         products: products,
         action: "createOrder",
       },
       success: function (res) {
         if (res != "Success") alert(res);
+        else{
+          customNotice(
+            " fa-sharp fa-light fa-circle-exclamation",
+            "Order success!",
+            1
+          );
+
+        }
       },
     });
   };
-  const getProduct = () => {
+  
+  
+  const getproducts = () => {
     let listProduct = [];
     let products = document.querySelectorAll(
-      "#mycart .check-button input[type='checkbox']:checked"
+      ".product-placeholder"
     );
     for (let product of products) {
-      let quantity = product
+      let quantity = parseInt(product
         .closest(".product-placeholder")
-        .querySelector("input.quantity-info").value;
-      let productID = product.value;
-      listProduct.push({ quantity: quantity, productID: productID });
+        .querySelector("#quanity-info").innerHTML);
+      let productID = product.querySelector(".productID").dataset.value;
+      let colorID= product.querySelector(".colorID").dataset.value;
+      let eachPrice = product
+      .closest(".product-placeholder")
+      .querySelector(".eachPrice").innerHTML;
+      let productPrice=parseInt(eachPrice.substring(0,eachPrice.length - 2))
+      let total=productPrice*quantity
+      listProduct.push({ quantity: quantity, productID: productID, colorID:colorID, productPrice:productPrice,total:total});
     }
-    console.log(listProduct);
     return JSON.stringify(listProduct);
   };
   const checkMyCart = () => {
     let products = document.querySelectorAll(
-      "#mycart .check-button input[type='checkbox']:checked"
-    );
+      ".rounded-pill"
+    ).innerHTML;
     let address = document.querySelector("#mycart #checkout-address");
-    if (products.length == 0) {
-      customNotice(
-        " fa-sharp fa-light fa-circle-exclamation",
-        "Please, select the product!",
-        3
-      );
-      return false;
-    }
+    
     if (address.value == "") {
       customNotice(
         " fa-sharp fa-light fa-circle-exclamation",
@@ -67,15 +68,25 @@ const order = async () => {
       address.focus();
       return false;
     }
+    if (parseInt(products) <1) {
+      customNotice(
+        " fa-sharp fa-light fa-circle-exclamation",
+        "Please, add product to cart!",
+        3
+      );
+      return false;
+    }
     return true;
   };
   
   const deleteFromOrder = async () => {
     let products = document.querySelectorAll(
-      "#mycart .check-button input[type='checkbox']:checked"
+      ".product-placeholder"
     );
     for (let product of products) {
-      await deleteByproductID(parseInt(product.value));
+      let productID = product.querySelector(".productID").dataset.value;
+      let colorID= product.querySelector(".colorID").dataset.value;
+      await deleteByproductID(parseInt(productID),parseInt(colorID));
       product.closest(".product-placeholder").remove();
     }
   };

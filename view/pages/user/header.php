@@ -14,8 +14,6 @@
                 <li class="nav-item"><a href="index.php" aria-current="page" class="nav-link">Home</a></li>
                 <li class="nav-item"><a href="javascript:void(0)" onclick="ShowShopping()" class="nav-link">Shopping</a></li>
                 <li class="nav-item"><a href="javascript:void(0)" class="nav-link" onclick="ShowProfile()">Profile</a></li>
-                <li class="nav-item"><a href="javascript:void(0)" onclick="ShowCart()" class="nav-link" >Cart</a></li>
-                <li class="nav-item"><a href="javascript:void(0)" onclick="ShowCheckOut()" class="nav-link">Checkout</a></li>
               </ul>
               <ul class="nav nav-pills navigation-icons">
                 <li class="nav-item"><a href="javascript:void(0)" onclick="ShowCart()"  class="nav-link">

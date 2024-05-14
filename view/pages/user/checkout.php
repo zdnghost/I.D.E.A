@@ -4,7 +4,7 @@ require("../../../util/dataProvider.php");
 $dp = new DataProvider();
 session_start();
 ?> 
-<div>
+<div id="mycart">
     <!-- Header Section Starts -->
     <!-- Header Section Ends -->  
 
@@ -28,7 +28,8 @@ session_start();
           </script>
                 <li class="list-group-item d-flex justify-content-between lh-sm product-placeholder">
                   <div>
-                    <h6 class="my-0"><?=$row['tensanpham']?></h6>
+                    <h6 class="my-0 productID" data-value="<?=$row['idsanpham']?>"><?=$row['tensanpham']?></h6> 
+                    <h6 class="my-0 colorID" data-value="<?=$row['idmau']?>"><?=$row['tenMau']?></h6>
                     <small class="text-success fw-bold eachPrice"><?=$row['gia']?> đ</small>
                     x<strong class="quanity-info" id="quanity-info" value="<?=$row['soluong']?>"><?=$row['soluong']?></strong>
                   </div>
@@ -51,7 +52,7 @@ session_start();
                 <div class="row g-3">
                   <div class="col-12">
                     <label for="address" class="form-label">Address</label>
-                    <input type="text" class="form-control" id="address" placeholder="1234 Main St" required="">
+                    <input type="text" class="form-control" id="checkout-address" placeholder="1234 Main St" required="">
                     <div class="invalid-feedback">
                       Please enter your shipping address.
                     </div>
@@ -60,7 +61,7 @@ session_start();
       
                 <hr class="my-4">
       
-                <button class="w-100 btn btn-warning btn-lg" type="submit">Proceed to checkout</button>
+                <button class="w-100 btn btn-warning btn-lg" type="button" onclick="order()">Proceed to checkout</button>
               </form>
             </div>
           </div>

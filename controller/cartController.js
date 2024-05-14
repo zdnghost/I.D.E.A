@@ -24,7 +24,6 @@ const addToCart = (productID,colorID) => {
       success: function (res) {
         if (res == "Success") {
           summary();
-          customNotice("fa-solid fa-cart-circle-xmark", "Removed from your Cart", 1);
         } else {
           alert(res);
         }
@@ -125,11 +124,11 @@ const addToCart = (productID,colorID) => {
       let price = parseFloat(
         eachpri.substring(0,eachpri.length - 2)  
       );
-      console.log(quantity,price);
       subTotal += quantity * price;
       count+=1;
     }
     document.querySelector(".rounded-pill").innerHTML=count;
     return subTotal;
   };
+
   

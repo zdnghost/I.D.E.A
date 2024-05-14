@@ -29,14 +29,14 @@ switch ($_SERVER["REQUEST_METHOD"]) {
             echo "Account does not exist!";
           } else {
             $user = $result->fetch_assoc();
-            if ($user['matKhau'] != $md5Pass) {
+            if ($user['password'] != $md5Pass) {
               echo "Wrong password!";
             } else {
               $_SESSION['userID'] = $user['idnguoidung'];
               $_SESSION['userName'] = $user['username'];
               $_SESSION['role'] = $user['vaitro'];
-              $_SESSION['permission'] = $dp->getPermissionByRoleID($user['vaiTro']);
-              if ($user['vaiTro'] == 1) {
+              $_SESSION['permission'] = $dp->getPermissionByRoleID($user['vaitro']);
+              if ($user['vaitro'] == 1) {
                 echo "cus";
               } else {
                 echo "emp";

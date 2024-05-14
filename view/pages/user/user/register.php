@@ -29,10 +29,10 @@
           
               <div class="d-flex align-items-center justify-content-center pb-4 mt-4">
                 <p class="mb-0 me-2">Already have an account?</p>
-                <a class="login-btn btn btn-outline-primary" href="login.php" role="button">Login here</a>
+                <a class="login-btn btn btn-outline-primary" onclick="ShowLogin()" role="button">Login here</a>
               </div>
 
-              <button class="w-100 btn btn-lg btn-warning" type="submit">Register</button>
+              <button class="w-100 btn btn-lg btn-warning" type="button">Register</button>
             </form>
           </main>
     </div>

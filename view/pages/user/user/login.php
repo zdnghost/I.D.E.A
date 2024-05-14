@@ -22,9 +22,9 @@
 
               <div class="d-flex align-items-center justify-content-center py-4">
                 <p class="mb-0 me-2">Don't have an account?</p>
-                <a class="create-new-btn btn btn-outline-primary" onclick="location.href='location.href='register.php''" role="button">Create new</a>
+                <a class="create-new-btn btn btn-outline-primary" onclick="ShowRegister()" role="button">Create new</a>
               </div>
-              <button class="w-100 btn btn-lg btn-warning" type="submit" onclick="login()">Login</button>
+              <button class="w-100 btn btn-lg btn-warning" type="button" onclick="login()">Login</button>
             </form>
           </main>
     </div>

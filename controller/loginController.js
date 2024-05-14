@@ -1,7 +1,7 @@
 const login = () => {
   if (!checkInputLogin()) return;
-  let username = document.querySelector("#username-field").value;
-  let password = document.querySelector("#password-field").value;
+  let username = document.querySelector("#username").value;
+  let password = document.querySelector("#password").value;
   $.ajax({
     url: "util/user.php",
     type: "POST",
@@ -18,22 +18,22 @@ const login = () => {
 };
 
 const checkInputLogin = () => {
-  let username = document.querySelector("#username-field").value;
+  let username = document.querySelector("#username").value;
   if (username == "") {
     customNotice(
       " fa-sharp fa-light fa-circle-exclamation",
       "Please, enter username!",3
     );
-    document.querySelector("#username-field").focus();
+    document.querySelector("#username").focus();
     return false;
   }
-  let password = document.querySelector("#password-field").value;
+  let password = document.querySelector("#password").value;
   if (password == "") {
     customNotice(
       " fa-sharp fa-light fa-circle-exclamation",
       "Please, enter your password!",3
     );
-    document.querySelector("#password-field").focus();
+    document.querySelector("#password").focus();
     return false;
   }
   return true;

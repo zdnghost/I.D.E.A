@@ -32,7 +32,7 @@ class DataProvider
   }
   public static function getUserByUsername($username)
   {
-    $sql = "select * from taikhoan join nguoiDung on taikhoan.idnguoidung=Nguoidung.idnguoidung
+    $sql = "select * from taikhoan join nguoidung on taikhoan.idnguoidung=nguoidung.idnguoidung
     where username='" . $username . "'";
     return self::excuteQuery($sql);
   }

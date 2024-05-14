@@ -50,10 +50,12 @@ const logout = () => {
 
 const register = async () => {
   if (!(await checkInputRegister())) return;
-  let name = document.querySelector("#login .register .name").value;
-  let phone = document.querySelector("#login .register .phonenumber").value;
-  let username = document.querySelector("#login .register .username").value;
-  let password = document.querySelector("#login .register .password").value;
+  let username = document.querySelector("#username").value;
+  let name = document.querySelector("#name").value;
+  let email = document.querySelector("#email").value;
+  let phone = document.querySelector("#phonenumber").value;
+  let address = document.querySelector("#address").value;
+  let password = document.querySelector("#password").value;
   $.ajax({
     url: "util/user.php",
     type: "POST",
@@ -62,34 +64,37 @@ const register = async () => {
       phone: phone,
       user: username,
       pass: password,
+      address : address,
+      email : email,
       action: "register",
     },
     success: function (res) {
       if (res == "Success") {
         customNotice(
           " fa-sharp fa-light fa-circle-exclamation",
-          "Accout successfully created!",1
+          "Account successfully created!",1
         );
-        loadLoginByAjax("logIn");
-        document.querySelector("#username-field").value = username;
-        document.querySelector("#password-field").value = password;
-      } else
+        ShowLogin();
+        document.querySelector("#username").value = username;
+        document.querySelector("#password").value = password;
+      } else{
+        console.log(res);
         customNotice(
-          " fa-sharp fa-light fa-circle-exclamation",
-          "Accout creation failed!",3
-        );
+        " fa-sharp fa-light fa-circle-exclamation",
+        "Account creation failed!",3
+      );}
     },
   });
 };
 
 const checkInputRegister = async () => {
-  let name = document.querySelector("#login .register .name");
-  let phone = document.querySelector("#login .register .phonenumber");
-  let username = document.querySelector("#login .register .username");
-  let password = document.querySelector("#login .register .password");
-  let confirmPassword = document.querySelector(
-    "#login .register .confirmPassword"
-  );
+  let username = document.querySelector("#username");
+  let name = document.querySelector("#name");
+  let email = document.querySelector("#email");
+  let phone = document.querySelector("#phonenumber");
+  let address = document.querySelector("#address");
+  let password = document.querySelector("#password");
+  let confirmPassword = document.querySelector("#confirmPassword");
   if (name.value == "") {
     customNotice(
       " fa-sharp fa-light fa-circle-exclamation",
@@ -146,7 +151,30 @@ const checkInputRegister = async () => {
     password.focus();
     return false;
   }
-
+  if (address.value == "") {
+    customNotice(
+      " fa-sharp fa-light fa-circle-exclamation",
+      "Please, enter your address!",3
+    );
+    address.focus();
+    return false;
+  }
+  if (email.value == "") {
+    customNotice(
+      " fa-sharp fa-light fa-circle-exclamation",
+      "Please, enter your email!",3
+    );
+    email.focus();
+    return false;
+  }
+  if (email.value != "" && !isEmailValid(email.value)) {
+    customNotice(
+      " fa-sharp fa-light fa-circle-exclamation",
+      "Invalid email address!",3
+    );
+    email.focus();
+    return false;
+  }
   if (confirmPassword.value == "") {
     customNotice(
       " fa-sharp fa-light fa-circle-exclamation",

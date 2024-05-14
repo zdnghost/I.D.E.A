@@ -55,16 +55,19 @@ switch ($_SERVER["REQUEST_METHOD"]) {
         }
         break;
       case 'register':
+        $newid = $dp -> getNewUserId();
         $name = $_POST['name'];
         $phone = $_POST['phone'];
         $username = $_POST['user'];
         $password = $_POST['pass'];
+        $address = $_POST['address'];
+        $email = $_POST['email'];
         $md5Pass = md5($password);
         $sql1 = "INSERT INTO taikhoan
         VALUES (".$newid.",'". $username ."','".$md5Pass."','" . (new Datetime())->format('Y-m-d')."',1)";
         $result1 = $dp->excuteQuery($sql1);
         $sql2 = "INSERT INTO nguoidung
-        VALUES (".$newid.",'" . $name . "','" . $phone . "', '" . $address . "','" . $email ."')";
+        VALUES (".$newid.",'" . $name . "','" . $phone . "', '" . $address . "','" . $email ."',1)";
         $result2 = $dp->excuteQuery($sql2);
         if ($result1 && $result2) {
           echo "Success";

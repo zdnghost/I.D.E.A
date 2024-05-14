@@ -1,8 +1,6 @@
 <!-- Sidebar -->
 <?php
 session_start();
- $_SESSION['permission']=[1,2,3,4,5,6,7,8,9,10,11,12,13];
- $_SESSION['userID']=2;
  $fristpage=false;
 ?>
 <div class="sidebar" id="mySidebar" >

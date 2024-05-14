@@ -15,8 +15,20 @@
                 <label for="floatingInput">Username</label>
               </div>
               <div class="form-floating mb-2">
+                <input type="text" class="form-control" id="name" name="name" placeholder="Name">
+                <label for="floatingInput">Name</label>
+              </div>
+              <div class="form-floating mb-2">
                 <input type="email" class="form-control" id="email" name="email" placeholder="Email">
                 <label for="floatingInput">Email</label>
+              </div>
+              <div class="form-floating mb-2">
+                <input type="text" class="form-control" id="phonenumber" name="phonenumber" placeholder="Phone number">
+                <label for="floatingInput">Phone number</label>
+              </div>
+              <div class="form-floating mb-2">
+                <input type="text" class="form-control" id="address" name="address" placeholder="Address">
+                <label for="floatingInput">Address</label>
               </div>
               <div class="form-floating mb-2">
                 <input type="password" class="form-control" id="password" name="password" placeholder="Password">
@@ -32,7 +44,7 @@
                 <a class="login-btn btn btn-outline-primary" onclick="ShowLogin()" role="button">Login here</a>
               </div>
 
-              <button class="w-100 btn btn-lg btn-warning" type="button">Register</button>
+              <button class="w-100 btn btn-lg btn-warning" type="button" onclick="register()">Register</button>
             </form>
           </main>
     </div>

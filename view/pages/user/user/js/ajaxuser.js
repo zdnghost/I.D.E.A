@@ -17,6 +17,14 @@ function ShowThongTin(id){
     });
 }
 function ShowProfile(){  
+    if(isLogin())
+        {
+            customNotice(
+                " fa-sharp fa-light fa-circle-exclamation",
+                " Need Login!",3
+              );
+              return;
+        }
     $.ajax({
         url:"./view/pages/user/user/edit-profile.php",
         method:"POST",
@@ -44,6 +52,14 @@ function ShowRegister(){
     });
 }
 function ShowCart(){  
+    if(isLogin())
+        {
+            customNotice(
+                " fa-sharp fa-light fa-circle-exclamation",
+                " Need Login!",3
+              );
+              return;
+        }
     $.ajax({
         url:"./view/pages/user/user/cart.php",
         method:"POST",
@@ -52,7 +68,15 @@ function ShowCart(){
         }
     });
 }
-function ShowFav(){  
+function ShowFav(){ 
+    if(isLogin())
+        {
+            customNotice(
+                " fa-sharp fa-light fa-circle-exclamation",
+                " Need Login!",3
+              );
+              return;
+        } 
     $.ajax({
         url:"./view/pages/user/user/favourite.php",
         method:"POST",
@@ -62,6 +86,14 @@ function ShowFav(){
     });
 }
 function ShowAccount(){  
+    if(isLogin())
+        {
+            customNotice(
+                " fa-sharp fa-light fa-circle-exclamation",
+                " Need Login!",3
+              );
+              return;
+        }
     $.ajax({
         url:"./view/pages/user/user/editprofile.php",
         method:"POST",
@@ -80,6 +112,14 @@ function ShowShopping(){
     });
 }
 function ShowCheckOut(){
+    if(isLogin())
+        {
+            customNotice(
+                " fa-sharp fa-light fa-circle-exclamation",
+                " Need Login!",3
+              );
+              return;
+        }
     $.ajax({
         url:"./view/pages/user/user/checkout.php",
         method:"POST",

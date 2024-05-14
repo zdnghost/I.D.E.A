@@ -10,6 +10,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </head>
 <body onload="ShowHome()">
+<div id="notice"></div>
     <!-- Header Section Starts -->
     <header class="py-3 mb-3 border-bottom"></header>
     <div class="container" id="header-section">    
@@ -24,7 +25,7 @@
 <?php include 'view/pages/user/user/footer.php'?>
 </div>
     </main>
-<div id="notice"></div>
+
 </div>
 </body>
 <script src="https://code.jquery.com/jquery-3.1.1.min.js" ></script>
@@ -33,12 +34,9 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"></script>
     <script src="view/js/notice.js"></script>
   <!--controller-->
-    <script src="controller/managerAccountController.js"></script>
-    <script src="controller/managerOrderController.js"></script>
     <script src="controller/loginController.js"></script>
     <script src="controller/productController.js"></script>
     <script src="controller/orderController.js"></script>
     <script src="controller/roleController.js"></script>
-    <script src="controller/supplyController.js"></script>
     <script src="controller/userController.js"></script>
 </html>

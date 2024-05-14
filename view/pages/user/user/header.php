@@ -1,7 +1,12 @@
+<<<<<<< HEAD
 <?php
 require("util/dataProvider.php");
 $dp = new DataProvider();
 session_start();
+=======
+<?php 
+  session_start();
+>>>>>>> 4716853528ae55274d665e891bca3b4990ac43c4
 ?>
 <nav class="navbar navbar-expand-lg navbar-light">
           <div class="container-fluid gap-5 p-0 d-flex align-items-center ">

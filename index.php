@@ -25,7 +25,6 @@
 <?php include 'view/pages/user/user/footer.php'?>
 </div>
     </main>
-
 </div>
 </body>
 <script src="https://code.jquery.com/jquery-3.1.1.min.js" ></script>

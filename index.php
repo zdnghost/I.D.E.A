@@ -17,7 +17,7 @@ session_start();
     <!-- Header Section Starts -->
     <header class="py-3 mb-3 border-bottom"></header>
     <div class="container" id="header-section">    
-      <?php include 'view/pages/user/user/header.php'?>
+      <?php include 'view/pages/user/header.php'?>
     </div>
     </header>
     <main>
@@ -25,7 +25,7 @@ session_start();
 
 </div>
 <div id="footer">
-<?php include 'view/pages/user/user/footer.php'?>
+<?php include 'view/pages/user/footer.php'?>
 </div>
     </main>
 </div>

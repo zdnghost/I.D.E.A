@@ -19,7 +19,7 @@ const addToCart = (productID,colorID) => {
   };
   const deleteByproductID = (productID,colorID) => {
     $.ajax({
-      url: "util/cart.php?productID=" + productID+"?colorID="+colorID,
+      url: "util/cart.php?productID=" + productID+"&colorID="+colorID,
       type: "DELETE",
       success: function (res) {
         if (res == "Success") {
@@ -96,38 +96,40 @@ const addToCart = (productID,colorID) => {
   };
   const summary = () => {
     let products = document.querySelectorAll(
-      "#mycart .check-button input[type='checkbox']:checked"
+      ".product-placeholder"
     );
     let subTotal = getSubTotalSelected(products);
-    subTotalFormat = "$" + (Math.round(subTotal * 100) / 100).toFixed(2);
-    shipPrice = products.length * 15;
-    shipPriceFormat = "$" + (Math.round(shipPrice * 100) / 100).toFixed(2);
-    total = subTotal + shipPrice;
-    totalFormat = "$" + (Math.round(total * 100) / 100).toFixed(2);
-    let subtotalInput = document.querySelector(".subtotal");
-    let shippingInput = document.querySelector(".shipping");
+    TotalFormat = subTotal+" đ";
     let totalInput = document.querySelector(".total-final");
-    subtotalInput.innerHTML = subTotalFormat;
-    shippingInput.innerHTML = shipPriceFormat;
-    totalInput.innerHTML = totalFormat;
+    totalInput.innerHTML = TotalFormat;
   };
   
   const getSubTotalSelected = (products) => {
     let subTotal = 0;
+    let count=0;
     for (let product of products) {
-      let quantity = parseInt(
-        product.closest(".product-placeholder").querySelector("input.quantity-info")
-          .value
+      let quantity=0;
+      if(!isNaN( product.closest(".product-placeholder").querySelector("#quanity-info").value)){
+      quantity = parseInt(
+        product.closest(".product-placeholder").querySelector("#quanity-info").value
       );
-  
-      let price = parseFloat(
-        product
-          .closest(".product-placeholder")
-          .querySelector(".each")
-          .innerHTML.substring(1)
-      );
-      subTotal += quantity * price;
     }
+    else{
+      quantity = parseInt(
+        product.closest(".product-placeholder").querySelector("#quanity-info").innerHTML
+      );
+    }
+      eachpri=product.closest(".product-placeholder")
+      .querySelector(".eachPrice")
+      .innerHTML;
+      let price = parseFloat(
+        eachpri.substring(0,eachpri.length - 2)  
+      );
+      console.log(quantity,price);
+      subTotal += quantity * price;
+      count+=1;
+    }
+    document.querySelector(".rounded-pill").innerHTML=count;
     return subTotal;
   };
   

@@ -3,7 +3,7 @@
 <div class="container pt-5" id="popular-products-section">
       <h2 class="py-3 border-bottom">Popular Products</h2>
       <?php    
-      $sql="SELECT min(idmau),idsanpham,gia,tensanpham from sanpham where trangthai=1 group by idsanpham,gia,tensanpham ";
+      $sql="SELECT min(idmau),idsanpham,gia,tensanpham from sanpham where trangthai=1 group by idsanpham,gia,tensanpham limit 6";
       $result=$dp-> excuteQuery($sql);
       if ($result-> num_rows > 0){
         while ($row=$result-> fetch_assoc()) {

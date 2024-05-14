@@ -39,15 +39,14 @@ switch ($_SERVER["REQUEST_METHOD"]) {
         $address = $_POST['address'];
         $userID = $_SESSION['userID'];
         $products = json_decode($_POST['products']);
-        $sale=$_POST['sale'];
         $hoaDonID = $dp->getNewHoaDonId();
         $sql1 = "INSERT INTO hoadon
-        VALUES (" . $hoaDonID .",".$idnguoidung.",".$total.",".(new Datetime())->format('Y-m-d')."1,NULL,'" .$address."',".$sale.")";
+        VALUES (" . $hoaDonID .",".$idnguoidung.",".$total.",".(new Datetime())->format('Y-m-d')."1,NULL,'" .$address."')";
         $result1 = $dp->excuteQuery($sql1);
         $error = false;
         foreach ($products as $product) {
           $sql = "INSERT INTO chitiethoadon
-                  VALUES (" .$hoaDonID . ",". $products->{"productID"} . "," . $products->{"colorID"} . ",". $products->{"productPrice"} . "," . $products->{"Total"} . ","   . $product->{"quantity"} . ")";
+                  VALUES (" .$hoaDonID . ",". $products->{"productID"} . "," . $products->{"colorID"} . ",". $products->{"quantity"} . "," . $products->{"productPrice"} . ","   . $product->{"total"} . ")";
           $result = $dp->excuteQuery($sql);
           if (!$result) {
             $error = true;

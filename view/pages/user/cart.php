@@ -2,16 +2,6 @@
 require("../../../util/dataProvider.php");
 $dp = new DataProvider();
 session_start();
-$userID = $_SESSION['userID'];
-$sql1 = "SELECT giohang.soluong as slgh, sanpham.* FROM giohang join sanpham on (giohang.idsanpham = sanpham.idsanpham and giohang.idmau = sanpham.idsanpham) 
-          where idnguoidung = '" . $userID . "'";
-$result1 = $dp->excuteQuery($sql1);
-$sanpham = array();
-if ($result1->num_rows > 0) {
-  while ($row = $result1->fetch_assoc()) {
-      array_push($sanpham, $row);
-  }
-}
 
 ?> 
 <div>
@@ -31,10 +21,10 @@ if ($result1->num_rows > 0) {
               <ul class="list-group mb-3">
                 <li class="list-group-item d-flex justify-content-between">
                   <strong>Total (USD)</strong>
-                  <strong>$20</strong>
+                  <strong class="total-final"></strong>
                 </li>
               </ul>
-              <a href="checkout.php" class="w-100 btn btn-warning btn-md" role="button">Proceed to checkout</a>
+              <a href="javascript:void(0)" onclick="ShowCheckOut()" class="w-100 btn btn-warning btn-md" role="button">Proceed to checkout</a>
             </div>
             <div class="col-md-8 col-lg-9">
               <h4 class="mb-3">Your cart</h4>
@@ -43,12 +33,13 @@ if ($result1->num_rows > 0) {
       $result=$dp-> excuteQuery($sql);
       if ($result-> num_rows > 0){
         while ($row=$result-> fetch_assoc()) {
-          ?>
+          ?><script>
+            summary();
+            </script>
                 <hr class="my-4">
-
                 <div class="row mb-4 d-flex flex-wrap align-items-center product-placeholder" onload="changeQuantity(<?=$row['idsanpham'] ?>,<?=$row['idmau']?>,0,this)">
                 <div class="col-2">
-                    <a href="product-detail.php">
+                    <a href="javascript:void(0)" onclick="ShowThongTin(<?=$row['idsanpham']?>)">
                       <img
                     src="./data/img/<?=$row['idsanpham']?>/<?=$row['hinh']?>"
                     class="img-fluid rounded-3" alt="Cotton T-shirt" style="overflow: hidden; width: 100px;">
@@ -61,17 +52,17 @@ if ($result1->num_rows > 0) {
                 </div>
                 <div class="col-3 d-flex ">
                     <button data-mdb-button-init data-mdb-ripple-init class="btn btn-link px-2"
-                    onclick="changeQuantity(<?=$row['idsanpham'] ?>,<?=$row['idmau']?>,-1,this)">
+                    onclick="changeQuantity(<?=$row['idsanpham'] ?>,<?=$row['idmau']?>,-1,this);summary()">
                     <i class="bi bi-dash"></i>
                     </button>
 
-                    <input id="form1" min="0" name="quantity-info" value="<?=$row['soluong']?>" type="number"
+                    <input id="quanity-info" min="0" name="quantity-info" value="<?=$row['soluong']?>" type="number"
                     class="form-control quantity-info" min="1" style="width: 52px;"
                    
-                    onchange="changeQuantity(<?=$row['idsanpham'] ?>,<?=$row['idmau']?>,0,this)"/>
+                    onchange="changeQuantity(<?=$row['idsanpham'] ?>,<?=$row['idmau']?>,0,this);summary()"/>
 
                     <button data-mdb-button-init data-mdb-ripple-init class="btn btn-link px-2"
-                    onclick="changeQuantity(<?=$row['idsanpham'] ?>,<?=$row['idmau']?>,1,this)">
+                    onclick="changeQuantity(<?=$row['idsanpham'] ?>,<?=$row['idmau']?>,1,this);summary()">
                     <i class="bi bi-plus"></i>
                     </button>
                 </div>
@@ -79,7 +70,7 @@ if ($result1->num_rows > 0) {
                     <h6 class="mb-0 total"><?=$row['gia']*$row['soluong']?> đ</h6>
                 </div>
                 <div class="col-1 text-end">
-                    <a href="#!" class="text-muted"><i class="bi bi-x-lg"></i></a>
+                    <a href="javascript:void(0)" class="text-muted" onclick="deleteFromCart(<?=$row['idsanpham']?>,<?=$row['idmau']?>,this)"><i class="bi bi-x-lg"></i></a>
                 </div>
                 </div>
         <?php }

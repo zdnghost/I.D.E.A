@@ -49,10 +49,10 @@ switch ($_SERVER["REQUEST_METHOD"]) {
     }
     break;
   case 'DELETE':
-    $albumID = $_GET['albumID'];
     $productID = $_GET['productID'];
     $colorID=$_GET['colorID'];
-    $sql = "DELETE FROM giohang WHERE idnguoidung = '" . $userID . "' and maAlbum = " . $productID." and idMau=".$color;
+    $userID=$_SESSION['userID'];
+    $sql = "DELETE FROM giohang WHERE idnguoidung = '" . $userID . "' and idsanpham = " . $productID." and idmau=".$colorID;
     $result = $dp->excuteQuery($sql);
     if ($result) {
       echo "Success";

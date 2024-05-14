@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: May 13, 2024 at 03:47 PM
+-- Generation Time: May 14, 2024 at 07:06 PM
 -- Server version: 8.0.30
 -- PHP Version: 8.1.10
 
@@ -36,6 +36,21 @@ CREATE TABLE `chitiethoadon` (
   `thanhtien` bigint NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
+--
+-- Dumping data for table `chitiethoadon`
+--
+
+INSERT INTO `chitiethoadon` (`idhoadon`, `idsanpham`, `idmau`, `soluong`, `dongia`, `thanhtien`) VALUES
+(1, 2, 5, 12, 10000, 120000),
+(2, 2, 3, 1, 10000, 10000),
+(3, 1, 2, 4, 2000000, 8000000),
+(3, 2, 5, 4, 10000, 40000),
+(4, 2, 3, 2, 10000, 20000),
+(4, 2, 4, 1, 10000, 10000),
+(4, 2, 6, 1, 10000, 10000),
+(4, 3, 4, 1, 100000, 100000),
+(5, 4, 2, 10, 100000, 1000000);
+
 -- --------------------------------------------------------
 
 --
@@ -55,7 +70,9 @@ CREATE TABLE `chitietphieunhap` (
 
 INSERT INTO `chitietphieunhap` (`idphieunhap`, `idsanpham`, `idmau`, `soluong`) VALUES
 (1, 2, 3, 100),
-(1, 2, 4, 100);
+(1, 2, 4, 100),
+(2, 2, 5, 100),
+(6, 4, 2, 1000);
 
 -- --------------------------------------------------------
 
@@ -84,6 +101,17 @@ CREATE TABLE `hoadon` (
   `idphutrach` int DEFAULT NULL,
   `diachigiaohang` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `hoadon`
+--
+
+INSERT INTO `hoadon` (`idhoadon`, `idnguoidung`, `thoigiandat`, `trangthai`, `idphutrach`, `diachigiaohang`) VALUES
+(1, 1, '2024-05-07', 2, 2, '41345'),
+(2, 1, '2024-05-14', 0, NULL, '23122003'),
+(3, 1, '2024-05-14', 0, NULL, '23122003'),
+(4, 1, '2024-05-14', 0, NULL, '23122003'),
+(5, 1, '2024-05-14', 2, 1, '23122003');
 
 -- --------------------------------------------------------
 
@@ -184,7 +212,7 @@ CREATE TABLE `nguoidung` (
 --
 
 INSERT INTO `nguoidung` (`idnguoidung`, `hoten`, `sdt`, `diachi`, `email`, `trangthai`) VALUES
-(1, 'Luong gia tuan', '0938023118', '23122003', 'tuandj23122003@gmail.com\r\n', 1),
+(1, 'Lương Gia Tuấn', '0938023118', '23122003', 'tuandj23122003@gmail.com', 1),
 (2, 'Luong gia tuan', '0938023118', '23122003', 'tuandj23122003@gmail.com', 1);
 
 -- --------------------------------------------------------
@@ -204,7 +232,9 @@ CREATE TABLE `phieunhap` (
 --
 
 INSERT INTO `phieunhap` (`idphieunhap`, `idnguoinhap`, `ngaynhap`) VALUES
-(1, 1, '2024-05-12');
+(1, 1, '2024-05-12'),
+(2, 1, '2024-05-13'),
+(6, 1, '2024-05-14');
 
 -- --------------------------------------------------------
 
@@ -242,9 +272,25 @@ CREATE TABLE `quyen` (
 --
 
 INSERT INTO `quyen` (`idvaitro`, `idquyen`) VALUES
+(3, 1),
+(3, 2),
 (4, 2),
+(3, 3),
+(3, 4),
+(3, 5),
+(3, 6),
+(3, 7),
+(3, 8),
 (4, 8),
-(4, 9);
+(3, 9),
+(4, 9),
+(3, 10),
+(3, 11),
+(3, 12),
+(3, 13),
+(3, 14),
+(3, 15),
+(3, 16);
 
 -- --------------------------------------------------------
 
@@ -271,12 +317,22 @@ CREATE TABLE `sanpham` (
 
 INSERT INTO `sanpham` (`idsanpham`, `idmau`, `idphong`, `idloai`, `tensanpham`, `gia`, `mota`, `hinh`, `soLuong`, `trangthai`) VALUES
 (1, 0, 1, 1, 'ghế sofa uppland', 2000000, 'ghế sofa cao cấp', '', 0, 0),
+(1, 2, 1, 1, 'ghế sofa uppland', 2000000, 'ghế sofa cao cấp', 'th.jpg', 0, 1),
 (2, 0, 1, 1, 'ghế nhựa', 10000, 'ghế nhựa Vergil', '', 0, 0),
 (2, 3, 1, 1, 'ghế nhựa', 10000, 'ghế nhựa Vergil', 'image_2024-05-12_235147442.png', 100, 1),
 (2, 4, 1, 1, 'ghế nhựa', 10000, 'ghế nhựa Vergil', 'image_2024-05-12_235129135.png', 100, 1),
-(2, 5, 1, 1, 'ghế nhựa', 10000, 'ghế nhựa Vergil', 'image_2024-05-12_235758134.png', 0, 1),
+(2, 5, 1, 1, 'ghế nhựa', 10000, 'ghế nhựa Vergil', 'image_2024-05-12_235758134.png', 88, 1),
 (2, 6, 1, 1, 'ghế nhựa', 10000, 'ghế nhựa Vergil', 'image_2024-05-12_235831281.png', 0, 1),
-(3, 0, 1, 1, 'ghe nhua cao cap', 100000, 'ghe nhua cao cap', '', 0, 0);
+(3, 0, 1, 1, 'ghe nhua cao cap', 100000, 'ghe nhua cao cap', '', 0, 0),
+(3, 4, 1, 1, 'ghe nhua cao cap', 100000, 'ghe nhua cao cap', 'th.jpg', 0, 1),
+(4, 0, 1, 1, 'ghế nhựa Vergil', 100000, 'ngồi phê lắm', '', 0, 0),
+(4, 2, 1, 1, 'ghế nhựa Vergil', 100000, 'ngồi phê lắm', 'image_2024-05-15_014429249.png', 940, 1),
+(5, 0, 2, 1, 'asd', 100000, 'asd', '', 0, 0),
+(5, 2, 2, 1, 'asd', 100000, 'asd', 'image_2024-05-15_015657079.png', 0, 1),
+(6, 0, 2, 1, 'asd', 213, 'asd', '', 0, 0),
+(6, 4, 2, 1, 'asd', 213, 'asd', 'image_2024-05-15_015705734.png', 0, 1),
+(7, 0, 2, 2, 'ghe sofa ', 2, 'ghe sofa ', '', 0, 0),
+(7, 4, 2, 2, 'ghe sofa ', 2, 'ghe sofa ', 'image_2024-05-15_015734790.png', 0, 1);
 
 -- --------------------------------------------------------
 
@@ -297,8 +353,9 @@ CREATE TABLE `taikhoan` (
 --
 
 INSERT INTO `taikhoan` (`idnguoidung`, `username`, `password`, `ngaytao`, `vaitro`) VALUES
-(1, 'luonggiatuan', '23122003', '2024-04-15', 1),
-(2, 'zdnghost', 'c3f047d87b39945c3fa08e7de1ee4fb8', '2024-05-10', 3);
+(1, 'admin', '21232f297a57a5a743894a0e4a801fc3', '2024-04-15', 3),
+(2, 'zdnghost', '444db57c96106e7f5c8a4941dab449d8', '2024-05-10', 3),
+(3, 'user', 'ee11cbb19052e40b07aac0ca060c23ee', '2024-04-15', 1);
 
 -- --------------------------------------------------------
 

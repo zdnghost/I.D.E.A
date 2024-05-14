@@ -33,13 +33,13 @@
               </ul>
     
               <ul class="nav nav-pills navigation-icons">
-                <li class="nav-item"><a href="cart.php" class="nav-link">
+                <li class="nav-item"><a href="view/pages/user/cart.php" class="nav-link">
                     <i class="bi bi-bag" style="font-size: 16px;"></i>
                 </a></li>
-                <li class="nav-item"><a href="favourite.php" class="nav-link">
+                <li class="nav-item"><a href="view/pages/user/favourite.php" class="nav-link">
                     <i class="bi bi-heart" style="font-size: 16px;"></i>
                 </a></li>
-                <li class="nav-item"><a href="profile.php" class="nav-link">
+                <li class="nav-item"><a href="view/pages/user/profile.php" class="nav-link">
                     <i class="bi bi-person" style="font-size: 16px;"></i>
                 </a></li>
               </ul>

@@ -1,6 +1,6 @@
 function ShowHome(){  
     $.ajax({
-        url:"./view/pages/user/user/home.php",
+        url:"./view/pages/user/home.php",
         method:"POST",
         success:function(data){
             $('.allContent-section').html(data);
@@ -9,7 +9,7 @@ function ShowHome(){
 }
 function ShowThongTin(id){  
     $.ajax({
-        url:"./view/pages/user/user/product-detail.php?id="+id,
+        url:"./view/pages/user/product-detail.php?id="+id,
         method:"POST",
         success:function(data){
             $('.allContent-section').html(data);
@@ -27,7 +27,7 @@ const ShowProfile=async ()=>{
               return;
         }
     $.ajax({
-        url:"./view/pages/user/user/edit-profile.php",
+        url:"./view/pages/user/edit-profile.php",
         method:"POST",
         success:function(data){
             $('.allContent-section').html(data);
@@ -36,7 +36,7 @@ const ShowProfile=async ()=>{
 }
 function ShowLogin(){
     $.ajax({
-        url:"./view/pages/user/user/login.php",
+        url:"./view/pages/user/login.php",
         method:"POST",
         success:function(data){
             $('.allContent-section').html(data);
@@ -45,7 +45,7 @@ function ShowLogin(){
 }
 function ShowRegister(){  
     $.ajax({
-        url:"./view/pages/user/user/register.php",
+        url:"./view/pages/user/register.php",
         method:"POST",
         success:function(data){
             $('.allContent-section').html(data);
@@ -65,7 +65,7 @@ const ShowCart=async ()=>{
               return;
         }
     $.ajax({
-        url:"./view/pages/user/user/cart.php",
+        url:"./view/pages/user/cart.php",
         method:"POST",
         success:function(data){
             $('.allContent-section').html(data);
@@ -83,7 +83,7 @@ const ShowFav=async ()=>{
               return;
         } 
     $.ajax({
-        url:"./view/pages/user/user/favourite.php",
+        url:"./view/pages/user/favourite.php",
         method:"POST",
         success:function(data){
             $('.allContent-section').html(data);
@@ -100,7 +100,7 @@ const ShowAccount=async ()=>{
               return;
         }
     $.ajax({
-        url:"./view/pages/user/user/editprofile.php",
+        url:"./view/pages/user/editprofile.php",
         method:"POST",
         success:function(data){
             $('.allContent-section').html(data);
@@ -109,7 +109,7 @@ const ShowAccount=async ()=>{
 }
 function ShowShopping(){  
     $.ajax({
-        url:"./view/pages/user/user/shopping.php",
+        url:"./view/pages/user/shopping.php",
         method:"POST",
         success:function(data){
             $('.allContent-section').html(data);
@@ -127,7 +127,7 @@ const ShowCheckOut= async ()=>{
               return;
         }
     $.ajax({
-        url:"./view/pages/user/user/checkout.php",
+        url:"./view/pages/user/checkout.php",
         method:"POST",
         success:function(data){
             $('.allContent-section').html(data);

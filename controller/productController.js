@@ -284,12 +284,12 @@ const deleteProduct = (productID) => {
       },
     });
   };
-  const uploadImg = () => {
+  const uploadImg = (id) => {
     let fileInput = document.querySelector('.imagecontent .imgsrc');
       let file_data = fileInput.files[0];
       let form_data = new FormData();
       form_data.append("file", file_data);
-      form_data.append("target_directory", "../data/img/");
+      form_data.append("target_directory", "../data/img/"+id+"/");
       if (!file_data.type.startsWith("image/")) {
         customNotice(
           " fa-sharp fa-light fa-circle-exclamation",

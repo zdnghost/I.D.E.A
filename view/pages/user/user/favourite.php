@@ -1,21 +1,12 @@
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <link rel="stylesheet" href="/view/styles/style.css">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-</head>
-<body>
+<div>
     <!-- Header Section Starts -->
     <div class="container" id="header-section">
       <header class="py-3 mb-3 border-bottom">
         <nav class="navbar navbar-expand-lg navbar-light">
           <div class="container-fluid gap-5 p-0 d-flex align-items-center ">
             <a href="index.php" class="link-body-emphasis text-decoration-none">
-              <img src="/view/assets/img/logo.png" alt="" width="100px">
+              <img src="./view/assets/img/logo.png" alt="" width="100px">
             </a>
 
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -60,7 +51,7 @@
             <i class="bi bi-x-lg pt-2 text-end px-2 text-danger"></i>
             <a href="product-detail.php" class="link-body-emphasis text-decoration-none">
               <img
-              src="/view/assets/img/products/revskaer-3-seat-conversation-set-outdoor-anthracite-froesoen-duvholmen-dark-gray__1240171_pe919187_s5.png"
+              src="./view/assets/img/products/revskaer-3-seat-conversation-set-outdoor-anthracite-froesoen-duvholmen-dark-gray__1240171_pe919187_s5.png"
               class="product-img card-img-top img-fluid"
               alt=""
               />
@@ -83,7 +74,7 @@
             <i class="bi bi-x-lg pt-2 text-end px-2 text-danger"></i>
             <a href="product-detail.php" class="link-body-emphasis text-decoration-none">
               <img
-              src="/view/assets/img/products/revskaer-3-seat-conversation-set-outdoor-anthracite-froesoen-duvholmen-dark-gray__1240171_pe919187_s5.png"
+              src="./view/assets/img/products/revskaer-3-seat-conversation-set-outdoor-anthracite-froesoen-duvholmen-dark-gray__1240171_pe919187_s5.png"
               class="product-img card-img-top img-fluid"
               alt=""
               />
@@ -106,7 +97,7 @@
             <i class="bi bi-x-lg pt-2 text-end px-2 text-danger"></i>
             <a href="product-detail.php" class="link-body-emphasis text-decoration-none">
               <img
-              src="/view/assets/img/products/revskaer-3-seat-conversation-set-outdoor-anthracite-froesoen-duvholmen-dark-gray__1240171_pe919187_s5.png"
+              src="./view/assets/img/products/revskaer-3-seat-conversation-set-outdoor-anthracite-froesoen-duvholmen-dark-gray__1240171_pe919187_s5.png"
               class="product-img card-img-top img-fluid"
               alt=""
               />
@@ -129,7 +120,7 @@
             <i class="bi bi-x-lg pt-2 text-end px-2 text-danger"></i>
             <a href="product-detail.php" class="link-body-emphasis text-decoration-none">
               <img
-              src="/view/assets/img/products/revskaer-3-seat-conversation-set-outdoor-anthracite-froesoen-duvholmen-dark-gray__1240171_pe919187_s5.png"
+              src="./view/assets/img/products/revskaer-3-seat-conversation-set-outdoor-anthracite-froesoen-duvholmen-dark-gray__1240171_pe919187_s5.png"
               class="product-img card-img-top img-fluid"
               alt=""
               />
@@ -152,7 +143,7 @@
             <i class="bi bi-x-lg pt-2 text-end px-2 text-danger"></i>
             <a href="product-detail.php" class="link-body-emphasis text-decoration-none">
               <img
-              src="/view/assets/img/products/revskaer-3-seat-conversation-set-outdoor-anthracite-froesoen-duvholmen-dark-gray__1240171_pe919187_s5.png"
+              src="./view/assets/img/products/revskaer-3-seat-conversation-set-outdoor-anthracite-froesoen-duvholmen-dark-gray__1240171_pe919187_s5.png"
               class="product-img card-img-top img-fluid"
               alt=""
               />
@@ -175,7 +166,7 @@
             <i class="bi bi-x-lg pt-2 text-end px-2 text-danger"></i>
             <a href="product-detail.php" class="link-body-emphasis text-decoration-none">
               <img
-              src="/view/assets/img/products/revskaer-3-seat-conversation-set-outdoor-anthracite-froesoen-duvholmen-dark-gray__1240171_pe919187_s5.png"
+              src="./view/assets/img/products/revskaer-3-seat-conversation-set-outdoor-anthracite-froesoen-duvholmen-dark-gray__1240171_pe919187_s5.png"
               class="product-img card-img-top img-fluid"
               alt=""
               />
@@ -252,4 +243,4 @@
         </footer>
     </div>
     <!-- Footer Section Ends -->
-</body>
+</div>

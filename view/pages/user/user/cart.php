@@ -1,13 +1,3 @@
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <link rel="stylesheet" href="/view/styles/style.css">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-</head>
-<body>
 <?php
 require("../../../util/dataProvider.php");
 $dp = new DataProvider();
@@ -25,12 +15,10 @@ if ($result1->num_rows > 0) {
 $sql2 = "select diaChi from nguoiDung where idnguoidung='" . $userID . "'";
 $result2 = $dp->excuteQuery($sql2);
 $address = $result2->fetch_assoc()['diachi'];
-?>  
-?>
+?> 
+<div>
     <!-- Header Section Starts -->
-    <?php
-        include'header.php'
-    ?>
+
     <!-- Header Section Ends -->  
 
 
@@ -59,7 +47,7 @@ $address = $result2->fetch_assoc()['diachi'];
                 <div class="col-2">
                     <a href="product-detail.php">
                       <img
-                    src="/view/assets/img/products/revskaer-3-seat-conversation-set-outdoor-anthracite-froesoen-duvholmen-dark-gray__1240171_pe919187_s5.png"
+                    src="./view/assets/img/products/revskaer-3-seat-conversation-set-outdoor-anthracite-froesoen-duvholmen-dark-gray__1240171_pe919187_s5.png"
                     class="img-fluid rounded-3" alt="Cotton T-shirt" style="overflow: hidden; width: 100px;">
                     </a>
                 </div>
@@ -96,7 +84,7 @@ $address = $result2->fetch_assoc()['diachi'];
                       <a href="product-detail.php">
                       <a href="product-detail.php">
                         <img
-                      src="/view/assets/img/products/revskaer-3-seat-conversation-set-outdoor-anthracite-froesoen-duvholmen-dark-gray__1240171_pe919187_s5.png"
+                      src="./view/assets/img/products/revskaer-3-seat-conversation-set-outdoor-anthracite-froesoen-duvholmen-dark-gray__1240171_pe919187_s5.png"
                       class="img-fluid rounded-3" alt="Cotton T-shirt" style="overflow: hidden; width: 100px;">
                       </a>
                   </div>
@@ -131,7 +119,7 @@ $address = $result2->fetch_assoc()['diachi'];
                   <div class="col-2">
                       <a href="product-detail.php">
                         <img
-                      src="/view/assets/img/products/revskaer-3-seat-conversation-set-outdoor-anthracite-froesoen-duvholmen-dark-gray__1240171_pe919187_s5.png"
+                      src="./view/assets/img/products/revskaer-3-seat-conversation-set-outdoor-anthracite-froesoen-duvholmen-dark-gray__1240171_pe919187_s5.png"
                       class="img-fluid rounded-3" alt="Cotton T-shirt" style="overflow: hidden; width: 100px;">
                       </a>
                   </div>
@@ -220,4 +208,4 @@ $address = $result2->fetch_assoc()['diachi'];
       </footer>
   </div>
   <!-- Footer Section Ends -->
-</body>
+</div>

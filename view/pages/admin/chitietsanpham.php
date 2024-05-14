@@ -37,7 +37,7 @@
     <tr>
       <td><?=$row["tenMau"]?></td>    
       <td><?=$row["soLuong"]?></td> 
-      <td><img src="data/img/<?=$row['hinh']?>" class="dataimg"></td>
+      <td><img src="data/img/<?=$id?>/<?=$row['hinh']?>" class="dataimg"></td>
       <?php
         if(checkCanAccess(5)){
         if($row['trangthai']==1)
@@ -88,7 +88,7 @@
             </div>
             <div class="form-group imagecontent">
               <label for="name">Hình:</label>
-              <input type="file" class="fileToUpload form-control imgsrc" onchange="uploadImg()"></input>
+              <input type="file" class="fileToUpload form-control imgsrc" onchange="uploadImg(<?=$id?>)"></input>
               <img width="100%" class="img" src="data/img/default.jpg" alt="img">
             </div>
             

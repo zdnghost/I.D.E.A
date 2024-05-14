@@ -18,7 +18,7 @@
     </div>
     <div class="form-group imagecontent" id="updateimage">
               <label for="name">Hình:</label>
-              <input type="file" class="fileToUpload form-control imgsrc" onchange="uploadImg()"></input>
+              <input type="file" class="fileToUpload form-control imgsrc" onchange="uploadImg(<?=$id?>)"></input>
               <img width="100%" class="img" src="data/img/<?=$product['hinh']?>" alt="img">
     </div>
     <div class="form-group">

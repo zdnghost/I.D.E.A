@@ -11,20 +11,19 @@
             <div class="collapse navbar-collapse justify-content-between" id="navbarSupportedContent">
               <ul class="nav nav-pills gap-2 navigation-links">
                 <li class="nav-item"><a href="index.php" aria-current="page" class="nav-link">Home</a></li>
-                <li class="nav-item"><a href="view/pages/user/shopping.php" class="nav-link">Shopping</a></li>
-                <li class="nav-item"><a href="view/pages/user/profile.php" class="nav-link" >My Account</a></li>
-                <li class="nav-item"><a href="view/pages/user/cart.php" class="nav-link" >Cart</a></li>
-                <li class="nav-item"><a href="view/pages/user/checkout.php" class="nav-link">Checkout</a></li>
+                <li class="nav-item"><a href="javascript:void(0)" onclick="ShowShopping()" class="nav-link">Shopping</a></li>
+                <li class="nav-item"><a href="javascript:void(0)" class="nav-link" onclick="ShowProfile()">My Account</a></li>
+                <li class="nav-item"><a href="javascript:void(0)" onclick="ShowCart()" class="nav-link" >Cart</a></li>
+                <li class="nav-item"><a href="javascript:void(0)" onclick="ShowCheckOut()" class="nav-link">Checkout</a></li>
               </ul>
-    
               <ul class="nav nav-pills navigation-icons">
-                <li class="nav-item"><a href="cart.php" class="nav-link">
+                <li class="nav-item"><a href="javascript:void(0)" onclick="ShowCart()"  class="nav-link">
                     <i class="bi bi-bag" style="font-size: 16px;"></i>
                 </a></li>
-                <li class="nav-item"><a href="favourite.php" class="nav-link">
+                <li class="nav-item"><a href="javascript:void(0)" onclick="ShowFav()" class="nav-link">
                     <i class="bi bi-heart" style="font-size: 16px;"></i>
                 </a></li>
-                <li class="nav-item"><a href="profile.php" class="nav-link">
+                <li class="nav-item"><a href="javascript:void(0)" onclick="ShowLogin()" class="nav-link">
                     <i class="bi bi-person" style="font-size: 16px;"></i>
                 </a></li>
               </ul>

@@ -33,8 +33,7 @@ const addToCart = (productID,colorID) => {
   };
   const checkChangeQuantity = (change, input) => {
     let currentQuantityInput = input
-      .closest("#form1")
-      .querySelector(".quantity");
+      .closest(".product-placeholder").querySelector("input");
     if (currentQuantityInput.value == '') {
       customNotice(
         " fa-sharp fa-light fa-circle-exclamation",
@@ -74,16 +73,13 @@ const addToCart = (productID,colorID) => {
   };
   
   const updateTotalPrice = (input, quantity) => {
-    let eachPriceInput = input
-      .closest("#form1")
-      .querySelector(".quantity")
-      .innerHTML.substring(1);
-    let eachPrice = parseFloat(eachPriceInput);
+    let eachPriceInput = input.closest(".product-placeholder").querySelector(".eachPrice").innerHTML;
+    let result = eachPriceInput.substring(0,eachPriceInput.length - 2);
+    let eachPrice = parseInt(result);
     let priceTotalInput = input
-      .closest("#form1")
-      .querySelector(".total");
+    .closest(".product-placeholder").querySelector(".total")
     total = (Math.round(quantity * eachPrice * 100) / 100).toFixed(2);
-    priceTotalInput.innerHTML = "$" + total;
+    priceTotalInput.innerHTML = parseInt(total)+ " đ";
   };
   
   const changeQuantity = (productID,colorID, change, input) => {

@@ -36,34 +36,22 @@
               <li class="list-inline-item">  
               <div class="button">
                 
-                    <input type="radio" name="color" id="<?=$info['idmau']?>" value="<?=$info['idmau']?>" class="d-none" checked onclick="loadimg(<?=$id?>,'<?=$info['hinh']?>')">
+                    <input type="radio" name="color" id="<?=$info['idmau']?>" value="<?=$info['idmau']?>" class="d-none color" checked onclick="loadimg(<?=$id?>,'<?=$info['hinh']?>')">
                     
                     <label for="<?=$info['idmau']?>"><?=$info['tenMau']?></label>
                 </div></li>
                 <?php  if ($result-> num_rows > 0){
         while ($row=$result-> fetch_assoc()) {
-          echo '<li class="list-inline-item"><div class="button"><input type="radio" name="color" id="'.$row['idmau'].'" value="'.$row['idmau'].'" class="d-none" onclick="loadimg('.$id.",'".$row['hinh']."'".')"><label for="'.$row['idmau'].'">'.$row['tenMau'].'</label></div></li>';
+
+          echo '<li class="list-inline-item"><div class="button"><input type="radio" name="color" id="'.$row['idmau'].'" value="'.$row['idmau'].'" class="d-none color" onclick="loadimg('.$id.",'".$row['hinh']."'".');"><label for="'.$row['idmau'].'">'.$row['tenMau'].'</label></div></li>';
         }
       }?>
               </ul>
             </div> 
           </div>
-          <div class="d-flex mt-3">
-            <button data-mdb-button-init data-mdb-ripple-init class="btn btn-link px-2"
-            onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
-            <i class="bi bi-dash"></i>
-            </button>
-
-            <input id="form1" min="0" name="quantity" value="1" type="number"
-            class="form-control" min="1" style="width: 52px;"/>
-
-            <button data-mdb-button-init data-mdb-ripple-init class="btn btn-link px-2"
-            onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
-            <i class="bi bi-plus"></i>
-            </button>
-        </div>
           <div class="d-flex gap-1 justify-content-md-start mt-3">
-            <button class="add-to-cart-btn btn btn-warning">Add to cart</button>
+            <button type="button" class="add-to-cart-btn btn btn-warning" onclick="addToCart(<?=$info['idsanpham']?>,getcurrentColor())">Add to cart</button>
+            <!---->
             <button class="favourite-btn btn btn-outline-danger px-3"><i class="bi bi-heart-fill" style="font-size: 16px;"></i></button>
           </div>
         </div>
@@ -78,5 +66,14 @@
 <script>
   function loadimg(id,name){
     document.getElementById("productimg").src="./data/img/"+id+"/"+name;
-  }
+  };
+  function getcurrentColor(){
+   let checkboxs=document.getElementsByClassName("color");
+   for(let i=0;i<checkboxs.length;i++){
+    if(checkboxs[i].checked==true){
+      console.log(checkboxs[i].value);
+     return checkboxs[i].value;
+    }
+   }
+  };
 </script>

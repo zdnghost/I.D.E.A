@@ -39,14 +39,14 @@ if ($result1->num_rows > 0) {
             <div class="col-md-8 col-lg-9">
               <h4 class="mb-3">Your cart</h4>
               <?php    
-      $sql="SELECT * from sanpham join giohang on sanpham.idsanpham=giohang.idsanpham and sanpham.idmau=giohang.idmau where idnguoidung=".$_SESSION['userID'];
+      $sql="SELECT * from sanpham join giohang on sanpham.idsanpham=giohang.idsanpham and sanpham.idmau=giohang.idmau join mau on sanpham.idmau=mau.idmau where idnguoidung=".$_SESSION['userID'];
       $result=$dp-> excuteQuery($sql);
       if ($result-> num_rows > 0){
         while ($row=$result-> fetch_assoc()) {
           ?>
                 <hr class="my-4">
 
-                <div class="row mb-4 d-flex flex-wrap align-items-center">
+                <div class="row mb-4 d-flex flex-wrap align-items-center product-placeholder" onload="changeQuantity(<?=$row['idsanpham'] ?>,<?=$row['idmau']?>,0,this)">
                 <div class="col-2">
                     <a href="product-detail.php">
                       <img
@@ -56,25 +56,27 @@ if ($result1->num_rows > 0) {
                 </div>
                 <div class="col-3 text-break">
                     <h6 class="text-muted"><a href="product-detail.php" class="text-decoration-none text-black nav-link px-0"><?=$row['tensanpham']?></a></h6>
-                    <h6 class="text-black mb-0"><?=$row['gia']?> đ</h6>
+                    <h6 class="text-muted"><?=$row['tenMau']?></h6>
+                    <h6 class="text-black mb-0 eachPrice"><?=$row['gia']?> đ</h6>
                 </div>
-                <div class="col-3 d-flex">
+                <div class="col-3 d-flex ">
                     <button data-mdb-button-init data-mdb-ripple-init class="btn btn-link px-2"
-                    onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
+                    onclick="changeQuantity(<?=$row['idsanpham'] ?>,<?=$row['idmau']?>,-1,this)">
                     <i class="bi bi-dash"></i>
                     </button>
 
-                    <input id="form1" min="0" name="quantity" value="<?=$row['soluong']?>" type="number"
-                    class="form-control" min="1" style="width: 52px;"
+                    <input id="form1" min="0" name="quantity-info" value="<?=$row['soluong']?>" type="number"
+                    class="form-control quantity-info" min="1" style="width: 52px;"
+                   
                     onchange="changeQuantity(<?=$row['idsanpham'] ?>,<?=$row['idmau']?>,0,this)"/>
 
                     <button data-mdb-button-init data-mdb-ripple-init class="btn btn-link px-2"
-                    onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
+                    onclick="changeQuantity(<?=$row['idsanpham'] ?>,<?=$row['idmau']?>,1,this)">
                     <i class="bi bi-plus"></i>
                     </button>
                 </div>
-                <div class="col-3">
-                    <h6 class="mb-0">$ 199</h6>
+                <div class="col-3 product-total">
+                    <h6 class="mb-0 total"><?=$row['gia']*$row['soluong']?> đ</h6>
                 </div>
                 <div class="col-1 text-end">
                     <a href="#!" class="text-muted"><i class="bi bi-x-lg"></i></a>

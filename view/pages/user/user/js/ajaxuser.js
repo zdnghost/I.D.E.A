@@ -16,13 +16,9 @@ function ShowThongTin(id){
         }
     });
 }
-<<<<<<< HEAD
 const ShowProfile=async ()=>{  
     if(!(await isLogin()))
-=======
-function ShowProfile(){  
-    if(!isLogin())
->>>>>>> 4716853528ae55274d665e891bca3b4990ac43c4
+
         {
             customNotice(
                 " fa-sharp fa-light fa-circle-exclamation",
@@ -56,14 +52,10 @@ function ShowRegister(){
         }
     });
 }
-<<<<<<< HEAD
 const ShowCart=async ()=>{  
 
     if(!(await isLogin()))
-=======
-function ShowCart(){  
-    if(!isLogin())
->>>>>>> 4716853528ae55274d665e891bca3b4990ac43c4
+
         {
             
             customNotice(
@@ -80,13 +72,9 @@ function ShowCart(){
         }
     });
 }
-<<<<<<< HEAD
 const ShowFav=async ()=>{ 
     if(!(await isLogin()))
-=======
-function ShowFav(){ 
-    if(!isLogin())
->>>>>>> 4716853528ae55274d665e891bca3b4990ac43c4
+
         {
             customNotice(
                 " fa-sharp fa-light fa-circle-exclamation",
@@ -102,13 +90,8 @@ function ShowFav(){
         }
     });
 }
-<<<<<<< HEAD
 const ShowAccount=async ()=>{  
     if(!(await isLogin()))
-=======
-function ShowAccount(){  
-    if(!isLogin())
->>>>>>> 4716853528ae55274d665e891bca3b4990ac43c4
         {
             customNotice(
                 " fa-sharp fa-light fa-circle-exclamation",
@@ -133,13 +116,9 @@ function ShowShopping(){
         }
     });
 }
-<<<<<<< HEAD
 const ShowCheckOut= async ()=>{
     if(!(await isLogin()))
-=======
-function ShowCheckOut(){
-    if(!isLogin())
->>>>>>> 4716853528ae55274d665e891bca3b4990ac43c4
+
         {
             customNotice(
                 " fa-sharp fa-light fa-circle-exclamation",

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: May 14, 2024 at 07:06 PM
+-- Generation Time: May 14, 2024 at 10:38 PM
 -- Server version: 8.0.30
 -- PHP Version: 8.1.10
 
@@ -107,11 +107,11 @@ CREATE TABLE `hoadon` (
 --
 
 INSERT INTO `hoadon` (`idhoadon`, `idnguoidung`, `thoigiandat`, `trangthai`, `idphutrach`, `diachigiaohang`) VALUES
-(1, 1, '2024-05-07', 2, 2, '41345'),
-(2, 1, '2024-05-14', 0, NULL, '23122003'),
-(3, 1, '2024-05-14', 0, NULL, '23122003'),
-(4, 1, '2024-05-14', 0, NULL, '23122003'),
-(5, 1, '2024-05-14', 2, 1, '23122003');
+(1, 3, '2024-05-07', 2, 2, '41345'),
+(2, 3, '2024-05-14', 0, NULL, '23122003'),
+(3, 3, '2024-05-14', 0, NULL, '23122003'),
+(4, 3, '2024-05-14', 0, NULL, '23122003'),
+(5, 3, '2024-05-14', 2, 1, '23122003');
 
 -- --------------------------------------------------------
 
@@ -212,8 +212,9 @@ CREATE TABLE `nguoidung` (
 --
 
 INSERT INTO `nguoidung` (`idnguoidung`, `hoten`, `sdt`, `diachi`, `email`, `trangthai`) VALUES
-(1, 'Lương Gia Tuấn', '0938023118', '23122003', 'tuandj23122003@gmail.com', 1),
-(2, 'Luong gia tuan', '0938023118', '23122003', 'tuandj23122003@gmail.com', 1);
+(1, 'admin', '0938023118', '23122003', 'admin@gmail.com', 1),
+(2, 'Luong gia tuan', '0938023118', '23122003', 'tuandj23122003@gmail.com', 1),
+(3, 'user', '0938023118', 'tp hcm', 'user@gmail.com', 1);
 
 -- --------------------------------------------------------
 

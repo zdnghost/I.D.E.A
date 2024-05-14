@@ -75,12 +75,12 @@ const addToCart = (productID,colorID) => {
   
   const updateTotalPrice = (input, quantity) => {
     let eachPriceInput = input
-      .closest(".product-placeholder")
-      .querySelector(".each")
+      .closest("#form1")
+      .querySelector(".quantity")
       .innerHTML.substring(1);
     let eachPrice = parseFloat(eachPriceInput);
     let priceTotalInput = input
-      .closest(".product-placeholder")
+      .closest("#form1")
       .querySelector(".total");
     total = (Math.round(quantity * eachPrice * 100) / 100).toFixed(2);
     priceTotalInput.innerHTML = "$" + total;

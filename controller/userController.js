@@ -32,10 +32,8 @@ const IsInfoChange = () => {
 };
 
 const checkInputUpdateUser = () => {
-  if (!isDiff) return false;
   let fullnameInput = document.querySelector("#myaccount #txtHoTen");
   let phoneInput = document.querySelector("#myaccount #txtSDT");
-  let passwordInput = document.querySelector("#myaccount #password-field4");
   let addressInput = document.querySelector("#myaccount #txtAddress");
   let emailInput = document.querySelector("#myaccount #txtEmail");
   if (fullnameInput.value == "") {
@@ -65,24 +63,6 @@ const checkInputUpdateUser = () => {
     phoneInput.focus();
     return false;
   }
-  // if (passwordInput.value == "") {
-  //   customNotice(
-  //     " fa-sharp fa-light fa-circle-exclamation",
-  //     "Please, enter your password!",
-  //     3
-  //   );
-  //   passwordInput.focus();
-  //   return false;
-  // }
-  // if (!isPasswordValid(passwordInput.value)) {
-  //   customNotice(
-  //     " fa-sharp fa-light fa-circle-exclamation",
-  //     "Password that contain at least eight characters, including at least one number and includes both lowercase and uppercase letters and special characters, for example #, ?, !.",
-  //     3
-  //   );
-  //   passwordInput.focus();
-  //   return false;
-  // }
   if (addressInput.value == "") {
     customNotice(
       " fa-sharp fa-light fa-circle-exclamation",
@@ -122,8 +102,6 @@ const updateUser = () => {
       fullname +
       "&phone=" +
       phone +
-      "&password=" +
-      password +
       "&address=" +
       address +
       "&email=" +
@@ -138,7 +116,6 @@ const updateUser = () => {
           "Update successfully!",
           1
         );
-        IsInfoChange();
       }
     },
   });

@@ -31,7 +31,7 @@
                 <strong class="text-success product-price"><?=$row['gia']?> đ</strong>
               </div>
               <div class="d-flex justify-content-between font-weight-bold mt-3">
-                <button class="w-100 btn btn-warning add-to-cart-btn" onclick="addToCart(<?=$row['idsanpham']?>,<?=$image['idmau']?>)">Add to cart</button>
+                <button class="w-100 btn btn-warning add-to-cart-btn" onclick="addToCart(<?=$row['idsanpham']?>,<?=$row['min(idmau)']?>)">Add to cart</button>
               </div>
             </div>
           </div>

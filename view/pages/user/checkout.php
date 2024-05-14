@@ -3,6 +3,8 @@
 require("../../../util/dataProvider.php");
 $dp = new DataProvider();
 session_start();
+$sql="select * from nguoidung where idnguoidung=".$_SESSION["userID"];
+$info=$dp->excuteQuery($sql)->fetch_assoc();
 ?> 
 <div id="mycart">
     <!-- Header Section Starts -->
@@ -52,7 +54,7 @@ session_start();
                 <div class="row g-3">
                   <div class="col-12">
                     <label for="address" class="form-label">Address</label>
-                    <input type="text" class="form-control" id="checkout-address" placeholder="1234 Main St" required="">
+                    <input type="text" class="form-control" id="checkout-address" placeholder="1234 Main St" required value="<?=$info['diachi']?>">
                     <div class="invalid-feedback">
                       Please enter your shipping address.
                     </div>

@@ -6,7 +6,8 @@ session_start();
 <div class="sidebar" id="mySidebar" >
 <script type="text/javascript" src="./view/pages/admin/assets/js/ajaxWork.js"></script>    
 <div class="side-header">
-    <h5 style="margin-top:10px;">Administration</h5>
+    <h4 style="margin-top:10px;">Administration</h4>
+    <h5 style="margin-top:10px;">Wellcome : <?=$_SESSION['userName']?></h5>
 </div>
 <hr style="border:1px solid; background-color:#8a7b6d; border-color:#333b31;">
     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>

@@ -2,7 +2,7 @@
 require("../../../../util/dataProvider.php");
 $dp = new DataProvider();
 session_start();
-$userID = $_SESSION['$userID'];
+$userID = $_SESSION['userID'];
 $sql1 = "SELECT giohang.soluong as slgh, sanpham.* FROM giohang join sanpham on (giohang.idsanpham = sanpham.idsanpham and giohang.idmau = sanpham.idsanpham) 
           where idnguoidung = '" . $userID . "'";
 $result1 = $dp->excuteQuery($sql1);
@@ -12,7 +12,7 @@ if ($result1->num_rows > 0) {
       array_push($album, $row);
   }
 }
-$sql2 = "select diaChi from nguoiDung where idnguoidung='" . $userID . "'";
+$sql2 = "select * from nguoiDung where idnguoidung='" . $userID . "'";
 $result2 = $dp->excuteQuery($sql2);
 $address = $result2->fetch_assoc()['diachi'];
 ?> 

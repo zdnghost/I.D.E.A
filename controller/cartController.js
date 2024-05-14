@@ -2,7 +2,7 @@ const addToCart = (productID,colorID) => {
     $.ajax({
       url: "util/cart.php",
       type: "POST",
-      data: { productID: productID,colorID:colorID, action: "addToCart" },
+      data: { productID: productID, colorID:colorID, action: "addToCart" },
       success: function (res) {
         if (res == "Added to your Cart") {
           customNotice("fa-solid fa-cart-circle-plus", res, 1);

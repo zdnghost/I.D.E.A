@@ -46,7 +46,7 @@ session_start();
                     </a>
                 </div>
                 <div class="col-3 text-break">
-                    <h6 class="text-muted"><a href="product-detail.php" class="text-decoration-none text-black nav-link px-0"><?=$row['tensanpham']?></a></h6>
+                    <h6 class="text-muted"><a href="javascript:void(0)" class="text-decoration-none text-black nav-link px-0" onclick="ShowThongTin(<?=$row['idsanpham']?> )"><?=$row['tensanpham']?></a></h6>
                     <h6 class="text-muted"><?=$row['tenMau']?></h6>
                     <h6 class="text-black mb-0 eachPrice"><?=$row['gia']?> đ</h6>
                 </div>

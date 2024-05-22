@@ -35,7 +35,7 @@ filtBillDetailToBill($billDetail, $bill);
                             <?php if($b['trangthai']==1) 
                                 echo 'Pending';
                                 if($b['trangthai']==2)
-                                echo 'Compelte';
+                                echo 'Complete';
                                 if($b['trangthai']==0)
                                 echo 'Cancel';
                             ?>

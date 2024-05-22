@@ -49,9 +49,9 @@ switch ($_SERVER["REQUEST_METHOD"]) {
         $username = $_POST['user'];
         $result = $dp->getUserByUsername($username);
         if (mysqli_num_rows($result) != 0) {
-          echo 1;
+          echo true;
         } else {
-          echo 0;
+          echo false;
         }
         break;
       case 'register':

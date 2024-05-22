@@ -7,10 +7,10 @@
   $products = getProductInOrder($id);
 ?>
 <div id="new-supply">
-   <h2>Thông tin phiếu nhập </h2>
+   <h2>Thông tin hóa đơn </h2>
    
   <div class="form-group">
-    <h4 for="qty">Mã phiếu nhập :</h4>
+    <h4 for="qty">Mã hóa đơn :</h4>
     <input type="text" class="form-control supplyID" id="p_desc" value="<?=$info['idhoadon']?>" disabled>
   </div>
   <div class="form-group">

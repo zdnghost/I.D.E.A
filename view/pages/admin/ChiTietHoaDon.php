@@ -7,14 +7,14 @@
   $products = getProductInOrder($id);
 ?>
 <div id="new-supply">
-   <h2>Thông tin phiếu nhập </h2>
+   <h2>Thông tin Hóa đơn </h2>
    <button type="button" class="btn btn-danger" style="height:40px" onclick="ShowPhieuNhap()">Back</button>
   <div class="form-group">
-    <h4 for="qty">Mã phiếu nhập :</h4>
+    <h4 for="qty">Mã Hóa đơn :</h4>
     <input type="text" class="form-control supplyID" id="p_desc" value="<?=$info['idphieunhap']?>" disabled>
   </div>
   <div class="form-group">
-    <h4 for="qty">Người nhập :</h4>
+    <h4 for="qty">Người mua:</h4>
     <input type="text" class="form-control supplyID" id="p_desc" value="<?=$info['username']?>" disabled>
   </div>
   <div class="form-group">

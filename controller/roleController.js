@@ -53,7 +53,7 @@ const checkAddNewRole = () => {
   if((listPermission.indexOf(5)!=-1||listPermission.indexOf(3)!=-1||listPermission.indexOf(4)!=-1)&&listPermission.indexOf(2)==-1){
     customNotice(
       " fa-sharp fa-light fa-circle-exclamation",
-      "Access product should be have!",
+      "Access product should be given!",
       3
     );
     return false;
@@ -61,7 +61,7 @@ const checkAddNewRole = () => {
   if((listPermission.indexOf(7)!=-1)&&listPermission.indexOf(6)==-1){
     customNotice(
       " fa-sharp fa-light fa-circle-exclamation",
-      "Access order should be have!",
+      "Access order should be given!",
       3
     );
     return false;
@@ -69,7 +69,7 @@ const checkAddNewRole = () => {
   if((listPermission.indexOf(9)!=-1)&&listPermission.indexOf(8)==-1){
     customNotice(
       " fa-sharp fa-light fa-circle-exclamation",
-      "Access supply should be have!",
+      "Access supply should be given!",
       3
     );
     return false;
@@ -77,7 +77,7 @@ const checkAddNewRole = () => {
   if((listPermission.indexOf(11)!=-1||listPermission.indexOf(12)!=-1)&&listPermission.indexOf(10)==-1){
     customNotice(
       " fa-sharp fa-light fa-circle-exclamation",
-      "Access account should be have!",
+      "Access account should be given!",
       3
     );
     return false;
@@ -85,7 +85,7 @@ const checkAddNewRole = () => {
   if((listPermission.indexOf(16)!=-1||listPermission.indexOf(14)!=-1||listPermission.indexOf(15)!=-1)&&listPermission.indexOf(13)==-1){
     customNotice(
       " fa-sharp fa-light fa-circle-exclamation",
-      "Access role should be have!",
+      "Access role should be given!",
       3
     );
     return false;

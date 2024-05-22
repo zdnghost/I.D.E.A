@@ -193,17 +193,6 @@ const setAccountInfo = () => {
     let nameInput = document.querySelector("#edit-account .nameAccount");
     let emailInput = document.querySelector("#edit-account .emailAccount");
     let phoneInput = document.querySelector("#edit-account .phoneAccount");
-   let passwordInput = document.querySelector("#edit-account .passwordAccount").value;
-  if (!isPasswordValid(passwordInput.value)) 
-    if(passwordInput.value!=" "){
-    customNotice(
-      " fa-sharp fa-light fa-circle-exclamation",
-      "Password that contain at least eight characters, including at least one number and includes both lowercase and uppercase letters and special characters, for example #, ?, !.",
-      3
-    );
-    passwordInput.focus();
-    return false;
-  }
     if (nameInput.value == "") {
       customNotice(
         " fa-sharp fa-light fa-circle-exclamation",
